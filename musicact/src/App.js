@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ContactForm from './components/ContactForm';
+import MusicianForm from './components/MusicianForm';
 
 class App extends Component {
 //
@@ -13,7 +15,12 @@ class App extends Component {
     <div>
       <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
       <h2>{process.env.REACT_APP_SECRET_CODE}</h2>
+      <ContactForm/>
+      <MusicianForm/>
 
+    <iframe width="50%" height="300px" scrolling="yes" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists
+      "+"/382295696
+      "+"&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true"></iframe>
 
     </div>
     )

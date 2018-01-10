@@ -31,7 +31,7 @@ _____________
 
 ### API
 
-### Layout and Component list
+### Layout End-to-end
 
 ### Homepage
 
