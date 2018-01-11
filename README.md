@@ -8,10 +8,25 @@ Its intention is to improve the UX of the site providing users a modern experien
 _____________
 ### Significant Packages
 - React
-- React Router
+- [React Router](https://reacttraining.com/react-router/)
 - Passport
+- [react-player](https://www.npmjs.com/package/react-player)
+
+#### Package Notes
+[react-player](https://www.npmjs.com/package/react-player)
+- works for youtube soundcloud and more and has a number of options.
+- For **soundcloud** playlists are  not supported
 _____________
 ### Client Interviews
+
+_____________
+### Inspiration
+
+(http://www.musicvictoria.com.au/)
+(http://www.musicnsw.com/)
+(http://theoperatives.com.au/artist/ (for artist profiles))
+(https://bandcamp.com/ (search limiting))
+(https://warp.net/ (blog page))
 
 _____________
 ### User Journeys & Wireframes

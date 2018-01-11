@@ -16,3 +16,18 @@
 .App-intro {
   font-size: large;
 }
+
+.type-filter{
+  position:relative;
+  width:300px;height:80px;
+
+  .type-filter-button-all, .type-filter-button{
+    background-color: #3E3D41;
+    color:white;
+    height:30px;
+    width:50px;
+  }
+  .active{
+    background-color: #EC4564;
+  }
+}
