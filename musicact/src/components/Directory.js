@@ -49,6 +49,10 @@ class Directory extends React.Component {
     });
   }
 
+  handleHover = (event) =>{
+    console.log( event.target);
+  }
+
   render(){
 
     // console.log(this.state.demo.data.musicians[1].type);
@@ -103,13 +107,13 @@ class Directory extends React.Component {
 
           </div>
           {navButtonActive === 0 &&
-          <DirectoryGrid listing= {all} />}
+          <DirectoryGrid handleHover={this.handleHover} listing= {all} />}
           {navButtonActive === 1 &&
-          <DirectoryGrid listing= {bandNames}/>}
+          <DirectoryGrid handleHover={this.handleHover} listing= {bandNames}/>}
           {navButtonActive === 2 &&
-          <DirectoryGrid listing= {venueNames}/>}
+          <DirectoryGrid handleHover={this.handleHover} listing= {venueNames}/>}
           {navButtonActive === 3 &&
-          <DirectoryGrid listing= {businessNames}/>}
+          <DirectoryGrid handleHover={this.handleHover} listing= {businessNames}/>}
 
 
         </div>

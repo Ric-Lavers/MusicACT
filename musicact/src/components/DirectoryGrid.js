@@ -2,24 +2,23 @@ import React from 'react';
 import image from '../images/second_sun.jpg';
 
 
-export const DirectoryGrid = ({listing}) => {
+export const DirectoryGrid = ({listing,handleHover}) => {
 
   let backgroundImage = { backgroundImage:{image} }
-  const divs = []
+  const listings = []
   for (let i = 0; i < listing.length; i++) {
-    divs.push(
-      <div className="testing" >
-
+    listings.push(
+      <div onHover={(event)=>handleHover(event)}className="testing" >
+        <h1> {`${listing[i]}`} </h1>
         <div className="inside-testing">
-          <h1> {`${listing[i]}`} </h1>
         </div>
       </div> )
   }
-  console.log(divs);
+  console.log(listings);
   return(
     <div className="container">
       <div className= "directory-grid">
-        {divs.map( (i) =>{
+        {listings.map( (i) =>{
           return (i)
         })}
 
