@@ -62,22 +62,19 @@ padding-left: 32px;
   grid-gap: 12px;
   justify-content: center;
   .testing{
-    // background-color: powderblue;
+    background-color: powderblue;
     width:100%;height:100%;
     position: relative;
-    background-image:url("../images/second_sun.jpg");
-    background-image:image("./images/second_sun.jpg");
     .inside-testing{
       position: absolute;
       width:100%;height:100%;
       background-color: black;
       z-index: -1;
       color:white;
+      display: flex;
       align-items: center;
       h1{
-        position:relative;
-        align-self: center
-        font-size:3em;
+        font-size:2.5em;
       }
     }
   }
