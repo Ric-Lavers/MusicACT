@@ -102,18 +102,18 @@ class Directory extends React.Component {
                 handleClick={this.handleMusicianButtonClick}
                 activeButton={this.state.musicianButtonActive}
                 array={ musicians } />):
-                (<div style={{height:53}}></div>)
+                (<div style={{height:58}}></div>)
             }
 
           </div>
           {navButtonActive === 0 &&
-          <DirectoryGrid handleHover={this.handleHover} listing= {all} />}
+          <DirectoryGrid listing= {all} />}
           {navButtonActive === 1 &&
-          <DirectoryGrid handleHover={this.handleHover} listing= {bandNames}/>}
+          <DirectoryGrid listing= {bandNames}/>}
           {navButtonActive === 2 &&
-          <DirectoryGrid handleHover={this.handleHover} listing= {venueNames}/>}
+          <DirectoryGrid listing= {venueNames}/>}
           {navButtonActive === 3 &&
-          <DirectoryGrid handleHover={this.handleHover} listing= {businessNames}/>}
+          <DirectoryGrid listing= {businessNames}/>}
 
 
         </div>
