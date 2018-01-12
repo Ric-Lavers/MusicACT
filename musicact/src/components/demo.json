@@ -2,6 +2,7 @@
   "data": {
     "musicians": [{
       "type":"Band",
+      "_id":"123",
       "contactDetails": {
         "email": "",
         "phoneNumber": "",
@@ -9,7 +10,7 @@
       },
       "profile": {
         "imageSrc": "",
-        "name": "",
+        "name": "Pixelord is great",
         "bio": "",
         "socialMedia": {
           "facebook": "",
@@ -27,6 +28,7 @@
       }
     },
     {"type":"Band",
+      "_id":"124",
       "contactDetails": {
         "email": "secondsun@live.com.au",
         "phoneNumber": "0415357859",
@@ -53,32 +55,52 @@
       }
     }
   ],
-    "venue": [{
+    "venues": [{
+      "_id":"201",
       "contactDetails": {
-        "email": "transit@Bar.com",
+        "email": "lot33@kingston.com",
         "phoneNumber": "1234567890",
-        "pointOfContact": "Mark"
+        "pointOfContact": "hugh"
+      },
+      "profile":{
+        "name":"Lot 33",
+        "imageLink":""
       }
     },
     {
+      "_id":"202",
       "contactDetails": {
-        "email": "venue@place.com",
+        "email": "toast@place.com",
         "phoneNumber": "0987654321",
-        "pointOfContact": "Jim"
+        "pointOfContact": "raver"
+      },
+      "profile":{
+        "name":"Toast",
+        "imageLink":""
       }
     },
     {
+      "_id":"203",
       "contactDetails": {
         "email": "bar@venue.com",
         "phoneNumber": "11111111",
         "pointOfContact": "Steph"
+      },
+      "profile":{
+        "name":"Bar 32",
+        "imageLink":""
       }
     }],
-    "business": [{
+    "businesses": [{
+      "_id":"301",
       "contactDetails": {
         "email": "",
         "phoneNumber": "",
         "pointOfContact": ""
+      },
+      "profile":{
+        "name":"ICBM",
+        "imageLink":""
       }
     }]
   }

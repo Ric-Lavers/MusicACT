@@ -20,7 +20,7 @@ class App extends Component {
   render() {
   return (
       <Router>
-        <div>
+        <div className="app">
           <Header />
           <Directory/>
           <Landing />

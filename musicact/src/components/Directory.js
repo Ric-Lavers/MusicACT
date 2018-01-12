@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactPlayer from 'react-player'
+import FilterForm from './FilterForm'
+import DirectoryGrid from './DirectoryGrid';
 
 const demo = require('./demo.json');
 
@@ -9,6 +10,12 @@ const NavButtonsEnum = {
   VENUES : 2,
   BUSINESSES : 3
 }
+const MusicianButtonsEnum = {
+  ALL : 0,
+  BANDS : 1,
+  DJS : 2,
+  SOLOISTS : 3
+}
 
 class Directory extends React.Component {
 
@@ -16,7 +23,8 @@ class Directory extends React.Component {
     demo,
     filterType:"all",
     categoryFilter:"all",
-    navButtonActive: NavButtonsEnum.ALL
+    navButtonActive: NavButtonsEnum.ALL,
+    musicianButtonActive: MusicianButtonsEnum.ALL
   }
 
   typeFilter = (event)=>{
@@ -34,42 +42,74 @@ class Directory extends React.Component {
       return {navButtonActive: NavButtonsEnum[clickedButton]};
     });
   }
+  handleMusicianButtonClick = (event) => {
+    const clickedButton = event.target.value.toUpperCase();
+    this.setState((prevState, props) => {
+      return {musicianButtonActive: MusicianButtonsEnum[clickedButton]};
+    });
+  }
 
   render(){
+
+    // console.log(this.state.demo.data.musicians[1].type);
+    // console.log(typeof(this.state.demo.data.musicians));
+    // console.log(this.state.demo.data.musicians);
+    // console.log("filter",this.state.demo.data.musicians.filter( (x) => (x.type === "Band")));
+
     const { navButtonActive } = this.state;
-    console.log(this.state.demo.data.musicians[1].type);
-    console.log(typeof(this.state.demo.data.musicians));
-    console.log(this.state.demo.data.musicians);
-    console.log("filter",this.state.demo.data.musicians.filter( (x) => (x.type === "Band")));
+    const nav =   ['all','Musicians','Venues', 'Businesses'];
+    const musicians =   ['all','Bands','Djs', 'Soloists'];
+
+     let norm = "filter-button"
+     let active = "filter-button active"
+     console.log();
+
+
+    const bandNames = []
+    this.state.demo.data.musicians.filter( (musician) => {
+     bandNames.push(musician.profile.name)
+    })
+    const venueNames = []
+    this.state.demo.data.venues.filter( (venue) => {
+     venueNames.push(venue.profile.name)
+    })
+    const businessNames = []
+    this.state.demo.data.businesses.filter( (business) => {
+     businessNames.push(business.profile.name)
+    })
+
+    const all = bandNames.concat(venueNames).concat(businessNames)
+    console.log("bandNames",bandNames);
+    console.log("all", all);
+
       return (
-        <div>
-          <h2>type filter</h2>
-            <form onClick={this.typeFilter} className="type-filter">
-              <input
-                type="button" value="All"
-                className={navButtonActive === NavButtonsEnum.ALL ? 'type-filter-button-all active' : 'type-filter-button-all '}
-                onClick={this.handleNavButtonClick}/>
-              <input type="button" className={navButtonActive === NavButtonsEnum.MUSICIANS ? 'type-filter-button-all active' : 'type-filter-button-all '}
-              onClick={this.handleNavButtonClick} value="Musicians"/>
-              <input type="button" className={navButtonActive === NavButtonsEnum.VENUES ? 'type-filter-button-all active' : 'type-filter-button-all '}
-                onClick={this.handleNavButtonClick} value="Venues"/>
-              <input type="button" className={navButtonActive === NavButtonsEnum.BUSINESSES ? 'type-filter-button-all active' : 'type-filter-button-all '}
-                onClick={this.handleNavButtonClick} value="Businesses"/>
-            </form>
+        <div className="directory">
 
+          <div className="filters">
+            <FilterForm
+              color="#C8FF5D"
+              handleClick={this.handleNavButtonClick}
+              activeButton={this.state.navButtonActive}
+              array={ nav } />
 
-          <h2>category filter</h2>
-            <form onClick={this.categoryFilter} className="category-filter">
-              <input type="button" className="category-filter-button" value="Bands"/>
-              <input type="button" className="category-filter-button" value="DJs"/>
-              <input type="button" className="category-filter-button" value="Soloist"/>
-            </form>
-          <h2>genre filter</h2>
+            {navButtonActive === 1?
+              (<FilterForm
+                color="#FF2D61"
+                handleClick={this.handleMusicianButtonClick}
+                activeButton={this.state.musicianButtonActive}
+                array={ musicians } />):
+                (<div style={{height:53}}></div>)
+            }
 
-          <ReactPlayer url="https://soundcloud.com/pixelord/boost"
-            controls
-            width="50%"
-            height="150px" />
+          </div>
+          {navButtonActive === 0 &&
+          <DirectoryGrid listing= {all} />}
+          {navButtonActive === 1 &&
+          <DirectoryGrid listing= {bandNames}/>}
+          {navButtonActive === 2 &&
+          <DirectoryGrid listing= {venueNames}/>}
+          {navButtonActive === 3 &&
+          <DirectoryGrid listing= {businessNames}/>}
 
 
         </div>
@@ -78,3 +118,10 @@ class Directory extends React.Component {
 }
 
 export default Directory;
+
+
+//
+// <input type="button" className="filter-button-all" value="All"/>
+// <input type="button" className="filter-button" value="Bands"/>
+// <input type="button" className="filter-button" value="DJs"/>
+// <input type="button" className="filter-button" value="Soloist"/>
