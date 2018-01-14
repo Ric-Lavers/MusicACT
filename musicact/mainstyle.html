@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="./mainstyle.css">
+  <title>MusicACT | Enlivening the Capital</title>
+</head>
+
+<body>
+
+  <nav class="menu">
+    <button aria-expanded="false" aria-controls="menu-list">
+      <span class="open">☰</span>
+      <span class="close">×</span>
+      Menu
+    </button>
+    <ul id="menu-list">
+      <li>
+        <a href="">About</a>
+      </li>
+      <li>
+        <a href="">Membership</a>
+      </li>
+      <li>
+        <a href="">News</a>
+      </li>
+      <li>
+        <a href="">Directory</a>
+      </li>
+      <li>
+        <a href="">Contact</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="wrapper">
+    <div class="top">
+      <header class="hero">
+        <h1>MusicACT</h1>
+        <p>Enlivening the capital!</p>
+      </header>
+      <div class="cta cta1">
+        <p class="price">Something</p>
+        <p>Something here</p>
+      </div>
+      <div class="cta cta2">
+        <p class="price">Something</p>
+        <p>Something here</p>
+      </div>
+
+    </div>
+
+    <section class="features">
+      <div class="feature">
+        <span class="icon">👋</span>
+        <h3>BECOME A MEMBER</h3>
+      </div>
+      <div class="feature">
+        <span class="icon">🎹</span>
+        <h3>COOL LITTLE CAPITAL</h3>
+      </div>
+      <div class="feature">
+        <span class="icon">🍷</span>
+        <h3>MUSICACT ANNUAL MUSIC AWARDS 2017</h3>
+      </div>
+      <div class="feature">
+        <span class="icon">🎵</span>
+        <h3>WORKSHOPS</h3>
+      </div>
+    </section>
+
+    <section class="about">
+      <img src="images/queso-taco.png" alt="EarGasm" class="about__mockup">
+      <div class="about__details">
+        <h2>Lastest Blog Entry</h2>
+        <p>This is amazing!!!!</p>
+        <p>This is the one you have been waiting for</p>
+        <button>Learn More →</button>
+      </div>
+    </section>
+
+
+    <section class="gallery">
+      <h2>Our Past Events</h2>
+      <img src=../assets/images/smiley.jpg alt="">
+      <img src=../assets/images/smiley.jpg alt="">
+      <img src=../assets/images/smiley.jpg alt="">
+      <img src=../assets/images/smiley.jpg alt="">
+      <img src=../assets/images/smiley.jpg alt="">
+      <img src=../assets/images/smiley.jpg alt="">
+      <img src=../assets/images/smiley.jpg alt="">
+      <img src=../assets/images/smiley.jpg alt="">
+      <img src=../assets/images/smiley.jpg alt="">
+      <img src=../assets/images/smiley.jpg alt="">
+    </section>
+  </div>
+
+  <script>
+
+    const navButton = document.querySelector('button[aria-expanded]');
+
+    function toggleNav({ target }) {
+      const expanded = target.getAttribute('aria-expanded') === 'true' || false;
+      navButton.setAttribute('aria-expanded', !expanded);
+    }
+
+    navButton.addEventListener('click', toggleNav);
+
+  </script>
+  </body:wave>
+
+</html>
