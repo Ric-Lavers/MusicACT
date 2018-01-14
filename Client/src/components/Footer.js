@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <div>
       <h1> this is Footer</h1>
