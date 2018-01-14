@@ -1,53 +1,30 @@
-const passport = require('passport');
-const User = require('../models/user');
+const authMiddleware = require('../middleware/auth');
 
 module.exports = app => {
-  //Post /users/register
-  app.post('/users/register', (req, res) => {
-    var user = new User(req.body);
+  // User SignUp
+  app.post(
+    '/register',
+    authMiddleware.register,
+    authMiddleware.signJWTForUser,
+    (req, res) => {
+      res.redirect('/');
+    }
+  );
 
-    user
-      .save()
-      // .then(() => {
-      //   return user.generateAuthToken();
-      // })
-      .then(token => {
-        res.header('x-auth', token).send(user);
-      })
-      .catch(e => {
-        res.status(400).send(e);
-      });
+  // User Login
+  app.post('/signin', authMiddleware.signin, (req, res) => {
+    res.redirect('/');
   });
 
-  //Post /users/login
-  app.post('/users/login', (req, res) => {
-    var body = _.pick(req.body, ['email', 'password']);
-
-    User.findByCredentials(body.email, body.password)
-      .then(user => {
-        return user.generateAuthToken().then(token => {
-          res.header('x-auth', token).send(user);
-        });
-      })
-      .catch(e => {
-        res.status(400).send();
-      });
+  // User Logout  (http://www.passportjs.org/docs/logout/)
+  app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
   });
 
-  // //delete /users/me/token
-  // app.delete('/users/me/token', authenticate, (req, res) => {
-  //   req.user.removeToken(req.token).then(
-  //     () => {
-  //       res.status(200).send();
-  //     },
-  //     () => {
-  //       res.status(400).send();
-  //     }
-  //   );
-  // });
-  //
-  // //check if account exist
-  // app.get('/users/me', authenticate, (req, res) => {
-  //   res.send(req.user);
-  // });
+  // Fetch the user data??? to setupthe middlware
+  app.get('/current_user', (req, res) => {
+    res.send(req.user);
+    console.log(req.user);
+  });
 };
