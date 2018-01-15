@@ -1,7 +1,7 @@
 {
   "data": {
     "musicians": [{
-      "type":"Band",
+      "type":"DJs",
       "_id":"123",
       "contactDetails": {
         "email": "",
@@ -9,7 +9,7 @@
         "pointOfContact": ""
       },
       "profile": {
-        "imageSrc": "",
+        "imageSrc": "http://res.cloudinary.com/aeonknight/image/upload/v1510564462/cache/9cd9901809b8dbc37c411502523699e6.png",
         "name": "Pixelord is great",
         "bio": "",
         "socialMedia": {
@@ -27,7 +27,7 @@
         }
       }
     },
-    {"type":"Band",
+    {"type":"Bands",
       "_id":"124",
       "contactDetails": {
         "email": "secondsun@live.com.au",
@@ -36,8 +36,8 @@
       },
       "profile": {
 
-        "imageSrc": "../images/second_sun.jpg",
-        "name": "Second Sun",
+        "imageSrc": "http://res.cloudinary.com/aeonknight/image/upload/v1510747998/store/cfcf49a984aaa9f0a11938e9777e33e3.png",
+        "name":"Second Sun",
         "bio": "Second Sun is an original acoustic rock project emanating out of Canberra, Australia. Ethereal lyrics are set in motion over dark, melodic riffs on big open tuned guitars, grounded by solid rock drum beats. The illegitimate love child of Canberra songwriter and musician, Aleshia Flanagan, Second Sun has been gradually expanding into existence since 2009. The project finally materialised in March 2012 with the release of a self-titled debut album. With the addition of Toby King on drums in 2011 and Marc David Myles on Keys/vocals in 2012, Second Sun is now complete and on the road in 2012 touring their debut album. The band is also preparing for their next recording - a concept album entitled ‘Balance and Falling’ to be released in 2013.",
         "socialMedia": {
           "facebook": "https://www.facebook.com/pixelord/",

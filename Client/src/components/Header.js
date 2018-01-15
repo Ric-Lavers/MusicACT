@@ -8,10 +8,13 @@ const Header = () => {
     <BrowserRouter>
       <div>
         <nav>
-          <ul>
-            <Link to={`/signup`}> SignUp </Link>
-            <Link to={`/login`}> LogIn </Link>
-          </ul>
+          <div style={ {width:"60%"} }>
+            <ul style={ {display:"flex",justifyContent:"center"} }>
+              <Link to="/directory">Directory</Link>
+              <Link to={`/signup`}> SignUp </Link>
+              <Link to={`/login`}> LogIn </Link>
+            </ul>
+          </div>
         </nav>
 
         <Switch>
