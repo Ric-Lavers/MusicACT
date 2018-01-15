@@ -3,13 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import ContactForm from './components/ContactForm';
 import MusicianForm from './components/MusicianForm';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import Header from './components/Header';
 import Landing from './components/Landing';
 import Footer from './components/Footer';
 
-import Directory from './components/Directory'
+import Directory from './components/Directory';
 
 class App extends Component {
   //
@@ -18,11 +18,11 @@ class App extends Component {
   // }
 
   render() {
-  return (
+    return (
       <Router>
         <div className="app">
           <Header />
-          <Directory/>
+          <Directory />
           <Landing />
           <Footer />
         </div>
