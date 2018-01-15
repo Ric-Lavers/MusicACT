@@ -9,7 +9,7 @@ import Landing from './components/Landing';
 import Footer from './components/Footer';
 import Profile from './pages/Profiles'
 
-import Directory from './components/Directory'
+import Directory from './components/Directory';
 
 class App extends Component {
   //
@@ -18,14 +18,17 @@ class App extends Component {
   // }
 
   render() {
-  return (
+    return (
       <Router>
         <div className="app">
           <Header />
+          <Directory />
+
           <Switch>
             <Route path="/directory/:id" component={Profile}/>
             <Route path="/directory"   component={Directory}/>
           </Switch>
+
           <Landing />
           <Footer />
         </div>

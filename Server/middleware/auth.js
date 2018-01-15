@@ -65,20 +65,20 @@ function signJWTForUser(req, res, next) {
 }
 
 //decode
-// function decodeJWTFindUser(req, res) {
-//   // authorization: Bearer <access_token>
-//   const bareHeader = req.headers['authorization'];
-//   if (typeof bearHeader !== 'undefined') {
-//     // split at the space
-//     const bearer = bearHeader.split(' ');
-//     // get the token from array
-//     const bearerToken = bearer[1];
-//     req.token = bearerToken;
-//     next();
-//   } else {
-//     res.sendStatus(403);
-//   }
-// }
+function decodeJWTFindUser(req, res) {
+  // authorization: Bearer <access_token>
+  const bareHeader = req.headers['authorization'];
+  if (typeof bearHeader !== 'undefined') {
+    // split at the space
+    const bearer = bearHeader.split(' ');
+    // get the token from array
+    const bearerToken = bearer[1];
+    req.token = bearerToken;
+    next();
+  } else {
+    res.sendStatus(403);
+  }
+}
 
 function register(req, res, next) {
   const user = new User(req.body);
