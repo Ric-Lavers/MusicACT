@@ -1,20 +1,40 @@
 const authMiddleware = require('../middleware/auth');
+var { User } = require('./models/user');
 
 module.exports = app => {
+  ///// test jwt
+  // app.post('/review', authMiddleware.decodeJWTFindUser, (req, res) => {
+  //   jwt.verify(req.token, 'topsecret', (err, authData) => {
+  //     if (err) {
+  //       res.sendStatus(403);
+  //     } else {
+  //       res.send('welcome!');
+  //       console.log(authData);
+  //     }
+  //   });
+  // });
+
   // User SignUp
   app.post(
     '/register',
     authMiddleware.register,
-    authMiddleware.signJWTForUser,
-    (req, res) => {
-      res.redirect('/');
-    }
+    authMiddleware.signJWTForUser
+    // (req, res) => {
+    //   // res.send(req.user);
+    //   res.redirect('/');
+    // }
   );
 
   // User Login
-  app.post('/signin', authMiddleware.signin, (req, res) => {
-    res.redirect('/');
-  });
+  app.post(
+    '/signin',
+    authMiddleware.signin,
+    authMiddleware.signJWTForUser
+    // (req, res) => {
+    //   // res.send(req.user);
+    //   res.redirect('/');
+    // }
+  );
 
   // User Logout  (http://www.passportjs.org/docs/logout/)
   app.get('/logout', function(req, res) {
@@ -23,8 +43,10 @@ module.exports = app => {
   });
 
   // Fetch the user data??? to setupthe middlware
-  app.get('/current_user', (req, res) => {
-    res.send(req.user);
-    console.log(req.user);
+  app.get('/current_user', authMiddleware.requireJWT, (req, res) => {
+    console.log(req);
+    // console.log(req.token);
+    // res.send(req.user);
+    // console.log(req.body);
   });
 };

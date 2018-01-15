@@ -39,6 +39,21 @@ UserSchema.plugin(passportLocalMongoose, {
   session: false
 });
 
+// asign the auth here?
+// UserSchema.methods.generateAuthToken = function() {
+//   var user = this;
+//   var access = 'auth';
+//   var token = jwt
+//     .sign({ _id: user._id.toHexString(), access }, 'abc123')
+//     .toString();
+//
+//   user.tokens.push({ access, token });
+//
+//   return user.save().then(() => {
+//     return token;
+//   });
+// };
+
 const User = mongoose.model.User || mongoose.model('User', UserSchema);
 
 module.exports = User;

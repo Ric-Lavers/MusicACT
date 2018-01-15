@@ -4,6 +4,7 @@ const mongoose = require('./db/mongoose');
 const User = require('./models/user');
 const authMiddleware = require('./middleware/auth');
 const passport = require('passport');
+const cookieSeesion = require('cookie-session');
 
 var app = express();
 
@@ -14,19 +15,28 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// configure To use Passport in an Express or Connect-based application
-// session on
-app.use(authMiddleware.initialize);
+//// connect sever
+// app.use(require('cookie-parser'));
+// app.use(
+//   require('express-session')({
+//     secret: 'secret',
+//     resave: false,
+//     saveUninitialized: false
+//   })
+// );
 
-// creating cookie
-app.use(require('cookie-parser')());
+// use cookiesession and passport mixed up with Express
 app.use(
-  require('express-session')({
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: false
+  cookieSeesion({
+    // 30days
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    //encrypt (need to create env file pass valu)
+    keys: ['uenjngnajnjannoopkopoao']
   })
 );
+// configure To use Passport in an Express or Connect-based application
+// and session on
+app.use(authMiddleware.initialize);
 
 //routes passing app
 require('./routes/auth')(app);
@@ -35,5 +45,3 @@ require('./routes/auth')(app);
 app.listen(port, () => {
   console.log(`started on port ${port}`);
 });
-
-module.exports = { app };
