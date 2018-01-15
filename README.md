@@ -54,11 +54,22 @@ _____________
 
 ### Profiles
 
+- the JSON data holds line breaks as \n and did not import properly, so we needed to add a .replace(/\n/g, '<br />') method.
+
 ### Admin
 
 _____________
 ### Tests
 
 ### Bugs and Fixes
+
+### Compatibility and Legacy browsers
+- **CSS GRIDS** (https://caniuse.com/#feat=css-grid)
+ CSS is a new major addition to the CSS language and 84.96% of browser use in Australia have _full_ support of the feature. From the remaining browsers without support, most cases are un-updated phone browsers ( <= Safari 10.2 for iOS ), and from IE that has partial support with prefix.
+ There are certain [tactics to creating a fall back for grids](https://rachelandrew.co.uk/archives/2017/07/04/is-it-really-safe-to-start-using-css-grid-layout/) for the minority of older unsupported. Including proving the user the a differently styled layout which such as a the mobile view layout.
+
+- **pointer-events: none;**
+  This feature works on all browsers, above IE 10. For this site there will be some aesthetic for those small number of users, but will provide no major functional problems.
+
 _____________
 ### Deployment
