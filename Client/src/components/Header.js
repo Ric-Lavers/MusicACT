@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
+import Directory from './Directory'
 
 const Header = () => {
   return (
@@ -24,6 +25,7 @@ const Header = () => {
         </nav>
 
         <Switch>
+      
           <Route
             path="/signup"
             render={() => <Register component={Register} />}
