@@ -92,7 +92,7 @@ padding-left: 32px;
       width:100%;height:100%;
       // background-color: black;
       background-image:url('./images/second_sun.jpg');
-      
+
       z-index: 1;
       color:white;
       display: flex;
@@ -113,4 +113,72 @@ padding-left: 32px;
       pointer-events: none;
     }
   }
+}
+// _____________profile
+.profile-container{
+  margin: 0 auto;
+
+  display: flex;
+  padding-bottom:16px;
+  .profile-left{
+    width:300px;
+    .profile-image{
+      padding-top:12px;
+      border-width:0;
+      height: 300px;width:300px;
+      img{
+        height: 100%;width:100%;
+        border-radius:8px;
+        object-fit:cover;
+      }
+    }
+    .profile-social-icons{
+      padding-top:16px;padding-bottom:16px;
+      display: flex;
+      justify-content:flex-start;
+      .profile-social{
+        height: 42px;min-width:42px;
+      }
+    }
+    .profile-contact-info{
+      padding-top:16px;padding-bottom:16px;
+      text-align:left;
+      .profile-email{
+        list-style:none;
+      }
+      .profile-phone{
+        list-style:none;
+      }
+      .profile-person{
+        list-style:none;
+      }
+    }
+  }
+
+  .profile-body{
+    padding:12px;
+    width:60%;
+    .profile-title{
+    }
+    .profile-bio{
+      text-align:justify;
+      padding:12px;
+    }
+    .profile-react-player{
+
+    }
+  }
+  .profile-right{
+    width:105px;
+    .profile-tag{
+      margin-top:8px;
+      height:32px;
+      width:80%;
+      border-radius: 16px;
+      background-color:#D4FC76;
+    }
+  }
+}
+*{
+  // border: 1px solid blue;
 }

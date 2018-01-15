@@ -33,6 +33,9 @@ class Directory extends React.Component {
     musicianButtonActive: MusicianButtonsEnum.ALL,
     venueButtonActive: VenueButtonsEnum.ALL,
   }
+  // componentDidMount() {
+  //   this.setState({demo})
+  // }
 
   typeFilter = (event)=>{
     const type = event.target.value

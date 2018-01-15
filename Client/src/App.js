@@ -13,7 +13,7 @@ import Directory from './components/Directory'
 
 class App extends Component {
   //
-  //   if (env.REACT_APP_SECRET_CODE) {
+  //   if (env.REACT_APP_SECRET_CODE) {s
   //   console.log(env.REACT_APP_SECRET_CODE);
   // }
 
@@ -24,7 +24,7 @@ class App extends Component {
           <Header />
           <Switch>
             <Route path="/directory/:id" component={Profile}/>
-            <Route path="/directory" component={Directory}/>
+            <Route path="/directory"   component={Directory}/>
           </Switch>
           <Landing />
           <Footer />

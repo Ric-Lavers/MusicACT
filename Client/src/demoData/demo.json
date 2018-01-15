@@ -4,26 +4,26 @@
       "type":"DJs",
       "_id":"123",
       "contactDetails": {
-        "email": "",
-        "phoneNumber": "",
-        "pointOfContact": ""
+        "email": "pixelord@hyperboloid.ru",
+        "phoneNumber": "01234 1234",
+        "pointOfContact": "Alexey Devyanin"
       },
       "profile": {
         "imageSrc": "http://res.cloudinary.com/aeonknight/image/upload/v1510564462/cache/9cd9901809b8dbc37c411502523699e6.png",
-        "name": "Pixelord is great",
-        "bio": "",
+        "name": "Pixelord",
+        "bio": "Pixelord delivers a refined, emotive melting pot of sounds that stands alone in the ever evolving world of electronic music. Tough and touching in the same breath, Alexey Devayin is at the forefront of an ever-evolving Russian scene that many consider one of most exciting musical developments in recent years. \n \nPixelord sits among a current wealth of producers where sound dominates over genre, mashing elements of Futuristic Bass, Footwork, Garage and Grime together into a unique take on bass music. Over the past year Pixelord has released music for tastemaker labels such as Error Broadcast, Leisure System, Infinite Machine and Hit & Hope to critical acclaim. In 2014 Pixelord performed at the first ever Boiler Room in Russia, toured USA and China. In 2015 collaborated with Marcos Zotes to make soundtrack for videomapping installation in Moscow.",
         "socialMedia": {
-          "facebook": "",
-          "instagram": "",
-          "soundcloud": "",
+          "facebook": "https://www.facebook.com/pixelord",
+          "instagram": "https://www.instagram.com/pixelord.jpg/",
+          "soundcloud": "https://soundcloud.com/pixelord",
           "youtube": "",
-          "spotify": "",
-          "twitter": "",
+          "spotify": "https://open.spotify.com/artist/0suA3Z4xjq58UB4S7ry8iB",
+          "twitter": "https://twitter.com/pixelord",
           "website": ""
         },
         "multimedia":{
-          "soundcloud":"",
-          "youtube":""
+          "soundcloudLink":"https://soundcloud.com/pixelord/boost",
+          "youtubeLink":"https://www.youtube.com/watch?v=4X3A98hrG1U"
         }
       }
     },
@@ -49,8 +49,8 @@
           "website": "http://www.secondsun.com.au"
         },
         "multimedia":{
-          "soundcloud":"https://soundcloud.com/pixelord/boost",
-          "youtube":"https://www.youtube.com/watch?v=4X3A98hrG1U"
+          "soundcloudLink":"https://soundcloud.com/pixelord/boost",
+          "youtubeLink":"https://www.youtube.com/watch?v=4X3A98hrG1U"
         }
       }
     }
