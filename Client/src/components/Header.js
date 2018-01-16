@@ -1,31 +1,29 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import {NavLink, BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Directory from './Directory'
 
 const Header = () => {
   return (
-    <BrowserRouter>
       <div>
         <nav>
            <div style={ {width:"60%"} }>
             <ul style={ {display:"flex",justifyContent:"center"} }>
-              <Link to="/directory">Directory</Link>
-              <Link to={`/about`}> About </Link>
-              <Link to={`/news`}> News </Link>
-              <Link to={`/musicians`}> Musicians </Link>
-              <Link to={`/venues`}> Venues </Link>
-              <Link to={`/businesses`}> Businesses </Link>
-              <Link to={`/contact`}> Contact </Link>
-              <Link to={`/signup`}> SignUp </Link>
-              <Link to={`/login`}> LogIn </Link>
+              <NavLink  activeClassName="selected" to={`/directory`}>Directory</NavLink>
+              <NavLink  activeClassName="selected" to={`/about`}> About </NavLink>
+              <NavLink  activeClassName="selected" to={`/news`}> News </NavLink>
+              <NavLink  activeClassName="selected" to={`/musicians`}> Musicians </NavLink>
+              <NavLink  activeClassName="selected" to={`/venues`}> Venues </NavLink>
+              <NavLink  activeClassName="selected" to={`/businesses`}> Businesses </NavLink>
+              <NavLink  activeClassName="selected" to={`/contact`}> Contact </NavLink>
+              <NavLink  activeClassName="selected" to={`/signup`}> SignUp </NavLink>
+              <NavLink  activeClassName="selected" to={`/login`}> LogIn </NavLink>
            </ul>
          </div>
         </nav>
 
         <Switch>
-      
           <Route
             path="/signup"
             render={() => <Register component={Register} />}
@@ -33,7 +31,6 @@ const Header = () => {
           <Route path="/login" render={() => <Login component={Login} />} />
         </Switch>
       </div>
-    </BrowserRouter>
   );
 };
 
