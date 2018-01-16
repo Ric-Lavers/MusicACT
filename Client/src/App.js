@@ -26,7 +26,6 @@ class App extends Component {
             <Route path="/directory/:id" component={Profile}/>
             <Route path="/directory"   component={Directory}/>
           </Switch>
-          <Landing />
           <Footer />
         </div>
       </Router>

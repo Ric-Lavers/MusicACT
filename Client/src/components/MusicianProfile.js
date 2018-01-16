@@ -1,5 +1,9 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
+import '../profile.css';
+import {TweenMax, Power2, TimelineLite, SlowMo, TimelineMax} from "gsap";
+
+const demo = require('../demoData/demo.json');
 
 const youtubeIcon = require('../images/001-youtube.svg')
 const twitterIcon = require('../images/008-twitter.svg')
@@ -11,32 +15,50 @@ const websiteIcon = require('../images/website.png')
 
 
 class MusicainProfile extends React.Component {
-  state = {}
+  state = {profile: demo.data.musicians.find( (obj) =>
+  obj._id === this.props._id),
+    bioOverflow:null}
 
   componentWillMount() {
-    const profile = this.props.data.data.musicians.find( (obj) =>
-    obj._id === this.props._id)
-    console.log(profile);
-    this.setState({profile: profile})
+    console.log(this.props);
+  }
+
+  isOverflown = (element)=> {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
   }
   componentDidMount() {
+
     let text = JSON.stringify(this.state.profile.profile.bio.replace(/\n/g,'<br/>') )
-    document.getElementsByClassName('profile-bio')[0].innerHTML =  text.split('"').join('')
+    document.getElementById('profile-bio-content').innerHTML =  text.split('"').join('')
+
+    let bioHeight = document.getElementById("profile-bio-content").clientHeight
+    if (bioHeight > 270) {
+      this.setState({bioOverflow:true})
+    }else{this.setState({bioOverflow:false})}
+    console.log(bioHeight);
+    // let overflow = this.isOverflown(document.getElementsByClassName('profile-bio')[0])
+    // this.setState({bioOverflow:overflow})
+  }
+  handleBioOverflow = () =>{
+    this.setState({bioOverflow: !this.state.bioOverflow})
   }
 
   render (){
     //Destructuring advance methods ---  https://medium.com/@pyrolistical/destructuring-nested-objects-9dabdd01a3b8
     //http://2ality.com/2015/01/es6-destructuring.html
-    console.log(this.props._id);
-    console.log("______",this.state.profile  );
+    // console.log(this.props._id);
+    // console.log("______",this.state.profile  );
     const { type } = this.state.profile
     const {email, phoneNumber, pointOfContact } = this.state.profile.contactDetails
     const {imageSrc, name, bio} =this.state.profile.profile
     const {facebook, instagram,twitter, soundcloud, youtube, spotify, website} = this.state.profile.profile.socialMedia
     const {soundcloudLink, youtubeLink} = this.state.profile.profile.multimedia
+    console.log("bioOverflow",this.state.bioOverflow);
 
+    const bioStyle = this.state.bioOverflow?{maxHeight:270}:{height:"100%"}
 
     return(
+    <div>
       <div className="profile-container">
         <div className="profile-left">
           <div className="profile-image">
@@ -61,12 +83,23 @@ class MusicainProfile extends React.Component {
 
         </div>
         <div className="profile-body">
-          <div className="profile-title">
-            <h2>{name}</h2>
+          <div className="profile-header">
+          {!this.state.bioOverflow && (  <div onClick={this.handleBioOverflow}id="less-button" className="more-button">less</div>)}
+            <div className="profile-title">
+              <h2>{name}</h2>
+            </div>
           </div>
-          <div className="profile-bio">
-            <p>{}</p>
+          <div className="profile-bio" >
+            <p style={bioStyle} id="profile-bio-content" ></p>
           </div>
+
+          {this.state.bioOverflow && (<div
+            onClick={this.handleBioOverflow}
+            id="more-button"
+            className="more-button">
+          more
+          </div>)}
+
           <ReactPlayer
             className="profile-react-player"
             url="https://soundcloud.com/pixelord/boost"
@@ -87,6 +120,7 @@ class MusicainProfile extends React.Component {
         </div>
 
       </div>
+    </div>
     )
 }
 }
