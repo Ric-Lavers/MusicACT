@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ContactForm from './components/ContactForm';
 import MusicianForm from './components/MusicianForm';
-import {BrowserRouter as Router, Route, Link,Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import Header from './components/Header';
 import Landing from './components/Landing';
 import Footer from './components/Footer';
-import Profile from './pages/Profiles'
+import Profile from './pages/Profiles';
 
-import Directory from './components/Directory'
+import Directory from './components/Directory';
 
 class App extends Component {
   //
@@ -18,13 +19,15 @@ class App extends Component {
   // }
 
   render() {
-  return (
+    return (
       <Router>
         <div className="app">
-          <Header />
+          <MuiThemeProvider>
+            <Header />
+          </MuiThemeProvider>
           <Switch>
-            <Route path="/directory/:id" component={Profile}/>
-            <Route path="/directory"   component={Directory}/>
+            <Route path="/directory/:id" component={Profile} />
+            <Route path="/directory" component={Directory} />
           </Switch>
           <Footer />
         </div>
