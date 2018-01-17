@@ -1,5 +1,6 @@
 .profile-container {
   margin: 0 auto;
+  max-width: 1200px;
   display: flex;
   padding-bottom: 16px; }
   .profile-container .profile-left {
@@ -32,6 +33,9 @@
         list-style: none; }
       .profile-container .profile-left .profile-contact-info .profile-person {
         list-style: none; }
+  .profile-container .less-button {
+    position: absolute;
+    bottom: 337px; }
   .profile-container .profile-body {
     padding: 12px 12px 0px;
     width: 60%;
