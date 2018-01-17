@@ -34,6 +34,7 @@ app.use(
     keys: ['uenjngnajnjannoopkopoao']
   })
 );
+
 // configure To use Passport in an Express or Connect-based application
 // and session on
 app.use(authMiddleware.initialize);
