@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const Register = () => {
+const Register = ({ onSignUp }) => {
   return (
     <div>
-      <form action="/register" method="post">
+      <form onSubmit={onSignUp}>
         <label> email </label>
         <input type="email" name="email" />
         <label> firstName </label>

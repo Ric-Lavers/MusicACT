@@ -12,9 +12,27 @@ export function token() {
   return localStorage.getItem(TOKEN_KEY);
 }
 
-export function signIn({ email, password }) {
-  const SIGNIN_URL = 'http://localhost:3001/signin';
+export function signUp({ email, password }) {
+  return fetch('/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email, password })
+  })
+    .then(res => res.json())
+    .then(json => {
+      if (json) {
+        setToken(json['token']);
+      }
+      return json;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
 
+export function signIn({ email, password }) {
   return fetch('/signin', {
     method: 'POST',
     headers: {
