@@ -6,18 +6,26 @@ const User = require('../models/user');
 // The createStrategy is responsible to setup passport-local LocalStrategy with the correct options.
 passport.use(User.createStrategy());
 
-// after did the passport Strategy assign the cookie
-// serializeUser() Generates a function that is used by Passport to serialize users into the session (done is a callback (null= no error))
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
+////// after did the passport Strategy assign the cookie
+////// serializeUser() Generates a function that is used by Passport to serialize users into the session (done is a callback (null= no error))
+// passport.serializeUser((user, done) => {
+//   done(null, user.id);
+// });
 
-// deserializeUser() Generates a function that is used by Passport to deserialize users into the session
-passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
-    done(null, user);
-  });
-});
+//////  deserializeUser() Generates a function that is used by Passport to deserialize users into the session
+// passport.deserializeUser((id, done) => {
+//   User.findById(id).then(user => {
+//     done(null, user);
+//   });
+// });
+
+function setToken(token) {
+  if (token) {
+    localStorage.setItem(TOKEN_KEY, token);
+  } else {
+    localStorage.removeItem(TOKEN_KEY);
+  }
+}
 
 passport.use(
   new passportjwt.Strategy(
@@ -57,8 +65,11 @@ function signJWTForUser(req, res, next) {
       subject: user._id.toString()
     }
   );
-
   req.token = token;
+  if (token) {
+    setToken(token['token']);
+  }
+  console.log(token);
   next();
   // res.json({ token });
   // console.log(token);
