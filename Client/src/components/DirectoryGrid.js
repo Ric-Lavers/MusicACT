@@ -16,7 +16,7 @@ export const DirectoryGrid = ({listing}) => {
   const listings = []
   for (let i = 0; i < listing.length; i++) {
 
-      let bgImg =
+      // let bgImg =
 
       listings.push(
 
@@ -24,6 +24,7 @@ export const DirectoryGrid = ({listing}) => {
             style={ {
               backgroundColor:colors[i%colors.length][0]
              } } className="testing" >
+             
             <h1 key={"_2"+listing[i]._id} style={{color:colors[i%colors.length][1] }}> {`${listing[i].profile.name}`} </h1>
             <div
               key={"_3"+listing[i]._id}

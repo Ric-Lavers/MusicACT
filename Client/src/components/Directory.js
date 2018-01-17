@@ -96,7 +96,7 @@ class Directory extends React.Component {
     let venueNames = findSelectedList('venues')
     let businessNames = findSelectedList('businesses')
     const all = bandNames.concat(venueNames).concat(businessNames)
-
+      console.log(all);
     const selected = []
     bandNames.filter( (band) => {
       band.type === musicians[this.state.musicianButtonActive] && selected.push(band);

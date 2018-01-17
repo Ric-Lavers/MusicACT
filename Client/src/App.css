@@ -15,6 +15,7 @@ body {
   font-size: 1.1em; }
 
 .filters {
+  text-align: center;
   padding-left: 32px; }
   .filters .type-filter {
     position: relative;
@@ -50,7 +51,7 @@ body {
   display: grid;
   grid-template-columns: 300px 300px 300px;
   grid-auto-rows: 300px;
-  grid-gap: 12px;
+  grid-gap: 16px;
   justify-content: center; }
   .directory-grid .testing {
     background-color: black;
@@ -110,8 +111,13 @@ body {
       display: flex;
       justify-content: flex-start; }
       .profile-container .profile-left .profile-social-icons .profile-social {
+        filter: grayscale(100%);
+        transition: filter 1s ease-in;
         height: 42px;
         min-width: 42px; }
+      .profile-container .profile-left .profile-social-icons .profile-social:hover {
+        filter: none;
+        transition: filter 0.1s; }
     .profile-container .profile-left .profile-contact-info {
       padding-top: 16px;
       padding-bottom: 16px;
@@ -124,15 +130,21 @@ body {
         list-style: none; }
   .profile-container .profile-body {
     padding: 12px 12px 0px;
-    width: 60%; }
+    width: 60%;
+    text-align: left !important; }
     .profile-container .profile-body .profile-title {
-      height: 30px; }
+      height: 30px;
+      text-align: center; }
     .profile-container .profile-body .profile-bio {
-      min-height: 270px; }
+      background-color: white;
+      margin-bottom: 6px;
+      min-height: 270px;
+      position: relative; }
     .profile-container .profile-body .more-button {
+      background-color: white;
       height: 30px;
       width: 60px;
-      margin: 0 0 0 12px;
+      margin: 0 0 0 0px;
       font-weight: bold;
       font-family: cursive;
       font-size: 1.2em;
@@ -151,3 +163,46 @@ body {
       width: 80%;
       border-radius: 16px;
       background-color: #D4FC76; }
+
+.hide {
+  z-index: 20;
+  border: 2px solid #F5F4F4;
+  background-color: #8290FA;
+  transition: background-color 7s;
+  transition: opacity 0.9; }
+  .hide li {
+    opacity: 0; }
+  .hide h3 {
+    width: 300px;
+    text-align: center;
+    align-self: center;
+    padding-top: 14px;
+    position: absolute;
+    opacity: 0.8;
+    transition: opacity 4; }
+
+.hide:hover {
+  border: 2px solid #8290FA;
+  background-color: #F5F4F4;
+  height: 100%;
+  transition: background-color 0.7s;
+  transition: opacity 0.4; }
+  .hide:hover li {
+    opacity: 1; }
+  .hide:hover h3 {
+    opacity: 0.01;
+    transition: opacity 4; }
+
+@media screen and (max-width: 908px) {
+  .directory-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 33vw;
+    grid-gap: 4px;
+    transition: grid-gap 3s ease-out; } }
+
+@media screen and (max-width: 550px) {
+  .directory-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 49vw;
+    grid-gap: 2px;
+    transition: grid-template-columns 3s; } }

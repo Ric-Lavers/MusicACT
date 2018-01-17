@@ -4,6 +4,7 @@ import '../profile.css';
 import {TweenMax, Power2, TimelineLite, SlowMo, TimelineMax} from "gsap";
 
 const demo = require('../demoData/demo.json');
+const readMore = require('../images/readmore.svg')
 
 const youtubeIcon = require('../images/001-youtube.svg')
 const twitterIcon = require('../images/008-twitter.svg')
@@ -13,14 +14,16 @@ const facebookIcon = require('../images/036-facebook.svg')
 const instagramIcon = require('../images/029-instagram.svg')
 const websiteIcon = require('../images/website.png')
 
+console.dir(spotifyIcon)
 
 class MusicainProfile extends React.Component {
   state = {profile: demo.data.musicians.find( (obj) =>
   obj._id === this.props._id),
-    bioOverflow:null}
+    bioOverflow:null,
+  viewContacts: ["none","block"]}
 
   componentWillMount() {
-    console.log(this.props);
+    // console.log(this.props);
   }
 
   isOverflown = (element)=> {
@@ -33,8 +36,8 @@ class MusicainProfile extends React.Component {
 
     let bioHeight = document.getElementById("profile-bio-content").clientHeight
     if (bioHeight > 270) {
-      this.setState({bioOverflow:true})
-    }else{this.setState({bioOverflow:false})}
+      this.setState({bioOverflow:true,bioHeight:bioHeight})
+    }else{this.setState({bioOverflow:false,bioHeight:bioHeight})}
     console.log(bioHeight);
     // let overflow = this.isOverflown(document.getElementsByClassName('profile-bio')[0])
     // this.setState({bioOverflow:overflow})
@@ -42,6 +45,11 @@ class MusicainProfile extends React.Component {
   handleBioOverflow = () =>{
     this.setState({bioOverflow: !this.state.bioOverflow})
   }
+  handleContact =() =>{
+    console.log('handleContact');
+    this.setState({viewContacts: [this.state.viewContacts[1],this.state.viewContacts[0]]})
+  }
+
 
   render (){
     //Destructuring advance methods ---  https://medium.com/@pyrolistical/destructuring-nested-objects-9dabdd01a3b8
@@ -52,44 +60,72 @@ class MusicainProfile extends React.Component {
     const {email, phoneNumber, pointOfContact } = this.state.profile.contactDetails
     const {imageSrc, name, bio} =this.state.profile.profile
     const {facebook, instagram,twitter, soundcloud, youtube, spotify, website} = this.state.profile.profile.socialMedia
-    const {soundcloudLink, youtubeLink} = this.state.profile.profile.multimedia
-    console.log("bioOverflow",this.state.bioOverflow);
+    // const {soundcloudLink, youtubeLink} = this.state.profile.profile.multimedia
+    const {multimedia} = this.state.profile.profile
+    console.log(multimedia);
+    const multimediaLinks = []
+    Object.values(multimedia).map( (address) => {
+      if(address.match("soundcloud")){
+        multimediaLinks.push([address,150])
+      }else if (address.match("youtube")) {
+        multimediaLinks.push([address,400])
+      }else if (address.match("vimeo")) {
+        multimediaLinks.push([address,400])
+      }
+    } )
+
 
     const bioStyle = this.state.bioOverflow?{maxHeight:270}:{height:"100%"}
-
+    let view = this.state.viewContacts[0];
+    let view2 = this.state.viewContacts[1];
+    const style = {display:{view} }
     return(
     <div>
-      <div className="profile-container">
+      <div className="profile-container"
+        >
+
         <div className="profile-left">
           <div className="profile-image">
             <img src={imageSrc} alt=""/>
           </div>
-          <div className="profile-social-icons">
-            <a href={spotify} target="_blank"> <img  className="profile-social" src={spotifyIcon} alt=""/> </a>
-            <a href={twitter} target="_blank"> <img  className="profile-social" src={twitterIcon} alt=""/> </a>
-            <a href={soundcloud} target="_blank"> <img  className="profile-social" src={soundcloudIcon} alt=""/> </a>
-            <a href={facebook} target="_blank"> <img  className="profile-social" src={facebookIcon} alt=""/> </a>
-            <a href={website} target="_blank"> <img  className="profile-social" src={websiteIcon} alt=""/> </a>
 
+          <div onClick={this.handleContact} style={{display:view2, backgroundColor:"powderblue"}} className="profile-social-icons">
+            <p className="profile-social">
+              SOCIALS LINKS
+            </p>
+            </div>
+          <div onClick={this.handleContact} style={{display: view }} className="profile-social-icons">
+            <a href={spotify} target="_blank"> <img  className="profile-social" src={spotifyIcon} alt=""/></a>
+            <a href={twitter} target="_blank"> <img  className="profile-social" src={twitterIcon} alt=""/></a>
+            <a href={soundcloud} target="_blank"> <img  className="profile-social" src={soundcloudIcon} alt=""/></a>
+            <a href={facebook} target="_blank"> <img  className="profile-social" src={facebookIcon} alt=""/></a>
+            <a href={website} target="_blank"> <img  className="profile-social" src={websiteIcon} alt=""/></a>
           </div>
+
           <div className="profile-contact-info">
-            <h3>Contact</h3>
-            <ul>
-              <li className="profile-email"> <p> <strong>Email:</strong> <span>{email}</span> </p> </li>
-        <li className="profile-phone"> <p> <strong>Phone:</strong> <span>{phoneNumber}</span> </p> </li>
+
+  <div className="hide">
+    <br/>
+    <h3 >Contact</h3>
+              <ul >
+                <li className="profile-email"> <p> <strong>Email:</strong> <span>{email}</span> </p> </li>
+              <li className="profile-phone"> <p> <strong>Phone:</strong> <span>{phoneNumber}</span> </p> </li>
               <li className="profile-person"> <p> <strong>Person:</strong> <span>{pointOfContact}</span> </p> </li>
             </ul>
-          </div>
-
+    <br/>
+</div>
+              </div>
         </div>
         <div className="profile-body">
           <div className="profile-header">
-          {!this.state.bioOverflow && (  <div onClick={this.handleBioOverflow}id="less-button" className="more-button">less</div>)}
+          {!this.state.bioOverflow &&this.state.bioHeight > 270 &&
+      (  <div onClick={this.handleBioOverflow}id="less-button" className="more-button">less</div>)}
             <div className="profile-title">
               <h2>{name}</h2>
             </div>
           </div>
           <div className="profile-bio" >
+            {/*<img src={readMore} alt="" className="readmoreSVG"/>*/}
             <p style={bioStyle} id="profile-bio-content" ></p>
           </div>
 
@@ -100,12 +136,15 @@ class MusicainProfile extends React.Component {
           more
           </div>)}
 
+        {multimedia && multimediaLinks.map( (address) => (
           <ReactPlayer
             className="profile-react-player"
-            url="https://soundcloud.com/pixelord/boost"
+            url= {address[0]}
             controls
             width="100%"
-            height="150px" />
+            height={address[1]}/>
+          ))}
+
           <div className="profile-gallery">
           </div>
 
