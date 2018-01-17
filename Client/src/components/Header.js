@@ -9,6 +9,7 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
+import * as auth from '../api/auth';
 
 export default class DrawerSimpleExample extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export default class DrawerSimpleExample extends React.Component {
     this.state = { open: false, dialog: false };
   }
 
+  //click iconElementLet to openDrawer
   handleToggle = () => this.setState({ open: !this.state.open });
   handleClose = () => this.setState({ open: false });
 
@@ -27,6 +29,25 @@ export default class DrawerSimpleExample extends React.Component {
   dialogCloseHander = () => {
     this.setState({ dialog: false });
     console.log('helllo');
+  };
+
+  //handleSignIn
+  handleSignIn = event => {
+    // stop refreshing the page
+    event.preventDefault();
+    const form = event.target;
+    const elements = form.elements;
+    const email = elements.email.value;
+    const password = elements.password.value;
+    auth
+      .signIn({ email, password })
+      .then(res => {
+        console.log('res from signin', res);
+        // this.setState({ res.token })
+      })
+      .catch(err => {
+        console.log('error in res', err);
+      });
   };
 
   render() {
@@ -91,7 +112,13 @@ export default class DrawerSimpleExample extends React.Component {
 
           <MenuItem>
             <NavLink activeClassName="selected" to={`/signup`}>
-              SignUp / Login
+              SignUp
+            </NavLink>
+          </MenuItem>
+
+          <MenuItem>
+            <NavLink activeClassName="selected" to={`/signin`}>
+              Login
             </NavLink>
           </MenuItem>
         </Drawer>
@@ -99,9 +126,20 @@ export default class DrawerSimpleExample extends React.Component {
         <Switch>
           <Route
             path="/signup"
-            render={() => <Register component={Register} />}
+            render={() => (
+              <div>
+                <Register />
+              </div>
+            )}
           />
-          <Route path="/login" render={() => <Login component={Login} />} />
+          <Route
+            path="/signin"
+            render={() => (
+              <div>
+                <Login onSignIn={this.handleSignIn} />
+              </div>
+            )}
+          />
         </Switch>
       </div>
     );

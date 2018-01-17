@@ -35,6 +35,16 @@ app.use(
   })
 );
 
+//allow to accesss 'Access-Control-Allow-Origin' header
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Authorization, Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
+
 // configure To use Passport in an Express or Connect-based application
 // and session on
 app.use(authMiddleware.initialize);

@@ -19,14 +19,6 @@ passport.use(User.createStrategy());
 //   });
 // });
 
-function setToken(token) {
-  if (token) {
-    localStorage.setItem(TOKEN_KEY, token);
-  } else {
-    localStorage.removeItem(TOKEN_KEY);
-  }
-}
-
 passport.use(
   new passportjwt.Strategy(
     {
@@ -52,6 +44,7 @@ passport.use(
 );
 // given a user object, create a token based on that user object and sent back in the response object to either curl nor client app
 function signJWTForUser(req, res, next) {
+  console.log('in signjwtforuser');
   const user = req.user;
   const token = jwt.sign(
     {
@@ -65,31 +58,18 @@ function signJWTForUser(req, res, next) {
       subject: user._id.toString()
     }
   );
-  req.token = token;
-  if (token) {
-    setToken(token['token']);
-  }
-  console.log(token);
-  next();
+  // res.token = token;
+  // console.log(res.token);
+  // next();
+
+  // Return token in response object
+  res.json({
+    token: token
+  });
+
   // res.json({ token });
   // console.log(token);
 }
-
-//decode
-// function decodeJWTFindUser(req, res) {
-//   // authorization: Bearer <access_token>
-//   const bareHeader = req.headers['authorization'];
-//   if (typeof bearHeader !== 'undefined') {
-//     // split at the space
-//     const bearer = bearHeader.split(' ');
-//     // get the token from array
-//     const bearerToken = bearer[1];
-//     req.token = bearerToken;
-//     next();
-//   } else {
-//     res.sendStatus(403);
-//   }
-// }
 
 function register(req, res, next) {
   const user = new User(req.body);
@@ -110,6 +90,5 @@ module.exports = {
   register,
   signin: passport.authenticate('local', { session: false }),
   signJWTForUser,
-  decodeJWTFindUser,
   requireJWT: passport.authenticate('jwt', { session: false })
 };

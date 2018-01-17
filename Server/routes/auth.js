@@ -1,38 +1,33 @@
 const authMiddleware = require('../middleware/auth');
-var { User } = require('./models/user');
+const { User } = require('../models/user');
+const TOKEN_KEY = 'token';
 
 module.exports = app => {
-  ///// test jwt
-  // app.post('/review', authMiddleware.decodeJWTFindUser, (req, res) => {
-  //   jwt.verify(req.token, 'topsecret', (err, authData) => {
-  //     if (err) {
-  //       res.sendStatus(403);
-  //     } else {
-  //       res.send('welcome!');
-  //       console.log(authData);
-  //     }
-  //   });
-  // });
-
   // User SignUp
   app.post(
     '/register',
     authMiddleware.register,
-    authMiddleware.signJWTForUser
-    // (req, res) => {
-    //   // res.send(req.user);
-    //   res.redirect('/');
-    // }
+    authMiddleware.signJWTForUser,
+    (req, res) => {
+      // var json = JSON.stringify(res);
+      // setToken(json['token']);
+      res.redirect('/');
+    }
   );
 
   // User Login
   app.post(
     '/signin',
+    (req, res, next) => {
+      console.log('in signin');
+      next();
+    },
     authMiddleware.signin,
     authMiddleware.signJWTForUser
     // (req, res) => {
     //   // res.send(req.user);
-    //   res.redirect('/');
+    //   // res.redirect('/');
+    //
     // }
   );
 
