@@ -11,6 +11,7 @@ _____________
 - [React Router](https://reacttraining.com/react-router/)
 - Passport
 - [react-player](https://www.npmjs.com/package/react-player)
+- [cloudinary-react](https://github.com/cloudinary/cloudinary-react)
 
 #### Package Notes
 [react-player](https://www.npmjs.com/package/react-player)
@@ -51,6 +52,16 @@ _____________
 ### Homepage
 
 ### Blog
+
+### Form Creates
+- [cloudinary uploading ](https://css-tricks.com/image-upload-manipulation-react/)
+- To create a positive user experience when creating a profile (before saving to data base), we need to consider the user journey. It may include spending time drafting a perfect biography, carefully selecting the right profile image and leaving the computer on many occasions. We can save the JSON to state and use that data to create the profile live in front of the user, however if they refresh the page all their changes will be lost. Therefore we also will need to save the profiles state to the browsers localStorage, this way it will be stored safely before calling the API to save to the database.
+[localStorage introduction guide](https://alligator.io/js/introduction-localstorage-sessionstorage/)
+```js
+localStorage.setItem('profile', JSON.stringify(this.state.createProfile))//sets the profile
+let profile = JSON.parse(localStorage.getItem('profile'))// retrieves profile
+localStorage.clear();//clears profile
+```
 
 ### Profiles
 

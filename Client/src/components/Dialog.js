@@ -26,7 +26,7 @@ export default class DialogExampleSimple extends React.Component {
             {actions}
           </form>
           {/********* Login form ******************/}
-          Do you already have an account?
+          <a onClick={this.changeForm}> Do you already have an account? </a>
         </Dialog>
       </div>
     ) : null;

@@ -1,5 +1,6 @@
 .profile-container{
   margin: 0 auto;
+  max-width: 1200px;
 
   display: flex;
   padding-bottom:16px;
@@ -37,13 +38,17 @@
       }
     }
   }
-
+.less-button{
+  position: absolute;
+  bottom:337px;
+}
   .profile-body{
     padding:12px 12px 0px;
     width:60%;
     position: relative;
     #less-button{
       position: absolute;
+      // top:337px;
     }
     .profile-title{
       height: 30px;
