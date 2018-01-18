@@ -97,7 +97,7 @@ padding-left: 32px;
       font-size:2.8em;
       opacity: 0;
       align-self: center;
-
+  
     }
     .inside-testing{
       position: absolute;
@@ -130,6 +130,9 @@ padding-left: 32px;
 // _____________profile
 .profile-container{
   margin: 0 auto;
+  a{
+        text-decoration:none;
+  }
 
   display: flex;
   padding-bottom:16px;
@@ -261,13 +264,19 @@ padding-left: 32px;
     transition: opacity 4;
   }
 }
+
+
+
+
+
+
+
 @media screen and (max-width: 908px) {
   .directory-grid{
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-rows: 33vw;
     grid-gap:4px;
     transition:  grid-gap 3s ease-out;
-    position:
   }
 
 }

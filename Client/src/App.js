@@ -5,9 +5,11 @@ import MusicianForm from './components/MusicianForm';
 import {BrowserRouter as Router, Route, Link,Switch} from 'react-router-dom';
 
 import Header from './components/Header';
-import Landing from './components/Landing';
+import Home from './components/Home';
 import Footer from './components/Footer';
 import Profile from './pages/Profiles'
+
+import ProfileCreate from './components/ProfileCreate'
 
 import Directory from './components/Directory'
 
@@ -22,7 +24,9 @@ class App extends Component {
       <Router>
         <div className="app">
           <Header />
+            <Route exact path="/" component={Home}/>
           <Switch>
+            <Route path="/directory/create" component={ProfileCreate}/>
             <Route path="/directory/:id" component={Profile}/>
             <Route path="/directory"   component={Directory}/>
           </Switch>

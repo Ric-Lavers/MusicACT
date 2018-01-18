@@ -1,0 +1,8 @@
+.form-musician {
+  margin-left: 0;
+  max-width: 300px;
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #282C34; }
+  .form-musician form {
+    padding-bottom: 24px; }

@@ -14,7 +14,6 @@ const facebookIcon = require('../images/036-facebook.svg')
 const instagramIcon = require('../images/029-instagram.svg')
 const websiteIcon = require('../images/website.png')
 
-console.dir(spotifyIcon)
 
 class MusicainProfile extends React.Component {
   state = {profile: demo.data.musicians.find( (obj) =>
@@ -23,7 +22,11 @@ class MusicainProfile extends React.Component {
   viewContacts: ["none","block"]}
 
   componentWillMount() {
-    // console.log(this.props);
+    let myProfile = this.state.profile
+    console.log(myProfile);
+    if(window.localStorage.getItem("profile") === null){
+    window.localStorage.setItem("profile", JSON.stringify(myProfile) )
+    }
   }
 
   isOverflown = (element)=> {
@@ -67,8 +70,8 @@ class MusicainProfile extends React.Component {
     Object.values(multimedia).map( (address) => {
       if(address.match("soundcloud")){
         multimediaLinks.push([address,150])
-      }else if (address.match("youtube")) {
-        multimediaLinks.push([address,400])
+      }else if (address.match("youtube")) {//640x360 standard
+        multimediaLinks.push([address,450])
       }else if (address.match("vimeo")) {
         multimediaLinks.push([address,400])
       }

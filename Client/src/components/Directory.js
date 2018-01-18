@@ -33,6 +33,7 @@ class Directory extends React.Component {
     musicianButtonActive: MusicianButtonsEnum.ALL,
     venueButtonActive: VenueButtonsEnum.ALL,
   }
+
   // componentDidMount() {
   //   this.setState({demo})
   // }

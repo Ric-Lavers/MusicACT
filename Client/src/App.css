@@ -93,6 +93,8 @@ body {
   margin: 0 auto;
   display: flex;
   padding-bottom: 16px; }
+  .profile-container a {
+    text-decoration: none; }
   .profile-container .profile-left {
     width: 300px; }
     .profile-container .profile-left .profile-image {

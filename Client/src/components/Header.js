@@ -13,7 +13,7 @@ const Header = () => {
               <NavLink  activeClassName="selected" to={`/directory`}>Directory</NavLink>
               <NavLink  activeClassName="selected" to={`/about`}> About </NavLink>
               <NavLink  activeClassName="selected" to={`/news`}> News </NavLink>
-              <NavLink  activeClassName="selected" to={`/musicians`}> Musicians </NavLink>
+              <NavLink  activeClassName="selected" to={`/directory/create`}> Create Musicians </NavLink>
               <NavLink  activeClassName="selected" to={`/venues`}> Venues </NavLink>
               <NavLink  activeClassName="selected" to={`/businesses`}> Businesses </NavLink>
               <NavLink  activeClassName="selected" to={`/contact`}> Contact </NavLink>
