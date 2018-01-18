@@ -59,8 +59,9 @@ export default class DrawerSimpleExample extends React.Component {
     const lastName = elements.lastName.value;
     const email = elements.email.value;
     const password = elements.password.value;
+    const registrationDate = elements.registrationDate.value;
     auth
-      .signUp({ firstName, lastName, email, password })
+      .signUp({ firstName, lastName, email, password, registrationDate })
       .then(res => {
         console.log('res from signin', res);
         this.setState({ token: res });
@@ -107,7 +108,7 @@ export default class DrawerSimpleExample extends React.Component {
   render() {
     return (
       <div>
-
+{/*
 //         <nav>
 //            <div style={ {width:"60%"} }>
 //             <ul style={ {display:"flex",justifyContent:"center"} }>
@@ -123,6 +124,7 @@ export default class DrawerSimpleExample extends React.Component {
 //            </ul>
 //          </div>
 //         </nav>
+*/}
 
         {/* login modal */}
         <Dialog
@@ -173,8 +175,8 @@ export default class DrawerSimpleExample extends React.Component {
             </NavLink>
           </MenuItem>
           <MenuItem>
-            <NavLink activeClassName="selected" to={`/musicians`}>
-              Musicians
+            <NavLink activeClassName="selected" to={`/directory/create`}>
+              Create Musician Profile
             </NavLink>
           </MenuItem>
           <MenuItem>

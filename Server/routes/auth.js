@@ -1,6 +1,8 @@
 const authMiddleware = require('../middleware/auth');
 const { User } = require('../models/user');
 
+require('colorize')
+
 module.exports = app => {
   // User SignUp
   app.post(

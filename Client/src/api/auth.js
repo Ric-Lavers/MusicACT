@@ -12,13 +12,13 @@ export function token() {
   return localStorage.getItem(TOKEN_KEY);
 }
 
-export function signUp({ firstName, lastName, email, password }) {
+export function signUp({ firstName, lastName, email, password ,registrationDate}) {
   return fetch('/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ firstName, lastName, email, password })
+    body: JSON.stringify({ firstName, lastName, email, password, registrationDate })
   })
     .then(res => res.json())
     .then(json => {

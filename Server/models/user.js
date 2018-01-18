@@ -3,6 +3,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
+
 const UserSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -34,6 +35,10 @@ const UserSchema = new mongoose.Schema({
   address: {
     type: String,
     require: true
+  },
+  registrationDate:{
+    type: Date,
+    require:true
   }
 });
 

@@ -26,17 +26,15 @@ class App extends Component {
     return (
       <Router>
         <div className="app">
-
-          <Header />
+          <MuiThemeProvider>
+            <Header />
+          </MuiThemeProvider>
             <Route exact path="/" component={Home}/>
           <Switch>
             <Route path="/directory/create" component={ProfileCreate}/>
             <Route path="/directory/:id" component={Profile}/>
             <Route path="/directory"   component={Directory}/>
 
-          <MuiThemeProvider>
-            <Header />
-          </MuiThemeProvider>
 
           </Switch>
           <Footer />
