@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import { NavLink, Route, Link, Switch } from 'react-router-dom';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Directory from './Directory';
@@ -63,7 +63,7 @@ export default class DrawerSimpleExample extends React.Component {
     auth
       .signUp({ firstName, lastName, email, password, registrationDate })
       .then(res => {
-        console.log('res from signin', res);
+        // console.log('res from signin', res);
         this.setState({ token: res });
       })
       .catch(err => {
