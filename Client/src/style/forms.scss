@@ -6,6 +6,8 @@
   border: 1px solid #282C34;
   form{
     padding-bottom:24px;
+    display:flex;
+    flex-direction: column;
   }
 }
 .dropzone{

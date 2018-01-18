@@ -75,6 +75,7 @@ function register(req, res, next) {
   console.log(`incoming request ${req.body.password}`);
   // const user = new User(req.body);
   // user.save();
+  console.log("______req",req);
 
 
   User.register(new User(req.body), req.body.password, (error, callback) => {

@@ -37,7 +37,7 @@ class Form extends React.Component {
           floatingLabelText="Last Name"
           name="lastName"
           type="lastName"
-          // errorText="This field is required"
+           errorText="This field is required"
         />
         <br />
         <TextField
