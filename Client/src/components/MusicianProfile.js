@@ -3,6 +3,9 @@ import ReactPlayer from 'react-player'
 import '../profile.css';
 import {TweenMax, Power2, TimelineLite, SlowMo, TimelineMax} from "gsap";
 
+import _ from 'lodash'
+require('colorize')
+
 const demo = require('../demoData/demo.json');
 const readMore = require('../images/readmore.svg')
 
@@ -14,12 +17,55 @@ const facebookIcon = require('../images/036-facebook.svg')
 const instagramIcon = require('../images/029-instagram.svg')
 const websiteIcon = require('../images/website.png')
 
+const socialIcons = [
+youtubeIcon,
+twitterIcon,
+spotifyIcon,
+soundcloudIcon,
+facebookIcon,
+instagramIcon,
+websiteIcon]
+
+function searchStringInArray (str, strArray) {
+    for (var j=0; j<strArray.length; j++) {
+        if (strArray[j].match(str)) return j;
+    }
+    return -1;
+}
+
 
 class MusicainProfile extends React.Component {
-  state = {profile: demo.data.musicians.find( (obj) =>
-  obj._id === this.props._id),
-    bioOverflow:null,
-  viewContacts: ["none","block"]}
+
+  constructor(props) {
+    super(props);
+    if (this.props.data) {
+      let demoP = props.data;
+      console.log("demoP_props",demoP);
+      this.state = {
+        profile:demoP,
+        bioOverflow:null,
+        viewContacts: ["none","block"]
+      }
+    }else{
+      let demoP = demo.data.musicians.find( (obj) =>
+      obj._id === props._id);
+      console.log("demoP_JSON",demoP);
+      this.state = {
+        profile:demoP,
+        bioOverflow:null,
+        viewContacts: ["none","block"]
+      }
+    }
+
+    // this.state = {
+    //   // profile: demo.data.musicians.find( (obj) =>
+    //   // obj._id === props._id),
+    //   bioOverflow:null,
+    //   viewContacts: ["none","block"]
+    // };
+  }
+
+
 
   componentWillMount() {
     let myProfile = this.state.profile
@@ -63,9 +109,38 @@ class MusicainProfile extends React.Component {
     const {email, phoneNumber, pointOfContact } = this.state.profile.contactDetails
     const {imageSrc, name, bio} =this.state.profile.profile
     const {facebook, instagram,twitter, soundcloud, youtube, spotify, website} = this.state.profile.profile.socialMedia
+
+    const {socialMedia} = this.state.profile.profile
+
+    const socialIconsLinks = _.values(socialMedia);
+    const socialIconsNames = _.keys(socialMedia)
+    socialIcons
+
+
+    const icons = []
+    socialIcons[searchStringInArray('facebook', socialIcons)]
+
+    socialIconsLinks.forEach( (address, index) => {
+      console.log('_____');
+        console.log(socialIconsNames[index]);
+      console.log('_____');
+      if (socialIconsNames[index] !== 'website') {
+        let src = socialIcons[searchStringInArray(socialIconsNames[index],socialIcons)]
+        icons.push(
+          <a href={address} target="_blank"> <img  className="profile-social" src={src} alt=""/></a>
+        )
+      }
+      else{
+        icons.push(
+          <a href={address} target="_blank"> <img  className="profile-social" src={websiteIcon} alt=""/></a>
+        )
+      }
+      })
+
+
     // const {soundcloudLink, youtubeLink} = this.state.profile.profile.multimedia
     const {multimedia} = this.state.profile.profile
-    console.log(multimedia);
+    console.log("multimedia",multimedia);
     const multimediaLinks = []
     Object.values(multimedia).map( (address) => {
       if(address.match("soundcloud")){
@@ -83,7 +158,7 @@ class MusicainProfile extends React.Component {
     let view2 = this.state.viewContacts[1];
     const style = {display:{view} }
     return(
-    <div>
+    <div style={{marginLeft:24}} className="MusicainProfile">
       <div className="profile-container"
         >
 
@@ -92,17 +167,13 @@ class MusicainProfile extends React.Component {
             <img src={imageSrc} alt=""/>
           </div>
 
-          <div onClick={this.handleContact} style={{display:view2, backgroundColor:"powderblue"}} className="profile-social-icons">
-            <p className="profile-social">
-              SOCIALS LINKS
-            </p>
-            </div>
-          <div onClick={this.handleContact} style={{display: view }} className="profile-social-icons">
-            <a href={spotify} target="_blank"> <img  className="profile-social" src={spotifyIcon} alt=""/></a>
-            <a href={twitter} target="_blank"> <img  className="profile-social" src={twitterIcon} alt=""/></a>
-            <a href={soundcloud} target="_blank"> <img  className="profile-social" src={soundcloudIcon} alt=""/></a>
-            <a href={facebook} target="_blank"> <img  className="profile-social" src={facebookIcon} alt=""/></a>
-            <a href={website} target="_blank"> <img  className="profile-social" src={websiteIcon} alt=""/></a>
+
+          <div className="profile-social-icons">
+
+            {icons.map( (i) => {
+              return i
+            } )}
+
           </div>
 
           <div className="profile-contact-info">
@@ -168,3 +239,19 @@ class MusicainProfile extends React.Component {
 }
 
 export default MusicainProfile;
+
+
+/*
+<div onClick={this.handleContact} style={{display:view2, backgroundColor:"powderblue"}} className="profile-social-icons">
+  <p className="profile-social">
+    SOCIALS LINKS
+  </p>
+  </div>
+<div onClick={this.handleContact} style={{display: view }} className="profile-social-icons">
+
+  {icons.map( (i) => {
+    return i
+  } )}
+
+</div>
+*/

@@ -11,7 +11,7 @@ const MusicianForm = (props) => {
   return (
     <div className="form-musician">
       <FormContactDetails/>
-      <FormMusicianProfile handleImageUpload={props.handleImageUpload}/>
+      <FormMusicianProfile />
       <FormSocials/>
       <FormMultimedia/>
 
@@ -26,6 +26,9 @@ musicans data[]
 
   type,
   _id,
+  dateJoined,
+  emailLogin,
+  password,
   contactDetails{
     email: String,
     phoneNumber: String,
