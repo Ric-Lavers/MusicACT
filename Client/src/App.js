@@ -9,9 +9,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Profile from './pages/Profiles';
-
 import ProfileCreate from './components/ProfileCreate';
-
 import Directory from './components/Directory';
 
 class App extends Component {

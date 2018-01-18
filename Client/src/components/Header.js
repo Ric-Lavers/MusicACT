@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { NavLink, BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import {
+  NavLink,
+  BrowserRouter,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Directory from './Directory';
@@ -43,6 +50,7 @@ export default class DrawerSimpleExample extends React.Component {
       .then(res => {
         console.log('res from signin', res);
         this.setState({ token: res });
+        this.setState({ dialog: false });
       })
       .catch(err => {
         console.log('error in res', err);
@@ -59,11 +67,13 @@ export default class DrawerSimpleExample extends React.Component {
     const lastName = elements.lastName.value;
     const email = elements.email.value;
     const password = elements.password.value;
+    const registrationDate = elements.registrationDate.value;
     auth
-      .signUp({ firstName, lastName, email, password })
+      .signUp({ firstName, lastName, email, password, registrationDate })
       .then(res => {
         console.log('res from signin', res);
         this.setState({ token: res });
+        this.setState({ dialog: false });
       })
       .catch(err => {
         console.log('error in res', err);
@@ -107,6 +117,24 @@ export default class DrawerSimpleExample extends React.Component {
   render() {
     return (
       <div>
+        {/*
+//         <nav>
+//            <div style={ {width:"60%"} }>
+//             <ul style={ {display:"flex",justifyContent:"center"} }>
+//               <NavLink  activeClassName="selected" to={`/directory`}>Directory</NavLink>
+//               <NavLink  activeClassName="selected" to={`/about`}> About </NavLink>
+//               <NavLink  activeClassName="selected" to={`/news`}> News </NavLink>
+//               <NavLink  activeClassName="selected" to={`/directory/create`}> Create Musicians </NavLink>
+//               <NavLink  activeClassName="selected" to={`/venues`}> Venues </NavLink>
+//               <NavLink  activeClassName="selected" to={`/businesses`}> Businesses </NavLink>
+//               <NavLink  activeClassName="selected" to={`/contact`}> Contact </NavLink>
+//               <NavLink  activeClassName="selected" to={`/signup`}> SignUp </NavLink>
+//               <NavLink  activeClassName="selected" to={`/login`}> LogIn </NavLink>
+//            </ul>
+//          </div>
+//         </nav>
+*/}
+
         {/* login modal */}
         <Dialog
           show={this.state.dialog}
@@ -137,48 +165,52 @@ export default class DrawerSimpleExample extends React.Component {
           open={this.state.drawer}
           onRequestChange={open => this.setState({ drawer: open })}
         >
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink to={`/`}>Logo</NavLink>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/directory`}>
               Directory
             </NavLink>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/about`}>
               About
             </NavLink>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/news`}>
               News
             </NavLink>
           </MenuItem>
-          <MenuItem>
-            <NavLink activeClassName="selected" to={`/musicians`}>
-              Musicians
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
+            <NavLink activeClassName="selected" to={`/directory/create`}>
+              Create Musician Profile
             </NavLink>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/venues`}>
               Venues
             </NavLink>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/businesses`}>
               Businesses
             </NavLink>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/contact`}>
               Contact
             </NavLink>
           </MenuItem>
-          <MenuItem>{this.renderuserSign()}</MenuItem>
+          <MenuItem
+            onClick={() => this.setState({ drawer: false, dialog: true })}
+          >
+            {this.renderuserSign()}
+          </MenuItem>
         </Drawer>
 
-        <Switch>
+        {/* <Switch>
           <Route
             path="/signup"
             render={() => (
@@ -195,7 +227,7 @@ export default class DrawerSimpleExample extends React.Component {
               </div>
             )}
           />
-        </Switch>
+        </Switch> */}
       </div>
     );
   }
