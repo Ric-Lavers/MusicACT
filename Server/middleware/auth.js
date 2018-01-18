@@ -6,18 +6,18 @@ const User = require('../models/user');
 // The createStrategy is responsible to setup passport-local LocalStrategy with the correct options.
 passport.use(User.createStrategy());
 
-// after did the passport Strategy assign the cookie
-// serializeUser() Generates a function that is used by Passport to serialize users into the session (done is a callback (null= no error))
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
+////// after did the passport Strategy assign the cookie
+////// serializeUser() Generates a function that is used by Passport to serialize users into the session (done is a callback (null= no error))
+// passport.serializeUser((user, done) => {
+//   done(null, user.id);
+// });
 
-// deserializeUser() Generates a function that is used by Passport to deserialize users into the session
-passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
-    done(null, user);
-  });
-});
+//////  deserializeUser() Generates a function that is used by Passport to deserialize users into the session
+// passport.deserializeUser((id, done) => {
+//   User.findById(id).then(user => {
+//     done(null, user);
+//   });
+// });
 
 passport.use(
   new passportjwt.Strategy(
@@ -44,6 +44,7 @@ passport.use(
 );
 // given a user object, create a token based on that user object and sent back in the response object to either curl nor client app
 function signJWTForUser(req, res, next) {
+  // console.log('in signjwtforuser');
   const user = req.user;
   const token = jwt.sign(
     {
@@ -57,38 +58,35 @@ function signJWTForUser(req, res, next) {
       subject: user._id.toString()
     }
   );
+  // res.token = token;
+  // console.log(res.token);
 
-  req.token = token;
+  // Return token in response object
+  res.json({
+    token: token
+  });
+
   next();
   // res.json({ token });
   // console.log(token);
 }
 
-//decode
-// function decodeJWTFindUser(req, res) {
-//   // authorization: Bearer <access_token>
-//   const bareHeader = req.headers['authorization'];
-//   if (typeof bearHeader !== 'undefined') {
-//     // split at the space
-//     const bearer = bearHeader.split(' ');
-//     // get the token from array
-//     const bearerToken = bearer[1];
-//     req.token = bearerToken;
-//     next();
-//   } else {
-//     res.sendStatus(403);
-//   }
-// }
-
 function register(req, res, next) {
-  const user = new User(req.body);
+  console.log(`incoming request ${req.body.password}`);
+  // const user = new User(req.body);
+  // user.save();
 
-  User.register(user, req.body.password, (error, callback) => {
+  User.register(new User(req.body), req.body.password, (error, callback) => {
     if (error) {
       next(error);
       return;
     }
+    // var assignUser = { ...user };
+    console.log(`assign user ${req.user}`);
+
     req.user = callback;
+    // assignUser = callback;
+    // console.log(callback);
     next();
   });
 }
@@ -99,6 +97,5 @@ module.exports = {
   register,
   signin: passport.authenticate('local', { session: false }),
   signJWTForUser,
-  decodeJWTFindUser,
   requireJWT: passport.authenticate('jwt', { session: false })
 };
