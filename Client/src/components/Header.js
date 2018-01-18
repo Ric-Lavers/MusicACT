@@ -67,8 +67,9 @@ export default class DrawerSimpleExample extends React.Component {
     const lastName = elements.lastName.value;
     const email = elements.email.value;
     const password = elements.password.value;
+    const registrationDate = elements.registrationDate.value;
     auth
-      .signUp({ firstName, lastName, email, password })
+      .signUp({ firstName, lastName, email, password, registrationDate })
       .then(res => {
         console.log('res from signin', res);
         this.setState({ token: res });
@@ -116,6 +117,24 @@ export default class DrawerSimpleExample extends React.Component {
   render() {
     return (
       <div>
+{/*
+//         <nav>
+//            <div style={ {width:"60%"} }>
+//             <ul style={ {display:"flex",justifyContent:"center"} }>
+//               <NavLink  activeClassName="selected" to={`/directory`}>Directory</NavLink>
+//               <NavLink  activeClassName="selected" to={`/about`}> About </NavLink>
+//               <NavLink  activeClassName="selected" to={`/news`}> News </NavLink>
+//               <NavLink  activeClassName="selected" to={`/directory/create`}> Create Musicians </NavLink>
+//               <NavLink  activeClassName="selected" to={`/venues`}> Venues </NavLink>
+//               <NavLink  activeClassName="selected" to={`/businesses`}> Businesses </NavLink>
+//               <NavLink  activeClassName="selected" to={`/contact`}> Contact </NavLink>
+//               <NavLink  activeClassName="selected" to={`/signup`}> SignUp </NavLink>
+//               <NavLink  activeClassName="selected" to={`/login`}> LogIn </NavLink>
+//            </ul>
+//          </div>
+//         </nav>
+*/}
+
         {/* login modal */}
         <Dialog
           show={this.state.dialog}
@@ -165,8 +184,8 @@ export default class DrawerSimpleExample extends React.Component {
             </NavLink>
           </MenuItem>
           <MenuItem onClick={() => this.setState({ drawer: false })}>
-            <NavLink activeClassName="selected" to={`/musicians`}>
-              Musicians
+            <NavLink activeClassName="selected" to={`/directory/create`}>
+              Create Musician Profile
             </NavLink>
           </MenuItem>
           <MenuItem onClick={() => this.setState({ drawer: false })}>

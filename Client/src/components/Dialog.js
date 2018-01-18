@@ -24,6 +24,7 @@ export default class DialogExampleSimple extends React.Component {
           <form onSubmit={this.props.onSignUp}>
             <Form />
             {actions}
+            <input name="registrationDate" type="hidden" value={Date.now()}/>
           </form>
           {/********* Login form ******************/}
           <a onClick={this.changeForm}> Do you already have an account? </a>

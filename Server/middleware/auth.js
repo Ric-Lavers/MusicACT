@@ -76,6 +76,7 @@ function register(req, res, next) {
   // const user = new User(req.body);
   // user.save();
 
+
   User.register(new User(req.body), req.body.password, (error, callback) => {
     if (error) {
       next(error);

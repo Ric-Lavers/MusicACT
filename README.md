@@ -7,11 +7,16 @@ This Node.JS API and React app is a redesign of the current MusicACT website.
 Its intention is to improve the UX of the site providing users a modern experience, and build upon previous features. The previous site was built in Drupal around 2012 and has limited updating (save for blog posts around 3 times a year), in addition to the blog the other main feature is a directory that allows musicians, venues and businesses create a profile that listed on the site. Minor features include a members sign up, email confirmation, admin rights (including editing, deleting profiles, banning users), password recovery, JWT tokens, document downloads.
 _____________
 ### Significant Packages
+#### FE
 - React
 - [React Router](https://reacttraining.com/react-router/)
 - Passport
 - [react-player](https://www.npmjs.com/package/react-player)
 - [cloudinary-react](https://github.com/cloudinary/cloudinary-react)
+
+#### BE
+- [validator](https://github.com/chriso/validator.js)
+
 
 #### Package Notes
 [react-player](https://www.npmjs.com/package/react-player)
