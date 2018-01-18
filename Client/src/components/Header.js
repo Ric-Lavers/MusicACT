@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { NavLink, BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import {
+  NavLink,
+  BrowserRouter,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Directory from './Directory';
@@ -43,6 +50,7 @@ export default class DrawerSimpleExample extends React.Component {
       .then(res => {
         console.log('res from signin', res);
         this.setState({ token: res });
+        this.setState({ dialog: false });
       })
       .catch(err => {
         console.log('error in res', err);
@@ -64,6 +72,7 @@ export default class DrawerSimpleExample extends React.Component {
       .then(res => {
         console.log('res from signin', res);
         this.setState({ token: res });
+        this.setState({ dialog: false });
       })
       .catch(err => {
         console.log('error in res', err);
@@ -137,48 +146,52 @@ export default class DrawerSimpleExample extends React.Component {
           open={this.state.drawer}
           onRequestChange={open => this.setState({ drawer: open })}
         >
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink to={`/`}>Logo</NavLink>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/directory`}>
               Directory
             </NavLink>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/about`}>
               About
             </NavLink>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/news`}>
               News
             </NavLink>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/musicians`}>
               Musicians
             </NavLink>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/venues`}>
               Venues
             </NavLink>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/businesses`}>
               Businesses
             </NavLink>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/contact`}>
               Contact
             </NavLink>
           </MenuItem>
-          <MenuItem>{this.renderuserSign()}</MenuItem>
+          <MenuItem
+            onClick={() => this.setState({ drawer: false, dialog: true })}
+          >
+            {this.renderuserSign()}
+          </MenuItem>
         </Drawer>
 
-        <Switch>
+        {/* <Switch>
           <Route
             path="/signup"
             render={() => (
@@ -195,7 +208,7 @@ export default class DrawerSimpleExample extends React.Component {
               </div>
             )}
           />
-        </Switch>
+        </Switch> */}
       </div>
     );
   }
