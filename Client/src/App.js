@@ -10,11 +10,9 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 import Profile from './pages/Profiles';
 
+import ProfileCreate from './components/ProfileCreate';
 
-import ProfileCreate from './components/ProfileCreate'
-
-import Directory from './components/Directory'
-
+import Directory from './components/Directory';
 
 class App extends Component {
   //
@@ -26,19 +24,17 @@ class App extends Component {
     return (
       <Router>
         <div className="app">
-
-          <Header />
-            <Route exact path="/" component={Home}/>
-          <Switch>
-            <Route path="/directory/create" component={ProfileCreate}/>
-            <Route path="/directory/:id" component={Profile}/>
-            <Route path="/directory"   component={Directory}/>
-
           <MuiThemeProvider>
             <Header />
           </MuiThemeProvider>
 
+          <Route exact path="/" component={Home} />
+          <Switch>
+            <Route path="/directory/create" component={ProfileCreate} />
+            <Route path="/directory/:id" component={Profile} />
+            <Route path="/directory" component={Directory} />
           </Switch>
+
           <Footer />
         </div>
       </Router>

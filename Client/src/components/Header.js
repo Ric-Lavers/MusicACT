@@ -107,23 +107,6 @@ export default class DrawerSimpleExample extends React.Component {
   render() {
     return (
       <div>
-
-//         <nav>
-//            <div style={ {width:"60%"} }>
-//             <ul style={ {display:"flex",justifyContent:"center"} }>
-//               <NavLink  activeClassName="selected" to={`/directory`}>Directory</NavLink>
-//               <NavLink  activeClassName="selected" to={`/about`}> About </NavLink>
-//               <NavLink  activeClassName="selected" to={`/news`}> News </NavLink>
-//               <NavLink  activeClassName="selected" to={`/directory/create`}> Create Musicians </NavLink>
-//               <NavLink  activeClassName="selected" to={`/venues`}> Venues </NavLink>
-//               <NavLink  activeClassName="selected" to={`/businesses`}> Businesses </NavLink>
-//               <NavLink  activeClassName="selected" to={`/contact`}> Contact </NavLink>
-//               <NavLink  activeClassName="selected" to={`/signup`}> SignUp </NavLink>
-//               <NavLink  activeClassName="selected" to={`/login`}> LogIn </NavLink>
-//            </ul>
-//          </div>
-//         </nav>
-
         {/* login modal */}
         <Dialog
           show={this.state.dialog}
@@ -194,7 +177,6 @@ export default class DrawerSimpleExample extends React.Component {
           </MenuItem>
           <MenuItem>{this.renderuserSign()}</MenuItem>
         </Drawer>
-
 
         <Switch>
           <Route
