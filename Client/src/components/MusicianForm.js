@@ -1,19 +1,54 @@
 import React from 'react'
 
-function MusicianForm({userId}){
+import FormContactDetails from './FormContactDetails'
+import FormMusicianProfile from './FormMusicianProfile'
+import FormSocials from './FormSocials'
+import FormMultimedia from './FormMultimedia'
 
+require('../style/forms.css')
 
+const MusicianForm = (props) => {
   return (
-    <form >
-      <label for="artist name"> Artist Name<br/>
-        <input type="text" name="Artist Name"/>
-      </label><br/>
-      <label for="bio"> Bio<br/>
-        <textarea name="bio" rows="8" cols="80"/>
-      </label>
-      <input type="submit"/>
-    </form>
+    <div className="form-musician">
+      <FormContactDetails/>
+      <FormMusicianProfile handleImageUpload={props.handleImageUpload}/>
+      <FormSocials/>
+      <FormMultimedia/>
+
+    </div>
   )
 }
 
 export default MusicianForm;
+
+/*
+musicans data[]
+
+  type,
+  _id,
+  contactDetails{
+    email: String,
+    phoneNumber: String,
+    pointOfContact: String
+  }
+  profile{
+    imageSrc: String,
+    name: String,
+    bio: Text
+  }
+  socialMedia{
+    facebook: String,
+    instagram: String,
+    soundcloud: String,
+    youtube: String,
+    spotify: String,
+    twitter: String,
+    website: String
+  }
+  multimedia{
+    soundcloudLink: String,
+    youtubeLink: String
+  }
+
+
+*/

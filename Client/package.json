@@ -3,19 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cloudinary-react": "^1.0.4",
     "eslint": "^4.15.0",
     "gsap": "^1.20.3",
+
+    "lodash": "^4.17.4",
     "material-design-icons": "^3.0.1",
     "material-ui": "^0.20.0",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+
+    "react-dropzone": "^4.2.5",
+
     "react-form-validator-core": "^0.4.1",
     "react-material-ui-form-validator": "^1.0.7",
+
     "react-player": "^0.25.3",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "superagent": "^3.8.2"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
