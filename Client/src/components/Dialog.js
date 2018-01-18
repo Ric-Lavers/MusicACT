@@ -16,11 +16,10 @@ export default class DialogExampleSimple extends React.Component {
       <FlatButton label="Cancel" primary={true} onClick={this.props.close} />,
       <FlatButton label="Submit" primary={true} type="submit" />
     ];
-
     return this.props.show ? (
       <div>
         <Dialog
-          title="Dialog With Actions"
+          title="SignUp"
           // actions={actions}
           modal={false}
           open={this.props.show}
@@ -36,6 +35,7 @@ export default class DialogExampleSimple extends React.Component {
               value={ date }/>
           </form>
           {/********* Login form ******************/}
+          <a onClick={this.changeForm}> Do you already have an account? </a>
         </Dialog>
       </div>
     ) : null;

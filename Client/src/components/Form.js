@@ -29,7 +29,6 @@ class Form extends React.Component {
           floatingLabelText="First Name"
           name="firstName"
           type="firstName"
-
           // errorText="This field is required"
         />
         <br />
@@ -48,14 +47,14 @@ class Form extends React.Component {
           type="email"
           // errorText="This field is required"
         />
-        {/* <TextValidator
+        <TextValidator
           floatingLabelText="Email"
           onChange={this.handleChange}
           name="email"
           // value={email}
           validators={['required', 'isEmail']}
           errorMessages={['this field is required', 'email is not valid']}
-        /> */}
+        />
         <br />
         <TextField
           hintText="Password Field"
