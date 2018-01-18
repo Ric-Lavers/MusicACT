@@ -13,8 +13,10 @@ _____________
 - Passport
 - [react-player](https://www.npmjs.com/package/react-player)
 - [cloudinary-react](https://github.com/cloudinary/cloudinary-react)
+
 #### BE
 - [validator](https://github.com/chriso/validator.js)
+
 
 #### Package Notes
 [react-player](https://www.npmjs.com/package/react-player)
