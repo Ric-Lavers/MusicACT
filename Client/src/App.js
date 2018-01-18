@@ -22,6 +22,10 @@ class App extends Component {
   //   console.log(env.REACT_APP_SECRET_CODE);
   // }
   //
+  state = {
+    tokenId: null
+  };
+
   createProfile = event => {
     event.preventDefault();
     const form = event.target;
@@ -31,18 +35,26 @@ class App extends Component {
     auth
       .createProfile({ input, token })
       .then(res => {
-        console.log('Done');
+        console.log('Done', res);
       })
       .catch(err => {
-        console.log('error');
+        console.log('error', err);
       });
   };
 
-  render() {
-    var token = auth.token();
-    var decodeToken = jwt_decode(token);
-    var tokenId = decodeToken.sub;
+  // in order to avoid this error (InvalidTokenError: Invalid token specified)
+  componentWillMount() {
+    var getToken = auth.token();
+    if (getToken !== null) {
+      var decodeToken = jwt_decode(getToken);
+      var tokenId = decodeToken.sub;
+      this.setState({ tokenId });
+    } else {
+      console.log('error');
+    }
+  }
 
+  render() {
     return (
       <Router>
         <div className="app">
@@ -53,7 +65,7 @@ class App extends Component {
           <form onSubmit={this.createProfile}>
             <label> Input </label>
             <input type="text" name="input" />
-            <input type="hidden" name="token" value={tokenId} />
+            <input type="hidden" name="token" value={this.state.tokenId} />
             <input type="submit" />
           </form>
 
