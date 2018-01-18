@@ -9,25 +9,23 @@ export default class DialogExampleSimple extends React.Component {
   render() {
     const actions = [
       <FlatButton label="Cancel" primary={true} onClick={this.props.close} />,
-      <FlatButton
-        label="Submit"
-        primary={true}
-        keyboardFocused={true}
-        onClick={this.handleClose}
-      />
+      <FlatButton label="Submit" primary={true} type="submit" />
     ];
 
     return this.props.show ? (
       <div>
         <Dialog
           title="Dialog With Actions"
-          actions={actions}
+          // actions={actions}
           modal={false}
           open={this.props.show}
           onRequestClose={this.props.close}
         >
           {/********* Login form ******************/}
-          <Form />
+          <form onSubmit={this.props.onSignUp}>
+            <Form />
+            {actions}
+          </form>
           {/********* Login form ******************/}
         </Dialog>
       </div>

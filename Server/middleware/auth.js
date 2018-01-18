@@ -19,14 +19,6 @@ passport.use(User.createStrategy());
 //   });
 // });
 
-function setToken(token) {
-  if (token) {
-    localStorage.setItem(TOKEN_KEY, token);
-  } else {
-    localStorage.removeItem(TOKEN_KEY);
-  }
-}
-
 passport.use(
   new passportjwt.Strategy(
     {
@@ -52,6 +44,7 @@ passport.use(
 );
 // given a user object, create a token based on that user object and sent back in the response object to either curl nor client app
 function signJWTForUser(req, res, next) {
+  // console.log('in signjwtforuser');
   const user = req.user;
   const token = jwt.sign(
     {
@@ -65,41 +58,35 @@ function signJWTForUser(req, res, next) {
       subject: user._id.toString()
     }
   );
-  req.token = token;
-  if (token) {
-    setToken(token['token']);
-  }
-  console.log(token);
+  // res.token = token;
+  // console.log(res.token);
+
+  // Return token in response object
+  res.json({
+    token: token
+  });
+
   next();
   // res.json({ token });
   // console.log(token);
 }
 
-//decode
-// function decodeJWTFindUser(req, res) {
-//   // authorization: Bearer <access_token>
-//   const bareHeader = req.headers['authorization'];
-//   if (typeof bearHeader !== 'undefined') {
-//     // split at the space
-//     const bearer = bearHeader.split(' ');
-//     // get the token from array
-//     const bearerToken = bearer[1];
-//     req.token = bearerToken;
-//     next();
-//   } else {
-//     res.sendStatus(403);
-//   }
-// }
-
 function register(req, res, next) {
-  const user = new User(req.body);
+  console.log(`incoming request ${req.body.password}`);
+  // const user = new User(req.body);
+  // user.save();
 
-  User.register(user, req.body.password, (error, callback) => {
+  User.register(new User(req.body), req.body.password, (error, callback) => {
     if (error) {
       next(error);
       return;
     }
+    // var assignUser = { ...user };
+    console.log(`assign user ${req.user}`);
+
     req.user = callback;
+    // assignUser = callback;
+    // console.log(callback);
     next();
   });
 }
@@ -110,6 +97,5 @@ module.exports = {
   register,
   signin: passport.authenticate('local', { session: false }),
   signJWTForUser,
-  decodeJWTFindUser,
   requireJWT: passport.authenticate('jwt', { session: false })
 };
