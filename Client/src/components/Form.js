@@ -27,18 +27,25 @@ class Form extends React.Component {
         <TextField
           hintText="First Name"
           floatingLabelText="First Name"
+          name="firstName"
+          type="firstName"
+
           // errorText="This field is required"
         />
         <br />
         <TextField
           hintText="Last Name"
           floatingLabelText="Last Name"
+          name="lastName"
+          type="lastName"
           // errorText="This field is required"
         />
         <br />
         <TextField
           hintText="email"
           floatingLabelText="email"
+          name="email"
+          type="email"
           // errorText="This field is required"
         />
         {/* <TextValidator
@@ -53,6 +60,7 @@ class Form extends React.Component {
         <TextField
           hintText="Password Field"
           floatingLabelText="Password"
+          name="password"
           type="password"
           // errorText="This field is required"
         />
@@ -68,7 +76,7 @@ class Form extends React.Component {
         </SelectField>
 
         <br />
-        <TextField hintText="Comment" fullWidth={true} />
+        <TextField type="comment" hintText="Comment" fullWidth={true} />
         {/* </ValidatorForm> */}
       </div>
     );

@@ -1,18 +1,18 @@
 const authMiddleware = require('../middleware/auth');
 const { User } = require('../models/user');
-const TOKEN_KEY = 'token';
 
 module.exports = app => {
   // User SignUp
   app.post(
     '/register',
     authMiddleware.register,
-    authMiddleware.signJWTForUser
-    // (req, res) => {
-    //   // var json = JSON.stringify(res);
-    //   // setToken(json['token']);
-    //   res.redirect('/');
-    // }
+    authMiddleware.signJWTForUser,
+    (req, res) => {
+      console.log(`res.user: ${res}`);
+      console.log(`res.user: ${typeof res}`);
+      console.log(`res.user: ${res.user}`);
+      // res.redirect('/');
+    }
   );
 
   // User Login
@@ -23,11 +23,11 @@ module.exports = app => {
       next();
     },
     authMiddleware.signin,
-    authMiddleware.signJWTForUser
-    // (req, res) => {
-    //   // res.send(req.user);
-    //   res.redirect('/');
-    // }
+    authMiddleware.signJWTForUser,
+    (req, res) => {
+      console.log(res.user);
+      //   res.redirect('/');
+    }
   );
 
   // User Logout  (http://www.passportjs.org/docs/logout/)

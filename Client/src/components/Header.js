@@ -28,7 +28,6 @@ export default class DrawerSimpleExample extends React.Component {
 
   dialogCloseHander = () => {
     this.setState({ dialog: false });
-    console.log('helllo');
   };
 
   //signIn event to assgin the localStorage to token
@@ -53,13 +52,15 @@ export default class DrawerSimpleExample extends React.Component {
   //signUp event to assgin the localStorage to token
   handleSignUp = event => {
     // stop refreshing the page
-    // event.preventDefault();
+    event.preventDefault();
     const form = event.target;
     const elements = form.elements;
+    const firstName = elements.firstName.value;
+    const lastName = elements.lastName.value;
     const email = elements.email.value;
     const password = elements.password.value;
     auth
-      .signUp({ email, password })
+      .signUp({ firstName, lastName, email, password })
       .then(res => {
         console.log('res from signin', res);
         this.setState({ token: res });
@@ -107,7 +108,11 @@ export default class DrawerSimpleExample extends React.Component {
     return (
       <div>
         {/* login modal */}
-        <Dialog show={this.state.dialog} close={this.dialogCloseHander} />
+        <Dialog
+          show={this.state.dialog}
+          close={this.dialogCloseHander}
+          onSignUp={this.handleSignUp}
+        />
 
         {/* nav bar */}
         <AppBar

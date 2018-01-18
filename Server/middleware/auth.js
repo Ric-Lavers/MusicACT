@@ -44,7 +44,7 @@ passport.use(
 );
 // given a user object, create a token based on that user object and sent back in the response object to either curl nor client app
 function signJWTForUser(req, res, next) {
-  console.log('in signjwtforuser');
+  // console.log('in signjwtforuser');
   const user = req.user;
   const token = jwt.sign(
     {
@@ -60,26 +60,33 @@ function signJWTForUser(req, res, next) {
   );
   // res.token = token;
   // console.log(res.token);
-  // next();
 
   // Return token in response object
   res.json({
     token: token
   });
 
+  next();
   // res.json({ token });
   // console.log(token);
 }
 
 function register(req, res, next) {
-  const user = new User(req.body);
+  console.log(`incoming request ${req.body.password}`);
+  // const user = new User(req.body);
+  // user.save();
 
-  User.register(user, req.body.password, (error, callback) => {
+  User.register(new User(req.body), req.body.password, (error, callback) => {
     if (error) {
       next(error);
       return;
     }
+    // var assignUser = { ...user };
+    console.log(`assign user ${req.user}`);
+
     req.user = callback;
+    // assignUser = callback;
+    // console.log(callback);
     next();
   });
 }
