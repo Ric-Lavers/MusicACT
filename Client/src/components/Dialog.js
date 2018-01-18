@@ -11,6 +11,10 @@ export default class DialogExampleSimple extends React.Component {
       <FlatButton label="Cancel" primary={true} onClick={this.props.close} />,
       <FlatButton label="Submit" primary={true} type="submit" />
     ];
+
+    const date = Date.now();
+    console.log(date);
+
     return this.props.show ? (
       <div>
         <Dialog
@@ -24,10 +28,10 @@ export default class DialogExampleSimple extends React.Component {
           <form onSubmit={this.props.onSignUp}>
             <Form />
             {actions}
-            <input name="registrationDate" type="hidden" value={Date.now()}/>
+            <input type="hidden" name="registrationDate" value={date} />
           </form>
           {/********* Login form ******************/}
-          <a onClick={this.changeForm}> Do you already have an account? </a>
+          {/* <a onClick={this.changeForm}> Do you already have an account? </a> */}
         </Dialog>
       </div>
     ) : null;

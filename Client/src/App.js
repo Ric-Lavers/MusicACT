@@ -12,19 +12,50 @@ import Profile from './pages/Profiles';
 import ProfileCreate from './components/ProfileCreate';
 import Directory from './components/Directory';
 
+//test delete after
+import * as auth from './api/profile';
+import jwt_decode from 'jwt-decode';
+
 class App extends Component {
   //
   //   if (env.REACT_APP_SECRET_CODE) {s
   //   console.log(env.REACT_APP_SECRET_CODE);
   // }
+  //
+  createProfile = event => {
+    event.preventDefault();
+    const form = event.target;
+    const elements = form.elements;
+    const input = elements.input.value;
+    const token = elements.token.value;
+    auth
+      .createProfile({ input, token })
+      .then(res => {
+        console.log('Done');
+      })
+      .catch(err => {
+        console.log('error');
+      });
+  };
 
   render() {
+    var token = auth.token();
+    var decodeToken = jwt_decode(token);
+    var tokenId = decodeToken.sub;
+
     return (
       <Router>
         <div className="app">
           <MuiThemeProvider>
             <Header />
           </MuiThemeProvider>
+
+          <form onSubmit={this.createProfile}>
+            <label> Input </label>
+            <input type="text" name="input" />
+            <input type="hidden" name="token" value={tokenId} />
+            <input type="submit" />
+          </form>
 
           <Route exact path="/" component={Home} />
           <Switch>
