@@ -25,7 +25,7 @@ const FormContactDetails = (props) => {
       <label>Phone Number:
         <input
           className="contactDetails"
-          autocomplete="tel"
+          autoComplete="tel"
           onChange={props.handleChange}  name="phoneNumber" type="text"/>
       </label>
       <br/>

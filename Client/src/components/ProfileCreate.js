@@ -88,6 +88,9 @@ class ProfileCreate extends React.Component {
     });
     this.handleImageUpload(files[0]);
   }
+  handleSubmit = (event) =>{
+    console.log(event.target);
+  }
 
   render (){
     return(
@@ -97,6 +100,7 @@ class ProfileCreate extends React.Component {
           className="MusicianForm"
           handleChange = {this.handleChange}
           handleImageUpload = {this.onImageDrop}
+          handleSubmit = {this.handleSubmit}
           />
 
         <MusicianProfile
