@@ -17,8 +17,7 @@ export default class DialogExampleSimple extends React.Component {
       <FlatButton label="Submit" primary={true} type="submit" />
     ];
 
-    const date = Date.now();
-    console.log(date);
+  
 
     return this.props.show ? (
       <div>
