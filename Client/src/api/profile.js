@@ -1,9 +1,13 @@
-import jwt_decode from 'jwt-decode';
-import * as auth from './auth';
+// import jwt_decode from 'jwt-decode';
+// import * as auth from './auth';
 const TOKEN_KEY = 'token';
 
 export function token() {
-  return localStorage.getItem(TOKEN_KEY);
+  var token = localStorage.getItem(TOKEN_KEY);
+  if (token !== null) {
+    return token;
+  }
+  return null;
 }
 
 export function createProfile({ input, token }) {
