@@ -7,7 +7,7 @@ const FormSocials = (props) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column"}}>
+    <div>
       <h3>Social Icons</h3>
       <label>soundcloud:
         <input
@@ -62,8 +62,7 @@ const FormSocials = (props) => {
           onChange={props.handleChange}
           />
       </label>
-      <input type="submit"/>
-    </form>
+    </div>
   )
 }
 

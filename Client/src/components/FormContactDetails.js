@@ -12,21 +12,20 @@ const FormContactDetails = (props) => {
 
 
   return (
-    <form onSubmit={handleSubmit} >
+    <div>
       <label>Email:
         <input
           className="contactDetails"
           onChange={props.handleChange}
           name="email"
           type="email"
-
           />
       </label>
       <br/>
       <label>Phone Number:
         <input
           className="contactDetails"
-          autocomplete="tel"
+          autoComplete="tel"
           onChange={props.handleChange}  name="phoneNumber" type="text"/>
       </label>
       <br/>
@@ -36,8 +35,7 @@ const FormContactDetails = (props) => {
           onChange={props.handleChange} name="pointOfContact" type="text"/>
       </label>
       <br/>
-      <input type="submit"/>
-    </form>
+  </div>
   )
 }
 

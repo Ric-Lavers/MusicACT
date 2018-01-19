@@ -40,7 +40,7 @@ class MusicainProfile extends React.Component {
     super(props);
     if (this.props.data) {
       let demoP = props.data;
-      console.log('props');
+      console.log('from props');
       this.state = {
         profile:demoP,
         bioOverflow:null,
@@ -116,12 +116,13 @@ class MusicainProfile extends React.Component {
       if (socialIconsNames[index] !== 'website') {
         let src = socialIcons[searchStringInArray(socialIconsNames[index],socialIcons)]
         icons.push(
-          <a href={address} target="_blank"> <img  className="profile-social" src={src} alt=""/></a>
+          <a key={index} href={address} target="_blank"> <img
+            key={`img_${index}`} className="profile-social" src={src} alt=""/></a>
         )
       }
       else{
         icons.push(
-          <a href={address} target="_blank"> <img  className="profile-social" src={websiteIcon} alt=""/></a>
+          <a  key={index}href={address} target="_blank"> <img  key={`img_${index}`} className="profile-social" src={websiteIcon} alt=""/></a>
         )
       }
       })
@@ -129,7 +130,7 @@ class MusicainProfile extends React.Component {
 
     // const {soundcloudLink, youtubeLink} = this.state.profile.profile.multimedia
     const {multimedia} = this.state.profile
-    console.log("multimedia",multimedia);
+    // console.log("multimedia",multimedia);
     const multimediaLinks = []
     Object.values(multimedia).map( (address) => {
       if(address.match("soundcloud")){
@@ -153,7 +154,10 @@ class MusicainProfile extends React.Component {
 
         <div className="profile-left">
           <div className="profile-image">
-            <img src={imageSrc} alt=""/>
+            {this.state.profile.profile.imageSrc?
+            (<img src={imageSrc} alt=""/>):
+            (<img src={this.state.profile.profile.imageSrcBuild} alt=""/>)
+            }
           </div>
 
 
@@ -189,7 +193,9 @@ class MusicainProfile extends React.Component {
           </div>
           <div className="profile-bio" >
             {/*<img src={readMore} alt="" className="readmoreSVG"/>*/}
-            <p style={bioStyle} id="profile-bio-content" ></p>
+            <p style={bioStyle} id="profile-bio-content" >
+            {bio}
+            </p>
           </div>
 
           {this.state.bioOverflow && (<div
