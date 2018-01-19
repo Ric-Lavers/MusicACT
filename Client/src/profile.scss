@@ -1,0 +1,94 @@
+.profile-container{
+  margin: 0 auto;
+  max-width: 1200px;
+
+  display: flex;
+  padding-bottom:16px;
+  .profile-left{
+    width:300px;
+    .profile-image{
+      padding-top:12px;
+      border-width:0;
+      height: 300px;width:300px;
+      img{
+        height: 100%;width:100%;
+        border-radius:8px;
+        object-fit:cover;
+      }
+    }
+    .profile-social-icons{
+      padding-top:16px;padding-bottom:16px;
+      display: flex;
+      justify-content:flex-start;
+      .profile-social{
+        height: 42px;min-width:42px;
+      }
+    }
+    .profile-contact-info{
+      padding-top:16px;padding-bottom:16px;
+      text-align:left;
+      .profile-email{
+        list-style:none;
+      }
+      .profile-phone{
+        list-style:none;
+      }
+      .profile-person{
+        list-style:none;
+      }
+    }
+  }
+.less-button{
+  position: absolute;
+  bottom:337px;
+}
+  .profile-body{
+    padding:12px 12px 0px;
+    width:60%;
+    position: relative;
+    #less-button{
+      position: absolute;
+      // top:337px;
+    }
+    .profile-title{
+      height: 30px;
+    }
+    .profile-bio{
+      min-height:270px;
+      p{
+        // min-height:257px;
+        height:100%;
+        line-height: 18px;//15 lines max
+        overflow:hidden;
+        text-align:justify;
+        padding:12px;
+      }
+      #more-button{
+        position: block;
+        top:245px;
+        z-index: 10;
+        border:2px solid #EC4564;
+        background-color:#41EBEB;
+        width:50px;
+        margin-left: 12px;
+        padding:6px;
+        border-radius:18px;
+
+      }
+    }
+    .profile-react-player{
+      margin-top:18px;
+
+    }
+  }
+  .profile-right{
+    width:105px;
+    .profile-tag{
+      margin-top:8px;
+      height:32px;
+      width:80%;
+      border-radius: 16px;
+      background-color:#D4FC76;
+    }
+  }
+}

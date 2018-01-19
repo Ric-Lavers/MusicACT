@@ -1,0 +1,74 @@
+.profile-container {
+  margin: 0 auto;
+  max-width: 1200px;
+  display: flex;
+  padding-bottom: 16px; }
+  .profile-container .profile-left {
+    width: 300px; }
+    .profile-container .profile-left .profile-image {
+      padding-top: 12px;
+      border-width: 0;
+      height: 300px;
+      width: 300px; }
+      .profile-container .profile-left .profile-image img {
+        height: 100%;
+        width: 100%;
+        border-radius: 8px;
+        object-fit: cover; }
+    .profile-container .profile-left .profile-social-icons {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      display: flex;
+      justify-content: flex-start; }
+      .profile-container .profile-left .profile-social-icons .profile-social {
+        height: 42px;
+        min-width: 42px; }
+    .profile-container .profile-left .profile-contact-info {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      text-align: left; }
+      .profile-container .profile-left .profile-contact-info .profile-email {
+        list-style: none; }
+      .profile-container .profile-left .profile-contact-info .profile-phone {
+        list-style: none; }
+      .profile-container .profile-left .profile-contact-info .profile-person {
+        list-style: none; }
+  .profile-container .less-button {
+    position: absolute;
+    bottom: 337px; }
+  .profile-container .profile-body {
+    padding: 12px 12px 0px;
+    width: 60%;
+    position: relative; }
+    .profile-container .profile-body #less-button {
+      position: absolute; }
+    .profile-container .profile-body .profile-title {
+      height: 30px; }
+    .profile-container .profile-body .profile-bio {
+      min-height: 270px; }
+      .profile-container .profile-body .profile-bio p {
+        height: 100%;
+        line-height: 18px;
+        overflow: hidden;
+        text-align: justify;
+        padding: 12px; }
+      .profile-container .profile-body .profile-bio #more-button {
+        position: block;
+        top: 245px;
+        z-index: 10;
+        border: 2px solid #EC4564;
+        background-color: #41EBEB;
+        width: 50px;
+        margin-left: 12px;
+        padding: 6px;
+        border-radius: 18px; }
+    .profile-container .profile-body .profile-react-player {
+      margin-top: 18px; }
+  .profile-container .profile-right {
+    width: 105px; }
+    .profile-container .profile-right .profile-tag {
+      margin-top: 8px;
+      height: 32px;
+      width: 80%;
+      border-radius: 16px;
+      background-color: #D4FC76; }
