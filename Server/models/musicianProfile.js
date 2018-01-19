@@ -59,7 +59,6 @@ const multimediaSchema = mongoose.Schema({
   }
 });
 
-
 const MusicianProfileSchema= mongoose.Schema({
   contactDetails:{ contactDetailsSchema },
   profile:{ profileMusicianSchema },
