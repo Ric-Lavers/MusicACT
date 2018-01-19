@@ -12,16 +12,6 @@ export default class DialogExampleSimple extends React.Component {
     date: Date.now()
   };
 
-<<<<<<< HEAD
-    const date = Date.now()
-
-    const actions = [
-      <FlatButton label="Cancel" primary={true} onClick={this.props.close} />,
-      <FlatButton label="Submit" primary={true} type="submit" />
-    ];
-
-  
-=======
   renderForm = () => {
     if (this.state.haveAccount == false) {
       return (
@@ -78,7 +68,6 @@ export default class DialogExampleSimple extends React.Component {
       );
     }
   };
->>>>>>> 12da3b0680d874a2901ee24939910bf91daf5d3a
 
   render() {
     // const actions = [
