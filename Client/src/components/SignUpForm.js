@@ -1,7 +1,4 @@
 import React from 'react';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
@@ -11,7 +8,7 @@ import { TextValidator } from 'react-material-ui-form-validator';
 
 class Form extends React.Component {
   state = {
-    value: 1
+    value: null
   };
 
   handleChange = (event, index, value) => this.setState({ value });
@@ -19,6 +16,7 @@ class Form extends React.Component {
   render() {
     return (
       <div>
+        <h1> Sing up </h1>
         {/* <ValidatorForm
           ref="form"
           onSubmit={this.handleSubmit}
@@ -47,14 +45,14 @@ class Form extends React.Component {
           type="email"
           // errorText="This field is required"
         />
-        <TextValidator
+        {/* <TextValidator
           floatingLabelText="Email"
           onChange={this.handleChange}
           name="email"
           // value={email}
           validators={['required', 'isEmail']}
           errorMessages={['this field is required', 'email is not valid']}
-        />
+        /> */}
         <br />
         <TextField
           hintText="Password Field"
@@ -64,8 +62,17 @@ class Form extends React.Component {
           // errorText="This field is required"
         />
         <br />
+        <TextField
+          hintText="Address Field"
+          floatingLabelText="Address"
+          name="Address"
+          type="Address"
+          // errorText="This field is required"
+        />
+        <br />
+        <br />
         <SelectField
-          floatingLabelText="Type"
+          hintText="Type"
           value={this.state.value}
           onChange={this.handleChange}
         >
@@ -73,9 +80,8 @@ class Form extends React.Component {
           <MenuItem value={2} primaryText="Venues" />
           <MenuItem value={3} primaryText="Businesses" />
         </SelectField>
-
         <br />
-        <TextField type="comment" hintText="Comment" fullWidth={true} />
+        {/* <TextField type="comment" hintText="Comment" fullWidth={true} /> */}
         {/* </ValidatorForm> */}
       </div>
     );

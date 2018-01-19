@@ -38,8 +38,8 @@ export default class DrawerSimpleExample extends React.Component {
   };
 
   //signIn event to assgin the localStorage to token
-  handleSignIn = event => {
-    // stop refreshing the page
+  handleLogIn = event => {
+    console.log('now I am here ');
     event.preventDefault();
     const form = event.target;
     const elements = form.elements;
@@ -48,7 +48,7 @@ export default class DrawerSimpleExample extends React.Component {
     auth
       .signIn({ email, password })
       .then(res => {
-        console.log('res from signin', res);
+        console.log('SignIn Done!', res);
         this.setState({ token: res });
         this.setState({ dialog: false });
       })
@@ -117,29 +117,12 @@ export default class DrawerSimpleExample extends React.Component {
   render() {
     return (
       <div>
-        {/*
-//         <nav>
-//            <div style={ {width:"60%"} }>
-//             <ul style={ {display:"flex",justifyContent:"center"} }>
-//               <NavLink  activeClassName="selected" to={`/directory`}>Directory</NavLink>
-//               <NavLink  activeClassName="selected" to={`/about`}> About </NavLink>
-//               <NavLink  activeClassName="selected" to={`/news`}> News </NavLink>
-//               <NavLink  activeClassName="selected" to={`/directory/create`}> Create Musicians </NavLink>
-//               <NavLink  activeClassName="selected" to={`/venues`}> Venues </NavLink>
-//               <NavLink  activeClassName="selected" to={`/businesses`}> Businesses </NavLink>
-//               <NavLink  activeClassName="selected" to={`/contact`}> Contact </NavLink>
-//               <NavLink  activeClassName="selected" to={`/signup`}> SignUp </NavLink>
-//               <NavLink  activeClassName="selected" to={`/login`}> LogIn </NavLink>
-//            </ul>
-//          </div>
-//         </nav>
-*/}
-
         {/* login modal */}
         <Dialog
           show={this.state.dialog}
           close={this.dialogCloseHander}
           onSignUp={this.handleSignUp}
+          onLogin={this.handleLogIn}
         />
 
         {/* nav bar */}
