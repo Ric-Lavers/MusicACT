@@ -1,13 +1,15 @@
 .ProfileCreate {
   display: flex; }
+  .ProfileCreate .MusicainProfile {
+    margin-right: 24px;
+    width: 100%; }
 
 .form-musician {
   margin-left: 0;
+  margin-right: 0;
   max-width: 300px;
   padding: 12px;
   text-align: left;
   border: 1px solid #282C34; }
-  .form-musician form {
-    padding-bottom: 24px;
-    display: flex;
-    flex-direction: column; }
+  .form-musician div {
+    padding-bottom: 8px; }

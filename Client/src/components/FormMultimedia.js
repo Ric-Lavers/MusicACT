@@ -7,7 +7,7 @@ const FormMultimedia = (props) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} >
+    <div>
       <h3>Social Embed</h3>
       <label>Soundcloud:
         <input
@@ -32,8 +32,7 @@ const FormMultimedia = (props) => {
           className="multimedia"
           onChange={props.handleChange}/>
       </label>
-      <input type="submit"/>
-    </form>
+    </div>
   )
 }
 

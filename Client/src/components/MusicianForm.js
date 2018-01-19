@@ -11,13 +11,15 @@ const MusicianForm = (props) => {
 
 
   return (
-    <div className="form-musician">
+    <form className="form-musician">
+
       <FormContactDetails handleChange={props.handleChange}/>
-      <FormMusicianProfile  handleChange={props.handleChange} />
+      <FormMusicianProfile  handleChange={props.handleChange}
+        handleImageUpload={ props.handleImageUpload } />
       <FormSocials handleChange={props.handleChange} />
       <FormMultimedia handleChange={props.handleChange} />
-
-    </div>
+      <input type="submit"/>
+    </form>
   )
 }
 

@@ -2,8 +2,13 @@ import React from 'react'
 import MusicianForm from './MusicianForm'
 import MusicianProfile from './MusicianProfile'
 
-require('colorize')
+import request from 'superagent';
+
 require('../style/forms.css')
+
+
+const CLOUDINARY_UPLOAD_PRESET = 'profile_image';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/aeonknight/upload';
 
 class ProfileCreate extends React.Component {
 
@@ -56,6 +61,34 @@ class ProfileCreate extends React.Component {
     console.log(`%c profile[${group}][${name}] = ${value}`, 'color:green');
   }
 
+  handleImageUpload = (file)=>{
+    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+                        .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+                        .field('file', file);
+
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err);
+      }
+
+      if (response.body.secure_url !== '') {
+        const profile = this.state.profile
+        profile.profile.imageSrc = response.body.secure_url
+        this.setState({
+          profile: profile
+        });
+      }
+    });
+  }
+  onImageDrop = (files) => {
+    const profile = this.state.profile
+    profile.profile.imageSrcBuild = files[0]
+    this.setState({
+      profile: profile
+    });
+    this.handleImageUpload(files[0]);
+  }
+
   render (){
     return(
       <div className='ProfileCreate'>
@@ -63,10 +96,10 @@ class ProfileCreate extends React.Component {
         <MusicianForm
           className="MusicianForm"
           handleChange = {this.handleChange}
+          handleImageUpload = {this.onImageDrop}
           />
 
         <MusicianProfile
-          className="MusicianProfile"
           _id = "123"
           data = {this.state.profile}
           />

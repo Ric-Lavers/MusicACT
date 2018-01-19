@@ -153,7 +153,10 @@ class MusicainProfile extends React.Component {
 
         <div className="profile-left">
           <div className="profile-image">
-            <img src={imageSrc} alt=""/>
+            {this.state.profile.profile.imageSrc?
+            (<img src={imageSrc} alt=""/>):
+            (<img src={this.state.profile.profile.imageSrcBuild} alt=""/>)
+            }
           </div>
 
 
@@ -189,7 +192,9 @@ class MusicainProfile extends React.Component {
           </div>
           <div className="profile-bio" >
             {/*<img src={readMore} alt="" className="readmoreSVG"/>*/}
-            <p style={bioStyle} id="profile-bio-content" ></p>
+            <p style={bioStyle} id="profile-bio-content" >
+            {bio}
+            </p>
           </div>
 
           {this.state.bioOverflow && (<div
