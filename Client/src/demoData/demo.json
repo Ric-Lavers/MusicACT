@@ -53,55 +53,58 @@
         "soundcloudLink":"https://soundcloud.com/pixelord/boost",
         "youtubeLink":"https://www.youtube.com/watch?v=4X3A98hrG1U"
       }
-    }
-  ],
-    "venues": [{
-      "_id":"201",
-      "contactDetails": {
-        "email": "lot33@kingston.com",
-        "phoneNumber": "1234567890",
-        "pointOfContact": "hugh"
+    ],
+    "venues": [
+      {
+        "_id": "201",
+        "contactDetails": {
+          "email": "lot33@kingston.com",
+          "phoneNumber": "1234567890",
+          "pointOfContact": "hugh"
+        },
+        "profile": {
+          "name": "Lot 33",
+          "imageLink": ""
+        }
       },
-      "profile":{
-        "name":"Lot 33",
-        "imageLink":""
-      }
-    },
-    {
-      "_id":"202",
-      "contactDetails": {
-        "email": "toast@place.com",
-        "phoneNumber": "0987654321",
-        "pointOfContact": "raver"
+      {
+        "_id": "202",
+        "contactDetails": {
+          "email": "toast@place.com",
+          "phoneNumber": "0987654321",
+          "pointOfContact": "raver"
+        },
+        "profile": {
+          "name": "Toast",
+          "imageLink": ""
+        }
       },
-      "profile":{
-        "name":"Toast",
-        "imageLink":""
+      {
+        "_id": "203",
+        "contactDetails": {
+          "email": "bar@venue.com",
+          "phoneNumber": "11111111",
+          "pointOfContact": "Steph"
+        },
+        "profile": {
+          "name": "Bar 32",
+          "imageLink": ""
+        }
       }
-    },
-    {
-      "_id":"203",
-      "contactDetails": {
-        "email": "bar@venue.com",
-        "phoneNumber": "11111111",
-        "pointOfContact": "Steph"
-      },
-      "profile":{
-        "name":"Bar 32",
-        "imageLink":""
+    ],
+    "businesses": [
+      {
+        "_id": "301",
+        "contactDetails": {
+          "email": "",
+          "phoneNumber": "",
+          "pointOfContact": ""
+        },
+        "profile": {
+          "name": "ICBM",
+          "imageLink": ""
+        }
       }
-    }],
-    "businesses": [{
-      "_id":"301",
-      "contactDetails": {
-        "email": "",
-        "phoneNumber": "",
-        "pointOfContact": ""
-      },
-      "profile":{
-        "name":"ICBM",
-        "imageLink":""
-      }
-    }]
+    ]
   }
 }
