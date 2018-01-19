@@ -8,12 +8,14 @@ import FormMultimedia from './FormMultimedia'
 require('../style/forms.css')
 
 const MusicianForm = (props) => {
+
+
   return (
     <div className="form-musician">
-      <FormContactDetails/>
-      <FormMusicianProfile />
-      <FormSocials/>
-      <FormMultimedia/>
+      <FormContactDetails handleChange={props.handleChange}/>
+      <FormMusicianProfile  handleChange={props.handleChange} />
+      <FormSocials handleChange={props.handleChange} />
+      <FormMultimedia handleChange={props.handleChange} />
 
     </div>
   )

@@ -15,6 +15,7 @@ class FormMusicianProfile extends React.Component {
     };
 
   handleChange = (event) => {
+    console.log("changing..");
   }
 
   handleImageUpload = (file)=>{

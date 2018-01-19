@@ -40,7 +40,7 @@ class MusicainProfile extends React.Component {
     super(props);
     if (this.props.data) {
       let demoP = props.data;
-      console.log("demoP_props",demoP);
+      console.log('props');
       this.state = {
         profile:demoP,
         bioOverflow:null,
@@ -49,27 +49,19 @@ class MusicainProfile extends React.Component {
     }else{
       let demoP = demo.data.musicians.find( (obj) =>
       obj._id === props._id);
-      console.log("demoP_JSON",demoP);
+      console.log('demoJSON');
       this.state = {
         profile:demoP,
         bioOverflow:null,
         viewContacts: ["none","block"]
       }
     }
-
-    // this.state = {
-    //   // profile: demo.data.musicians.find( (obj) =>
-    //   // obj._id === props._id),
-    //   bioOverflow:null,
-    //   viewContacts: ["none","block"]
-    // };
   }
 
 
 
   componentWillMount() {
     let myProfile = this.state.profile
-    console.log(myProfile);
     if(window.localStorage.getItem("profile") === null){
     window.localStorage.setItem("profile", JSON.stringify(myProfile) )
     }
@@ -108,9 +100,9 @@ class MusicainProfile extends React.Component {
     const { type } = this.state.profile
     const {email, phoneNumber, pointOfContact } = this.state.profile.contactDetails
     const {imageSrc, name, bio} =this.state.profile.profile
-    const {facebook, instagram,twitter, soundcloud, youtube, spotify, website} = this.state.profile.profile.socialMedia
+    const {facebook, instagram,twitter, soundcloud, youtube, spotify, website} = this.state.profile.socialMedia
 
-    const {socialMedia} = this.state.profile.profile
+    const {socialMedia} = this.state.profile
 
     const socialIconsLinks = _.values(socialMedia);
     const socialIconsNames = _.keys(socialMedia)
@@ -121,9 +113,6 @@ class MusicainProfile extends React.Component {
     socialIcons[searchStringInArray('facebook', socialIcons)]
 
     socialIconsLinks.forEach( (address, index) => {
-      console.log('_____');
-        console.log(socialIconsNames[index]);
-      console.log('_____');
       if (socialIconsNames[index] !== 'website') {
         let src = socialIcons[searchStringInArray(socialIconsNames[index],socialIcons)]
         icons.push(
@@ -139,7 +128,7 @@ class MusicainProfile extends React.Component {
 
 
     // const {soundcloudLink, youtubeLink} = this.state.profile.profile.multimedia
-    const {multimedia} = this.state.profile.profile
+    const {multimedia} = this.state.profile
     console.log("multimedia",multimedia);
     const multimediaLinks = []
     Object.values(multimedia).map( (address) => {
