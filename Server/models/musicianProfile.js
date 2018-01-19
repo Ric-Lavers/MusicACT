@@ -10,6 +10,65 @@ const MusicianProfileSchema = mongoose.Schema({
     type: String
   }
 });
+//
+// const contactDetailsSchema = mongoose.Schema({
+//   emailMusician: {
+//     type: String,
+//     trim: true,
+//     required: true,
+//     unique: true,
+//     validate: {
+//       validator: validator.isEmail,
+//       message: '{ value } is not a Email'
+//     }
+//   },
+//   phoneNumber:{
+//     type: String,
+//     required: false,
+//     minlength: 8
+//   },
+//   pointOfContact:{
+//     type: String,
+//     required: true
+//   }
+// });
+// const profileMusicianSchema = mongoose.Schema({
+//   imageSrc: {
+//     type:String,
+//     trim: true,
+//     required:true
+//   },
+//   name:{
+//     type:String,
+//     required:true
+//   },
+//   bio:{
+//     type:String,
+//     required:true
+//   }
+// });
+// const socialMediaIconSchema = mongoose.Schema({
+//   address: {
+//     type: String,
+//     required:true
+//   }
+// });
+// const multimediaSchema = mongoose.Schema({
+//   address: {
+//     type: String,
+//     required:true
+//   }
+// });
+//
+//
+// const MusicianProfileSchema= mongoose.Schema({
+//   contactDetails:{ contactDetailsSchema },
+//   profile:{ profileMusicianSchema },
+//   socialMediaIcons:[socialMediaIconSchema],
+//   multimedia: [multimediaSchema]
+//   },
+//   password
+// });
 
 // MusicianProfileSchema.methods.fullName = function() {
 //   return `${this.firstName} ${this.lastName}`;
