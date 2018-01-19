@@ -10,6 +10,7 @@ const MusicianProfileSchema = mongoose.Schema({
     type: String
   }
 });
+
 //
 // const contactDetailsSchema = mongoose.Schema({
 //   emailMusician: {
@@ -69,6 +70,22 @@ const MusicianProfileSchema = mongoose.Schema({
 //   },
 //   password
 // });
+
+const multimediaSchema = mongoose.Schema({
+  address: {
+    type: String,
+    required:true
+  }
+});
+
+const MusicianProfileSchema= mongoose.Schema({
+  contactDetails:{ contactDetailsSchema },
+  profile:{ profileMusicianSchema },
+  socialMediaIcons:[socialMediaIconSchema],
+  multimedia: [multimediaSchema]
+  },
+  password
+});
 
 // MusicianProfileSchema.methods.fullName = function() {
 //   return `${this.firstName} ${this.lastName}`;

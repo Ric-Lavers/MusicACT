@@ -9,15 +9,59 @@ const FormSocials = (props) => {
   return (
     <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column"}}>
       <h3>Social Icons</h3>
-      <label>soundcloud: <input  name="soundcloud" type="url"/> </label>
+      <label>soundcloud:
+        <input
+          name="soundcloud"
+          type="url"
+          className="socialMedia"
+          onChange={props.handleChange}
+          />
+      </label>
       <br/>
-      <label>spotify: <input  name="spotify" type="url"/> </label>
+      <label>spotify:
+        <input
+          name="spotify"
+          type="url"
+          className="socialMedia"
+          onChange={props.handleChange}
+          />
+      </label>
       <br/>
-      <label>instagram: <input name="instagram" type="url"/> </label>
+      <label>instagram:
+        <input
+          name="instagram"
+          type="url"
+          className="socialMedia"
+          onChange={props.handleChange}
+          />
+      </label>
       <br/>
-      <label>youtube: <input name="youtube" type="url"/> </label>
+      <label>facebook:
+        <input
+          name="facebook"
+          type="url"
+          className="socialMedia"
+          onChange={props.handleChange}
+          />
+      </label>
       <br/>
-      <label>website: <input name="website" type="url"/> </label>
+      <label>youtube:
+        <input
+          name="youtube"
+          type="url"
+          className="socialMedia"
+          onChange={props.handleChange}
+          />
+      </label>
+      <br/>
+      <label>website:
+        <input
+          name="website"
+          type="url"
+          className="socialMedia"
+          onChange={props.handleChange}
+          />
+      </label>
       <input type="submit"/>
     </form>
   )
