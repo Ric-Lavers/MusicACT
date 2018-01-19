@@ -2,6 +2,14 @@ const mongoose = require('../db/mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 const validator = require('validator');
 
+// const MusicianProfileSchema = mongoose.Schema({
+//   input: {
+//     type: String
+//   },
+//   token: {
+//     type: String
+//   }
+  
 const contactDetailsSchema = mongoose.Schema({
   emailMusician: {
     type: String,
@@ -58,14 +66,15 @@ const MusicianProfileSchema= mongoose.Schema({
   socialMediaIcons:[socialMediaIconSchema],
   multimedia: [multimediaSchema]
   },
-  passwo
-
+  password
 });
 
-MusicianProfileSchema.methods.fullName = function() {
-  return `${this.firstName} ${this.lastName}`
-}
+// MusicianProfileSchema.methods.fullName = function() {
+//   return `${this.firstName} ${this.lastName}`;
+// };
 
-const MusicianProfile = mongoose.models.MusicianProfile || mongoose.model('MusicianProfile', MusicianProfileSchema);
+const MusicianProfile =
+  mongoose.model.MusicianProfile ||
+  mongoose.model('MusicianProfile', MusicianProfileSchema);
 
-module.exports = MusicianProfile
+module.exports = MusicianProfile;
