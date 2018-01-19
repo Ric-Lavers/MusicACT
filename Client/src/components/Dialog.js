@@ -5,8 +5,13 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Form from './Form';
 
+
+
 export default class DialogExampleSimple extends React.Component {
   render() {
+
+    const date = Date.now()
+
     const actions = [
       <FlatButton label="Cancel" primary={true} onClick={this.props.close} />,
       <FlatButton label="Submit" primary={true} type="submit" />
