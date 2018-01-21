@@ -35,10 +35,13 @@ class MusicianForm extends React.Component {
 
     return (
       <form onSubmit={this.props.handleSubmit} className={form_cls}>
+  
         <div onClick={this.handleClick} className="minimize-icon">
-          {!this.state.minimized?(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 12">
+          {!this.state.minimized?(
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 12">
             <rect width="32" height="12" rx="8" ry="8" data-name="Layer 2"/>
-          </svg>):
+          </svg>
+        ):
           (<svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path d="M28 10h-6V5a4 4 0 0 0-4-5h-3a4 4 0 0 0-5 5v5H4a4 4 0 0 0-4 4v4a4 4 0 0 0 4 4h6v6a4 4 0 0 0 5 4h3a4 4 0 0 0 4-4v-6h6a4 4 0 0 0 4-4v-4a4 4 0 0 0-4-4z" data-name="Layer 2"/>
           </svg>)

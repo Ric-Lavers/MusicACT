@@ -1,16 +1,6 @@
-const mongoose = require('../db/mongoose');
-const passportLocalMongoose = require('passport-local-mongoose');
-const validator = require('validator');
-
-const MusicianProfileSchema = mongoose.Schema({
-  input: {
-    type: String
-  },
-  token: {
-    type: String
-  }
-});
-
+// const mongoose = require('../db/mongoose');
+// const passportLocalMongoose = require('passport-local-mongoose');
+// const validator = require('validator');
 //
 // const contactDetailsSchema = mongoose.Schema({
 //   emailMusician: {
@@ -61,38 +51,20 @@ const MusicianProfileSchema = mongoose.Schema({
 //   }
 // });
 //
-//
 // const MusicianProfileSchema= mongoose.Schema({
 //   contactDetails:{ contactDetailsSchema },
 //   profile:{ profileMusicianSchema },
 //   socialMediaIcons:[socialMediaIconSchema],
 //   multimedia: [multimediaSchema]
 //   },
-//   password
+//   passwo
+//
 // });
-
-const multimediaSchema = mongoose.Schema({
-  address: {
-    type: String,
-    required:true
-  }
-});
-
-const MusicianProfileSchema= mongoose.Schema({
-  contactDetails:{ contactDetailsSchema },
-  profile:{ profileMusicianSchema },
-  socialMediaIcons:[socialMediaIconSchema],
-  multimedia: [multimediaSchema]
-  },
-  password
-});
-
+//
 // MusicianProfileSchema.methods.fullName = function() {
-//   return `${this.firstName} ${this.lastName}`;
-// };
-
-const MusicianProfile =
-  mongoose.model.MusicianProfile ||
-  mongoose.model('MusicianProfile', MusicianProfileSchema);
-
-module.exports = MusicianProfile;
+//   return `${this.firstName} ${this.lastName}`
+// }
+//
+// const MusicianProfile = mongoose.models.MusicianProfile || mongoose.model('MusicianProfile', MusicianProfileSchema);
+//
+// module.exports = MusicianProfile

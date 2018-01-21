@@ -52,6 +52,7 @@ class ProfileCreate extends React.Component {
     const group = event.target.className
     const name =  event.target.name
     const value = event.target.value
+    console.log(event.target);
     const profile = this.state.profile
     profile[group][name] = value
     this.setState({profile})

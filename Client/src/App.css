@@ -2,12 +2,16 @@
   margin: 0 auto; }
 
 body {
-  margin-left: 12px;
-  margin-right: 12px;
   background-color: #FAFAFA; }
 
 .app {
+  margin-left: 12px;
+  margin-right: 12px;
   text-align: center; }
+
+.header {
+  margin-left: -12px;
+  margin-right: -12px; }
 
 .selected {
   color: green;

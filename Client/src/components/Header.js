@@ -118,7 +118,7 @@ export default class DrawerSimpleExample extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="header">
         {/* login modal */}
         <Dialog
           show={this.state.dialog}
