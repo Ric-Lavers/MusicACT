@@ -136,6 +136,7 @@ body {
       .profile-container .profile-left .profile-contact-info .profile-person {
         list-style: none; }
   .profile-container .profile-body {
+    white-space: pre-line;
     padding: 12px 12px 0px;
     min-width: 300px;
     width: 60%;

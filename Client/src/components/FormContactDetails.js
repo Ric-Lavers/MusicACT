@@ -1,5 +1,10 @@
 import React from 'react'
 
+import ReactSVG from 'react-svg';
+require('../library/MorphSVGPlugin')
+const tickAnimation =  require('../images/tickAnimation.svg')
+
+
 const FormContactDetails = (props) => {
 
   const handleSubmit = (event) => {
@@ -10,9 +15,8 @@ const FormContactDetails = (props) => {
 
   }
 
-
   return (
-    <div>
+    <div className="form-inputs">
       <label>Email:
         <input
           className="contactDetails"
@@ -20,8 +24,12 @@ const FormContactDetails = (props) => {
           name="email"
           type="email"
           />
+        <ReactSVG
+          path={props.tickAnimation}
+          wrapperClassName="error-message"/>
       </label>
       <br/>
+
       <label>Phone Number:
         <input
           className="contactDetails"
@@ -29,6 +37,7 @@ const FormContactDetails = (props) => {
           onChange={props.handleChange}  name="phoneNumber" type="text"/>
       </label>
       <br/>
+
       <label>Point of contact:
         <input
           className="contactDetails"

@@ -72,9 +72,6 @@ class MusicainProfile extends React.Component {
   }
   componentDidMount() {
 
-    let text = JSON.stringify(this.state.profile.profile.bio.replace(/\n/g,'<br/>') )
-    document.getElementById('profile-bio-content').innerHTML =  text.split('"').join('')
-
     let bioHeight = document.getElementById("profile-bio-content").clientHeight
     if (bioHeight > 270) {
       this.setState({bioOverflow:true,bioHeight:bioHeight})
@@ -112,20 +109,22 @@ class MusicainProfile extends React.Component {
     const icons = []
     socialIcons[searchStringInArray('facebook', socialIcons)]
 
-    socialIconsLinks.forEach( (address, index) => {
-      if (socialIconsNames[index] !== 'website') {
-        let src = socialIcons[searchStringInArray(socialIconsNames[index],socialIcons)]
-        icons.push(
-          <a key={index} href={address} target="_blank"> <img
-            key={`img_${index}`} className="profile-social" src={src} alt=""/></a>
-        )
-      }
-      else{
-        icons.push(
-          <a  key={index}href={address} target="_blank"> <img  key={`img_${index}`} className="profile-social" src={websiteIcon} alt=""/></a>
-        )
-      }
+    if (!!socialIconsLinks && socialIconsLinks.length != 0) {
+      socialIconsLinks.forEach( (address, index) => {
+        if (socialIconsNames[index] !== 'website') {
+          let src = socialIcons[searchStringInArray(socialIconsNames[index],socialIcons)]
+          icons.push(
+            <a key={index} href={address} target="_blank"> <img
+              key={`img_${index}`} className="profile-social" src={src} alt=""/></a>
+          )
+        }
+        else{
+          icons.push(
+            <a  key={index}href={address} target="_blank"> <img  key={`img_${index}`} className="profile-social" src={websiteIcon} alt=""/></a>
+          )
+        }
       })
+    }
 
 
     // const {soundcloudLink, youtubeLink} = this.state.profile.profile.multimedia
@@ -163,7 +162,7 @@ class MusicainProfile extends React.Component {
 
           <div className="profile-social-icons">
 
-            {icons.map( (i) => {
+            { !!icons && icons.length != 0 && icons.map( (i) => {
               return i
             } )}
 
