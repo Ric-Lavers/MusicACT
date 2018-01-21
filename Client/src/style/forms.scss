@@ -14,11 +14,15 @@
   width: 100%;
   max-width: 300px;
   padding: 12px;
+  padding-top: 36px;
   text-align: left;
   border: 1px solid #282C34;
   position: relative;
 
   transition: width 0.6s;
+
+
+
   .minimize-icon{
     position: absolute;
     height:32px;width:32px;
@@ -30,6 +34,25 @@
       height:100%;width:100%;
     }
   }
+}
+
+.form-inputs label{
+  display:flex;
+  justify-content:flex-end;
+  position:relative;
+  .error-message{
+    position: absolute;
+    right:0;
+    color:red;
+    svg{width:24px;height:24px;}
+  }
+}
+
+#tickAnimation{
+  // height:42px;width:42px;
+}
+#tickSVG{
+  visibility:hidden;
 }
 .minimize{
   width:32px;

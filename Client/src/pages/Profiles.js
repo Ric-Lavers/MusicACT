@@ -3,8 +3,6 @@ import React from 'react'
 import MusicianProfile from '../components/MusicianProfile'
 
 
-
-
 class Profiles extends React.Component {
 
   paramsId =  this.props.match.params.id
