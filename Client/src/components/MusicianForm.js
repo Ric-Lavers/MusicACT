@@ -4,9 +4,13 @@ import FormContactDetails from './FormContactDetails'
 import FormMusicianProfile from './FormMusicianProfile'
 import FormSocials from './FormSocials'
 import FormMultimedia from './FormMultimedia'
+import {TweenMax} from 'gsap'
+import ReactSVG from 'react-svg';
 
-const plus = require('../images/plus.svg')
-const minus = require('../images/minus.svg')
+import _ from 'lodash'
+
+require('../library/MorphSVGPlugin')
+const tickAnimation =  require('../images/tickAnimation.svg')
 
 require('../style/forms.css')
 
@@ -20,6 +24,16 @@ class MusicianForm extends React.Component {
     this.setState({minimized: !this.state.minimized})
   }
 
+  componentDidUpdate() {
+    TweenMax.set("#crossSVG", {roatation: 0,transformOrigin:"50% 50%"});
+
+    if(this.state.minimized){
+      TweenMax.to('#crossSVG', 0.8, {morphSVG:'#tickSVG',fill:'green'})
+      console.log( `%c ${this.state.minimized}` , 'color:red; background-color:black; font-size:1.2em' )
+   }else{
+     TweenMax.to('#crossSVG', 0.8, {morphSVG:'#crossSVG',fill:'red'})
+   }
+  }
 
   render(){
     let form_cls = null;
@@ -32,10 +46,14 @@ class MusicianForm extends React.Component {
       form_cls = "form-musician"
       inputs_cls = "none"
     }
+    const errors = this.props.errors
+    console.log(this.props.errors);
+
+    // <ReactSVG path={tickAnimation} /> // issue with animation return
 
     return (
-      <form onSubmit={this.props.handleSubmit} className={form_cls}>
-  
+      <form
+        onSubmit={this.props.handleSubmit} className={form_cls}>
         <div onClick={this.handleClick} className="minimize-icon">
           {!this.state.minimized?(
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 12">
@@ -48,7 +66,12 @@ class MusicianForm extends React.Component {
         }
         </div>
         <div className={inputs_cls}>
-          <FormContactDetails handleChange={this.props.handleChange}/>
+          <FormContactDetails
+            handleChange={this.props.handleChange}
+            tickAnimation={tickAnimation}
+            />
+            <span style={{ color:'red' }}className="error">{_.values(errors)}</span>
+
           <FormMusicianProfile  handleChange={this.props.handleChange}
             handleImageUpload={ this.props.handleImageUpload } />
           <FormSocials handleChange={this.props.handleChange} />

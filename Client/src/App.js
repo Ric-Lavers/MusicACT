@@ -3,7 +3,7 @@ import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ContactForm from './components/ContactForm';
 import MusicianForm from './components/MusicianForm';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import Header from './components/Header';
 import Home from './components/Home';
@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Profile from './pages/Profiles';
 import ProfileCreate from './components/ProfileCreate';
 import Directory from './components/Directory';
+import Contact from './components/Contact'
 
 //test delete after
 import * as auth from './api/profile';
@@ -62,18 +63,19 @@ class App extends Component {
             <Header />
           </MuiThemeProvider>
 
-        {/*  <form onSubmit={this.createProfile}>
+          <form onSubmit={this.createProfile}>
             <label> Input </label>
             <input type="text" name="input" />
             <input type="hidden" name="token" value={this.state.tokenId} />
             <input type="submit" />
-          </form>*/}
+          </form>
 
           <Route exact path="/" component={Home} />
           <Switch>
             <Route path="/directory/create" component={ProfileCreate} />
             <Route path="/directory/:id" component={Profile} />
             <Route path="/directory" component={Directory} />
+            <Route path="/contact" component={Contact} />
           </Switch>
 
           <Footer />

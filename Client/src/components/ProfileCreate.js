@@ -2,13 +2,38 @@ import React from 'react'
 import MusicianForm from './MusicianForm'
 import MusicianProfile from './MusicianProfile'
 
+import validator from 'validator';
 import request from 'superagent';
+import urlExists from 'url-exists'
+
 
 require('../style/forms.css')
 
 
 const CLOUDINARY_UPLOAD_PRESET = 'profile_image';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/aeonknight/upload';
+
+const status = [
+"NONE",
+"PENDING",
+"VALID"
+]
+const errors = {
+  email:0,
+  phoneNumber:0,
+  pointOfContact:0,
+  name:0,
+  bio:0,
+  soundcloud:0,
+  spotify:0,
+  instagram:0,
+  facebook:0,
+  youtube:0,
+  website:0,
+  soundcloudLink:0,
+  youtube:0,
+  vimeo:0
+}
 
 class ProfileCreate extends React.Component {
 
@@ -18,10 +43,12 @@ class ProfileCreate extends React.Component {
       let profile = JSON.parse( window.localStorage.getItem("newProfile")
     )
       this.state = {
+        errors,
         profile:profile,
       }
     }else{
       this.state = {
+        errors,
         profile:{
           "type":"DJs",
           "_id":"1234",
@@ -46,23 +73,33 @@ class ProfileCreate extends React.Component {
       }
     }
   }
-
+  validate =(name,value) =>{
+      const errors = {}
+      if(name === "email" && !validator.isEmail(value)){errors.email = "email is not valid"}
+      if(name === "phoneNumber"&& value.length <8){errors.phoneNumber = "Phone number too short"}
+      if(name === "phoneNumber"&& !validator.isNumeric(value.replace(/\s/g, ''))){errors.phoneNumber = "Phone number must be numbers"}
+      // if(name === "pointOfContact" && )
+      // if (!value.title) {errors.title = "title is required"}
+      // if (!value.yearReleased) {errors.title = "year released is required"}
+      // if (!(value.title || value.yearReleased)) errors.base = 'Please fill out the form'
+      // //or
+      // if (value && isAlphanumeric(value.title)) = "invalid input"
+      return errors
+    }
 
   handleChange = (event) => {
     const group = event.target.className
     const name =  event.target.name
-    const value = event.target.value
+    let value = event.target.value
     const profile = this.state.profile
-    if (event.target.nodeName === "TEXTAREA") {
-      console.log(value);
-      // value = value.replace()
-    }
     profile[group][name] = value
+
+    const errors = this.validate(name, value)
+    this.setState({ errors })
+    if (Object.keys(errors).length > 0 ) {return}
+
     this.setState({profile})
-
     window.localStorage.setItem("newProfile", JSON.stringify(profile) )
-
-    console.log(`%c profile[${group}][${name}] = ${value}`, 'color:green');
   }
 
   handleImageUpload = (file)=>{
@@ -105,6 +142,7 @@ class ProfileCreate extends React.Component {
           handleChange = {this.handleChange}
           handleImageUpload = {this.onImageDrop}
           handleSubmit = {this.handleSubmit}
+          errors ={this.state.errors}
           />
 
         <MusicianProfile

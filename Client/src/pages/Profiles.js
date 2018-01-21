@@ -9,7 +9,6 @@ class Profiles extends React.Component {
   // <div>Your on Profiles the id is {this.paramsId}</div>
 
   render (){
-    console.log("%c params",this.props,"color:blue");
    return(
     <div>
 
