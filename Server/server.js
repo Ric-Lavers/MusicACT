@@ -51,6 +51,7 @@ app.use(authMiddleware.initialize);
 
 //routes passing app
 require('./routes/auth')(app);
+require('./routes/profile')(app);
 
 // create a listen with callback function
 app.listen(port, () => {

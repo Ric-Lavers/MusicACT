@@ -1,12 +1,49 @@
+.ProfileCreate{
+  display:flex;
+  .MusicainProfile{
+    margin-right: 24px;
+    width: 100%;
+  }
+}
+
+
 .form-musician{
+  background-color: white;
   margin-left: 0;
+  margin-right: 0;
+  width: 100%;
   max-width: 300px;
   padding: 12px;
   text-align: left;
   border: 1px solid #282C34;
-  form{
-    padding-bottom:24px;
+  position: relative;
+
+  transition: width 0.6s;
+  .minimize-icon{
+    position: absolute;
+    height:32px;width:32px;
+    right:0;
+    top:0;
+    cursor: pointer;
+    svg{
+      z-index: 100;
+      height:100%;width:100%;
+    }
   }
 }
+.minimize{
+  width:32px;
+  transition: width 0.8s;
+  height:100vh;
+}
+.noSee{
+  opacity: 0;
+  transition: opacity 1.1s
+}
+.noSuchthing{
+  display: none;
+  transition: opacity 0.2s
+}
+
 .dropzone{
 }

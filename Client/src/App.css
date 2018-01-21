@@ -2,12 +2,16 @@
   margin: 0 auto; }
 
 body {
-  margin-left: 12px;
-  margin-right: 12px;
   background-color: #FAFAFA; }
 
 .app {
+  margin-left: 12px;
+  margin-right: 12px;
   text-align: center; }
+
+.header {
+  margin-left: -12px;
+  margin-right: -12px; }
 
 .selected {
   color: green;
@@ -91,6 +95,7 @@ body {
 
 .profile-container {
   margin: 0 auto;
+  width: 100%;
   display: flex;
   padding-bottom: 16px; }
   .profile-container a {
@@ -132,6 +137,7 @@ body {
         list-style: none; }
   .profile-container .profile-body {
     padding: 12px 12px 0px;
+    min-width: 300px;
     width: 60%;
     text-align: left !important; }
     .profile-container .profile-body .profile-title {
@@ -194,6 +200,9 @@ body {
   .hide:hover h3 {
     opacity: 0.01;
     transition: opacity 4; }
+
+.MusicianProfile {
+  margin-left: 24px; }
 
 @media screen and (max-width: 908px) {
   .directory-grid {

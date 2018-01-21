@@ -10,13 +10,18 @@ $leftCol:300px;
   margin: 0 auto;
 }
 body{
-  margin-left: 12px;
-  margin-right: 12px;
+
   background-color: #FAFAFA;
 }
 
 .app {
+  margin-left: 12px;
+  margin-right: 12px;
   text-align: center;
+}
+.header{
+  margin-left: -12px;
+  margin-right: -12px;
 
 }
 // directory
@@ -97,7 +102,7 @@ padding-left: 32px;
       font-size:2.8em;
       opacity: 0;
       align-self: center;
-  
+
     }
     .inside-testing{
       position: absolute;
@@ -130,6 +135,7 @@ padding-left: 32px;
 // _____________profile
 .profile-container{
   margin: 0 auto;
+  width:100%;
   a{
         text-decoration:none;
   }
@@ -179,6 +185,7 @@ padding-left: 32px;
 
   .profile-body{
     padding:12px 12px 0px;
+    min-width: 300px;
     width:60%;
     text-align: left !important;
     .profile-title{
@@ -268,7 +275,9 @@ padding-left: 32px;
 
 
 
-
+.MusicianProfile{
+  margin-left: 24px;
+}
 
 
 @media screen and (max-width: 908px) {
