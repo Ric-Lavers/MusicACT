@@ -24,7 +24,7 @@ class ProfileCreate extends React.Component {
       this.state = {
         profile:{
           "type":"DJs",
-          "_id":"123",
+          "_id":"1234",
           "contactDetails": {
             "email": "",
             "phoneNumber": "",
@@ -52,8 +52,11 @@ class ProfileCreate extends React.Component {
     const group = event.target.className
     const name =  event.target.name
     const value = event.target.value
-    console.log(event.target);
     const profile = this.state.profile
+    if (event.target.nodeName === "TEXTAREA") {
+      console.log(value);
+      // value = value.replace()
+    }
     profile[group][name] = value
     this.setState({profile})
 
@@ -105,7 +108,7 @@ class ProfileCreate extends React.Component {
           />
 
         <MusicianProfile
-          _id = "123"
+          _id = "1234"
           data = {this.state.profile}
           />
 
