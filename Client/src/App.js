@@ -62,12 +62,12 @@ class App extends Component {
             <Header />
           </MuiThemeProvider>
 
-          <form onSubmit={this.createProfile}>
+        {/*  <form onSubmit={this.createProfile}>
             <label> Input </label>
             <input type="text" name="input" />
             <input type="hidden" name="token" value={this.state.tokenId} />
             <input type="submit" />
-          </form>
+          </form>*/}
 
           <Route exact path="/" component={Home} />
           <Switch>
