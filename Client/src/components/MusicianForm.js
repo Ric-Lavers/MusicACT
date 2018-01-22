@@ -49,7 +49,7 @@ class MusicianForm extends React.Component {
       inputs_cls = "none"
     }
     const errors = this.props.errors
-    console.log(this.props.errors);
+    // console.log(this.props.errors);
 
     // <ReactSVG path={tickAnimation} /> // issue with animation return
 
