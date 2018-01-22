@@ -1,7 +1,7 @@
 const authMiddleware = require('../middleware/auth');
 const { User } = require('../models/user');
 
-require('colorize')
+require('colorize');
 
 module.exports = app => {
   // User SignUp
@@ -10,9 +10,9 @@ module.exports = app => {
     authMiddleware.register,
     authMiddleware.signJWTForUser,
     (req, res) => {
-      console.log(`res.user: ${res}`);
-      console.log(`res.user: ${typeof res}`);
-      console.log(`res.user: ${res.user}`);
+      // console.log(`res.user: ${res}`);
+      // console.log(`res.user: ${typeof res}`);
+      console.log(`req.user: ${req.user}`);
       // res.redirect('/');
     }
   );
@@ -45,5 +45,4 @@ module.exports = app => {
     // res.send(req.user);
     // console.log(req.body);
   });
-
 };
