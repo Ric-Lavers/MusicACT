@@ -18,23 +18,17 @@ require('../style/forms.css')
 
 class MusicianForm extends React.Component {
 
-  state={minimized:false}
+  state={
+    minimized:false,
+
+  }
 
   handleClick =()=>{
     this.setState({minimized: !this.state.minimized})
   }
 
+
   componentDidUpdate() {
-   //  if( document.getElementById('crossSVG') ){
-   //    TweenMax.set("#crossSVG", {transformOrigin:"50% 50%"});
-   //
-   //    if(this.state.minimized){
-   //      TweenMax.to('#crossSVG', 0.8, {morphSVG:'#tickSVG',fill:'green'})
-   //      console.log( `%c ${this.state.minimized}` , 'color:red; background-color:black; font-size:1.2em' )
-   //   }else{
-   //     TweenMax.to('#crossSVG', 0.8, {morphSVG:'#crossSVG',fill:'red'})
-   //   }
-   // }
   }
 
   render(){

@@ -7,7 +7,7 @@ import request from 'superagent';
 import urlExists from 'url-exists'
 
 import _ from 'lodash'
-
+import validate from '../library/validate'
 
 require('../style/forms.css')
 
@@ -75,31 +75,6 @@ class ProfileCreate extends React.Component {
       }
     }
   }
-  validate =(name,value) =>{
-      const errors = this.state.errors
-      if(value.length > 0) errors[name] = 1
-      if(name === "email" && validator.isEmail(value)){errors.email = 2}
-      if(name === "phoneNumber" &&
-                  validator.isNumeric( value.replace(/\s/g, '') ) &&
-                  value.length > 7  ) {errors.phoneNumber = 2}
-      if(name === "pointOfContact" && validator.isAlpha(value)){errors.pointOfContact = 2}
-      if(name === "name" && value.length >2 ){errors.name = 2}
-      if(name === "bio" && value.length >2 ){errors.bio = 2}
-      if(name === "soundcloud" && validator.contains(value,"soundcloud.com") ){errors.soundcloud = 2}
-      if(name === "spotify" && validator.contains(value,"spotify.com") ){errors.spotify = 2}
-      if(name === "instagram" && validator.contains(value,"instagram.com") ){errors.instagram = 2}
-      if(name === "facebook" && validator.contains(value,"facebook.com") ){errors.facebook = 2}
-      if(name === "youtube" && validator.contains(value,"youtube.com") ){errors.youtube = 2}
-      if(name === "website" && validator.contains(value,"website.com") ){errors.website = 2}
-
-      if(name === "soundcloudLink" && validator.contains(value,"soundcloud.com") ){errors.soundcloudLink = 2}
-
-      if(name === "youtubeLink" && validator.contains(value,"youtube.com") ){errors.youtubeLink = 2}
-
-      if(value.length === 0) errors[name] = 0
-      return errors
-    }
-
 
   handleChange = (event) => {
     const group = event.target.className
@@ -109,7 +84,7 @@ class ProfileCreate extends React.Component {
     const profile = this.state.profile
     console.log(name);
 
-    const errors = this.validate(name, value)
+    const errors = validate(name, value, this.state.errors)
     this.setState( {errors} )
     // if (Object.keys(errors).length > 0 ) {return}
     //check if errors validation is 2 before adding to profile
@@ -149,7 +124,10 @@ class ProfileCreate extends React.Component {
     });
     this.handleImageUpload(files[0]);
   }
+
   handleSubmit = (event) =>{
+    event.preventDefault();
+    console.log( this.state.profile);
     console.log(event.target);
   }
 
