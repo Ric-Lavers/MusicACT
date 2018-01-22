@@ -2,8 +2,14 @@
   "name": "musicact",
   "version": "0.1.0",
   "private": true,
+  "engines" : {
+    "node" : ">=8.9.1",
+    "npm" : "~5.5.1"
+  },
   "dependencies": {
     "cloudinary-react": "^1.0.4",
+    "colorize": "^0.1.0",
+    "dotenv": "^4.0.0",
     "eslint": "^4.15.0",
     "formsy-material-ui": "^0.6.3",
     "formsy-react": "^0.18.0",
@@ -26,6 +32,9 @@
     "redux": "^3.7.2",
     "redux-form": "^7.2.1",
     "superagent": "^3.8.2",
+    "react-svg": "^2.2.10",
+    "superagent": "^3.8.2",
+    "url-exists": "^1.0.3",
     "validator": "^9.2.0"
   },
   "scripts": {

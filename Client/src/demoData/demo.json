@@ -1,64 +1,59 @@
 {
   "data": {
-    "musicians": [
-      {
-        "type": "DJs",
-        "_id": "123",
-        "contactDetails": {
-          "email": "pixelord@hyperboloid.ru",
-          "phoneNumber": "01234 1234",
-          "pointOfContact": "Alexey Devyanin"
-        },
-        "profile": {
-          "imageSrc":
-            "http://res.cloudinary.com/aeonknight/image/upload/v1510564462/cache/9cd9901809b8dbc37c411502523699e6.png",
-          "name": "Pixelord",
-          "bio":
-            "Pixelord delivers a refined, emotive melting pot of sounds that stands alone in the ever evolving world of electronic music. Tough and touching in the same breath, Alexey Devayin is at the forefront of an ever-evolving Russian scene that many consider one of most exciting musical developments in recent years. \n \nPixelord sits among a current wealth of producers where sound dominates over genre, mashing elements of Futuristic Bass, Footwork, Garage and Grime together into a unique take on bass music. Over the past year Pixelord has released music for tastemaker labels such as Error Broadcast, Leisure System, Infinite Machine and Hit & Hope to critical acclaim. In 2014 Pixelord performed at the first ever Boiler Room in Russia, toured USA and China. In 2015 collaborated with Marcos Zotes to make soundtrack for videomapping installation in Moscow."
-        },
-        "socialMedia": {
-          "facebook": "https://www.facebook.com/pixelord",
-          "instagram": "https://www.instagram.com/pixelord.jpg/",
-          "soundcloud": "https://soundcloud.com/pixelord",
-          "youtube": "",
-          "spotify": "https://open.spotify.com/artist/0suA3Z4xjq58UB4S7ry8iB",
-          "twitter": "https://twitter.com/pixelord",
-          "website": ""
-        },
-        "multimedia": {
-          "soundcloudLink": "https://soundcloud.com/pixelord/boost",
-          "youtubeLink": "https://www.youtube.com/watch?v=4X3A98hrG1U"
-        }
+    "musicians": [{
+      "type":"DJs",
+      "_id":"123",
+      "contactDetails": {
+        "email": "pixelord@hyperboloid.ru",
+        "phoneNumber": "01234 1234",
+        "pointOfContact": "Alexey Devyanin"
       },
-      {
-        "type": "Bands",
-        "_id": "124",
-        "contactDetails": {
-          "email": "secondsun@live.com.au",
-          "phoneNumber": "0415357859",
-          "pointOfContact": "Beni Uthman"
-        },
-        "profile": {
-          "imageSrc":
-            "http://res.cloudinary.com/aeonknight/image/upload/v1510747998/store/cfcf49a984aaa9f0a11938e9777e33e3.png",
-          "name": "Benga",
-          "bio":
-            "Dubstep Producer, south London, UK. Known for his work towards hit singles such as 'Katy On A Mission' (Katy B), 'I Need Air' (Magnetic Man feat. Angela Hunte), and 'Fire' (Magnetic Man feat. Ms Dynamite). \nImagine the first club you ever get into is, as you step inside, in the process of changing the face of urban music? Imagine you’re only 14 at the time, yet you’re already a producer. Well, Croydon dubstep star Benga doesn’t have to imagine: that is his life. \nAge 14 the afro-haired producer went to his first club, Forward>> at London’s now defunct Velvet Rooms and has never looked back since.\n \n Having put in years of graft, Benga, now age 24, is a leading light in the rising global dubstep movement alongside his childhood friend, Skream. Now part of the chart sensation; Magnetic man, Benga is now a household name. \n \n Aside from the most famous haircut in dubstep, Benga has a lot to be happy about. At 15 he released his debut 12” “Skank/Dose” on one of dubstep’s founding imprints. \n \n For years Benga, alongside first Skream, then Loefah, Coki and Mala Digital Mystikz, built exclusive musical ammunition for DJ Hatcha. It was this material, aired by Hatcha alone at Forward>>, that propelled dubstep from UK garage offshoot to innovative genre in its own right. \n \n After early mentoring by Artwork (who is the third member of Magnetic Man alongside Skream), Benga refined his trade working for a professional studio, linked to the biggest labels in the world. He produced for various MC’s such as Crazy Titch and Ghetto, before concentrating his output on dubstep in 2005. \n \n Since then he’s had releases on electronic stables Planet Mu and Hotflush, self released his own CD and became one of the most sought after DJ’s almost overnight, playing throughout Europe, the US and Australasia. \n \n Now, after many years behind the scenes in terms of production, crafting tracks for global superstars such as Rihanna and Eve just to name two, all eyes are on Benga and his new supergroup Magnetic Man as they continue to take over the mainstream charts. \n \n With recent hits such as Katy B’s ‘Katy on a mission’, which rose to number 4 at it’s peak in the UK and had number ones across Europe. Benga has produced acclaimed tracks such as ‘Night’ alongside Coki and ‘Baltimore Clap’ which was also an underground sensation.\n \n His pedigree has never been in doubt, but he is also becoming a fashion icon to the younger generation. His admirers span from young teenagers all the way up to adults of all ages.\n \n Now working regularly with stars such as John Legend, Tinchy Stryder, Ms Dynamite and many others, Benga is not someone that shys away from the public eye. His image is notable and will be recognised wherever he goes, this aspect becoming more and more prominent now due to the current success of Magnetic Man. Whilst being true to his roots and still residing in South London, Benga will travel around the globe on a regular basis and performs to crowds in the US, Asia, Europe and the UK every week. The audience he graces is vast and diverse.",
-          "socialMedia": {
-            "facebook": "https://www.facebook.com/pixelord/",
-            "instagram": "",
-            "soundcloud": "https://soundcloud.com/pixelord",
-            "youtube": "https://www.youtube.com/watch?v=4X3A98hrG1U",
-            "spotify": "https://open.spotify.com/artist/0suA3Z4xjq58UB4S7ry8iB",
-            "twitter": "https://twitter.com/pixelord",
-            "website": "benga.co.uk"
-          },
-          "multimedia": {
-            "soundcloudLink": "https://soundcloud.com/pixelord/boost",
-            "youtubeLink": "https://www.youtube.com/watch?v=4X3A98hrG1U"
-          }
-        }
+      "profile": {
+        "imageSrc": "http://res.cloudinary.com/aeonknight/image/upload/v1510564462/cache/9cd9901809b8dbc37c411502523699e6.png",
+        "name": "Pixelord",
+        "bio": "Pixelord delivers a refined, emotive melting pot of sounds that stands alone in the ever evolving world of electronic music. Tough and touching in the same breath, Alexey Devayin is at the forefront of an ever-evolving Russian scene that many consider one of most exciting musical developments in recent years. \n \nPixelord sits among a current wealth of producers where sound dominates over genre, mashing elements of Futuristic Bass, Footwork, Garage and Grime together into a unique take on bass music. Over the past year Pixelord has released music for tastemaker labels such as Error Broadcast, Leisure System, Infinite Machine and Hit & Hope to critical acclaim. In 2014 Pixelord performed at the first ever Boiler Room in Russia, toured USA and China. In 2015 collaborated with Marcos Zotes to make soundtrack for videomapping installation in Moscow."
+      },
+      "socialMedia": {
+        "facebook": "https://www.facebook.com/pixelord",
+        "instagram": "https://www.instagram.com/pixelord.jpg/",
+        "soundcloud": "https://soundcloud.com/pixelord",
+        "youtube": "",
+        "spotify": "https://open.spotify.com/artist/0suA3Z4xjq58UB4S7ry8iB",
+        "twitter": "https://twitter.com/pixelord",
+        "website": ""
+      },
+      "multimedia":{
+        "soundcloudLink":"https://soundcloud.com/pixelord/boost",
+        "youtubeLink":"https://www.youtube.com/watch?v=4X3A98hrG1U"
       }
+    },
+    {"type":"Bands",
+      "_id":"124",
+      "contactDetails": {
+        "email": "secondsun@live.com.au",
+        "phoneNumber": "0415357859",
+        "pointOfContact": "Beni Uthman"
+      },
+      "profile": {
+
+        "imageSrc": "http://res.cloudinary.com/aeonknight/image/upload/v1510747998/store/cfcf49a984aaa9f0a11938e9777e33e3.png",
+        "name":"Benga",
+        "bio": "Dubstep Producer, south London, UK. Known for his work towards hit singles such as 'Katy On A Mission' (Katy B), 'I Need Air' (Magnetic Man feat. Angela Hunte), and 'Fire' (Magnetic Man feat. Ms Dynamite). \nImagine the first club you ever get into is, as you step inside, in the process of changing the face of urban music? Imagine you’re only 14 at the time, yet you’re already a producer. Well, Croydon dubstep star Benga doesn’t have to imagine: that is his life. \nAge 14 the afro-haired producer went to his first club, Forward>> at London’s now defunct Velvet Rooms and has never looked back since.\n \n Having put in years of graft, Benga, now age 24, is a leading light in the rising global dubstep movement alongside his childhood friend, Skream. Now part of the chart sensation; Magnetic man, Benga is now a household name. \n \n Aside from the most famous haircut in dubstep, Benga has a lot to be happy about. At 15 he released his debut 12” “Skank/Dose” on one of dubstep’s founding imprints. \n \n For years Benga, alongside first Skream, then Loefah, Coki and Mala Digital Mystikz, built exclusive musical ammunition for DJ Hatcha. It was this material, aired by Hatcha alone at Forward>>, that propelled dubstep from UK garage offshoot to innovative genre in its own right. \n \n After early mentoring by Artwork (who is the third member of Magnetic Man alongside Skream), Benga refined his trade working for a professional studio, linked to the biggest labels in the world. He produced for various MC’s such as Crazy Titch and Ghetto, before concentrating his output on dubstep in 2005. \n \n Since then he’s had releases on electronic stables Planet Mu and Hotflush, self released his own CD and became one of the most sought after DJ’s almost overnight, playing throughout Europe, the US and Australasia. \n \n Now, after many years behind the scenes in terms of production, crafting tracks for global superstars such as Rihanna and Eve just to name two, all eyes are on Benga and his new supergroup Magnetic Man as they continue to take over the mainstream charts. \n \n With recent hits such as Katy B’s ‘Katy on a mission’, which rose to number 4 at it’s peak in the UK and had number ones across Europe. Benga has produced acclaimed tracks such as ‘Night’ alongside Coki and ‘Baltimore Clap’ which was also an underground sensation.\n \n His pedigree has never been in doubt, but he is also becoming a fashion icon to the younger generation. His admirers span from young teenagers all the way up to adults of all ages.\n \n Now working regularly with stars such as John Legend, Tinchy Stryder, Ms Dynamite and many others, Benga is not someone that shys away from the public eye. His image is notable and will be recognised wherever he goes, this aspect becoming more and more prominent now due to the current success of Magnetic Man. Whilst being true to his roots and still residing in South London, Benga will travel around the globe on a regular basis and performs to crowds in the US, Asia, Europe and the UK every week. The audience he graces is vast and diverse."
+      },
+      "socialMedia": {
+        "facebook": "https://www.facebook.com/pixelord/",
+        "instagram": "",
+        "soundcloud": "https://soundcloud.com/pixelord",
+        "youtube": "https://www.youtube.com/watch?v=4X3A98hrG1U",
+        "spotify": "https://open.spotify.com/artist/0suA3Z4xjq58UB4S7ry8iB",
+        "twitter": "https://twitter.com/pixelord",
+        "website": "benga.co.uk"
+      },
+      "multimedia":{
+        "soundcloudLink":"https://soundcloud.com/pixelord/boost",
+        "youtubeLink":"https://www.youtube.com/watch?v=4X3A98hrG1U"
+      }
+    }
     ],
     "venues": [
       {

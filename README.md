@@ -22,6 +22,7 @@ _____________
 [react-player](https://www.npmjs.com/package/react-player)
 - works for youtube soundcloud and more and has a number of options.
 - For **soundcloud** playlists are  not supported
+- We encounted a issue with ReactRouter as the pages could not be refreshed , the solution was to use HashRouter insteat of BrowserRouter.
 _____________
 ### Client Interviews
 
@@ -70,7 +71,8 @@ localStorage.clear();//clears profile
 
 ### Profiles
 
-- the JSON data holds line breaks as \n and did not import properly, so we needed to add a .replace(/\n/g, '<br />') method.
+- the JSON data holds line breaks as \n and did not import properly, so we needed to add a .replace(/\n/g, '<br />') method. **correction**( This turned out to not the right approach _instead_ simple css `  white-space: pre-line;` does the same thing to better effect.)
+
 
 ### Admin
 
@@ -78,6 +80,7 @@ _____________
 ### Tests
 
 ### Bugs and Fixes
+Cloudninary uploading is done simply without any security.
 
 ### Compatibility and Legacy browsers
 - **CSS GRIDS** (https://caniuse.com/#feat=css-grid)
@@ -89,3 +92,8 @@ _____________
 
 _____________
 ### Deployment
+
+#### Netlify
+Deployment has a few issues,
+1. the CSS was not compiling properly on the home page due to foreign code copy and pasted form an online example.
+1. The site appears to of deploy on netlify, however the link returns a _Page Not Found_ at (https://music-act.netlify.com/)
