@@ -11,7 +11,7 @@ const FormMultimedia = (props) => {
       <h3>Social Embed</h3>
       <label>Soundcloud:
         <input
-          name="soundcloudEmbed"
+          name="soundcloudLink"
           type="url"
           className="multimedia"
           onChange={props.handleChange}/>
@@ -19,7 +19,7 @@ const FormMultimedia = (props) => {
       <br/>
       <label>Youtube:
         <input
-          name="youtubeEmbed"
+          name="youtubeLink"
           type="url"
           className="multimedia"
           onChange={props.handleChange}/>
@@ -27,7 +27,7 @@ const FormMultimedia = (props) => {
       <br/>
       <label>Vimeo:
         <input
-          name="vimeoEmbed"
+          name="vimeoLink"
           type="url"
           className="multimedia"
           onChange={props.handleChange}/>
