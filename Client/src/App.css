@@ -2,7 +2,7 @@
   margin: 0 auto; }
 
 body {
-  background-color: #FAFAFA; }
+  background-color: #fafafa; }
 
 .app {
   margin-left: 12px;
@@ -28,7 +28,7 @@ body {
   .filters .filter-button {
     text-align: center;
     font-size: 1em;
-    background-color: #F5F4F4;
+    background-color: #f5f4f4;
     color: black;
     height: 45px;
     box-shadow: none;
@@ -41,7 +41,7 @@ body {
     outline: none;
     border: 0.5px solid #ddd; }
   .filters .active {
-    background-color: #C8FF5D;
+    background-color: #c8ff5d;
     outline: none;
     border: none;
     z-index: 5; }
@@ -171,12 +171,12 @@ body {
       height: 32px;
       width: 80%;
       border-radius: 16px;
-      background-color: #D4FC76; }
+      background-color: #d4fc76; }
 
 .hide {
   z-index: 20;
-  border: 2px solid #F5F4F4;
-  background-color: #8290FA;
+  border: 2px solid #f5f4f4;
+  background-color: #8290fa;
   transition: background-color 7s;
   transition: opacity 0.9; }
   .hide li {
@@ -191,8 +191,8 @@ body {
     transition: opacity 4; }
 
 .hide:hover {
-  border: 2px solid #8290FA;
-  background-color: #F5F4F4;
+  border: 2px solid #8290fa;
+  background-color: #f5f4f4;
   height: 100%;
   transition: background-color 0.7s;
   transition: opacity 0.4; }

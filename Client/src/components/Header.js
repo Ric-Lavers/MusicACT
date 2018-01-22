@@ -68,9 +68,10 @@ export default class DrawerSimpleExample extends React.Component {
     const lastName = elements.lastName.value;
     const email = elements.email.value;
     const password = elements.password.value;
+    const type = elements.type.value;
     const registrationDate = elements.registrationDate.value;
     auth
-      .signUp({ firstName, lastName, email, password, registrationDate })
+      .signUp({ firstName, lastName, email, password, type, registrationDate })
       .then(res => {
         // console.log('res from signin', res);
         this.setState({ token: res });
