@@ -30,14 +30,17 @@ const FormContactDetails = (props) => {
         <input
           className="contactDetails"
           autoComplete="tel"
-          onChange={props.handleChange}  name="phoneNumber" type="text"/>
+          onChange={props.handleChange}
+          name="phoneNumber"
+          type="text"/>
       </label>
       &nbsp;
 
       <label>Point of contact:
         <input
           className="contactDetails"
-          onChange={props.handleChange} name="pointOfContact" type="text"/>
+          onChange={props.handleChange}
+          name="pointOfContact" type="text"/>
       </label>
       &nbsp;
   </div>
