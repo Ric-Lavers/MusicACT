@@ -6,6 +6,8 @@ import validator from 'validator';
 import request from 'superagent';
 import urlExists from 'url-exists'
 
+import _ from 'lodash'
+
 
 require('../style/forms.css')
 
@@ -74,26 +76,43 @@ class ProfileCreate extends React.Component {
     }
   }
   validate =(name,value) =>{
-      const errors = {}
-      if(name === "email" && !validator.isEmail(value)){errors.email = "email is not valid"}
-      if(name === "phoneNumber"&& value.length <8){errors.phoneNumber = "Phone number too short"}
-      if(name === "phoneNumber"&& !validator.isNumeric(value.replace(/\s/g, ''))){errors.phoneNumber = "Phone number must be numbers"}
+      const errors = this.state.errors
+      if(value.length > 0) errors[name] = 1
+      if(name === "email" && validator.isEmail(value)){errors.email = 2}
+      if(name === "phoneNumber"&& validator.isNumeric(value.replace(/\s/g, ''))){errors.phoneNumber = 2}
+      if(name === "phoneNumber"&& value.length > 7){errors.phoneNumber = 2}
+      if(name === "pointOfContact" && validator.isAlpha(value)){errors.pointOfContact = 2}
+      if(name === "name" >2){errors.name = 2}
+      if(name === "bio" >2){errors.bio = 2}
+      if(name === "soundcloud" && validator.contains(value,"soundcloud.com") ){errors.soundcloud = 2}
+      if(name === "spotify" && validator.contains(value,"spotify.com") ){errors.spotify = 2}
+      if(name === "instagram" && validator.contains(value,"instagram.com") ){errors.instagram = 2}
+      if(name === "facebook" && validator.contains(value,"facebook.com") ){errors.facebook = 2}
+      if(name === "youtube" && validator.contains(value,"youtube.com") ){errors.youtube = 2}
+      if(name === "website" && validator.contains(value,"website.com") ){errors.website = 2}
 
       return errors
     }
+
 
   handleChange = (event) => {
     const group = event.target.className
     const name =  event.target.name
     let value = event.target.value
+
     const profile = this.state.profile
-    profile[group][name] = value
+
 
     const errors = this.validate(name, value)
-    this.setState({ errors })
-    if (Object.keys(errors).length > 0 ) {return}
+    this.setState( {errors} )
+    // if (Object.keys(errors).length > 0 ) {return}
+    //check if errors validation is 2 before adding to profile
+    if(errors[name] === 2){
+      console.log(name,errors[name])
+      profile[group][name] = value
+      this.setState( {profile} )
+    }
 
-    this.setState({profile})
     window.localStorage.setItem("newProfile", JSON.stringify(profile) )
   }
 
