@@ -80,6 +80,7 @@ _____________
 ### Tests
 
 ### Bugs and Fixes
+Cloudninary uploading is done simply without any security.
 
 ### Compatibility and Legacy browsers
 - **CSS GRIDS** (https://caniuse.com/#feat=css-grid)
@@ -91,3 +92,8 @@ _____________
 
 _____________
 ### Deployment
+
+#### Netlify
+Deployment has a few issues,
+1. the CSS was not compiling properly on the home page due to foreign code copy and pasted form an online example.
+1. The site appears to of deploy on netlify, however the link returns a _Page Not Found_ at (https://music-act.netlify.com/)
