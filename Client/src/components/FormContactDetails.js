@@ -24,26 +24,22 @@ const FormContactDetails = (props) => {
           name="email"
           type="email"
           />
-        <ReactSVG
-          path={props.tickAnimation}
-          wrapperClassName="error-message"/>
       </label>
-      <br/>
-
+      &nbsp;
       <label>Phone Number:
         <input
           className="contactDetails"
           autoComplete="tel"
           onChange={props.handleChange}  name="phoneNumber" type="text"/>
       </label>
-      <br/>
+      &nbsp;
 
       <label>Point of contact:
         <input
           className="contactDetails"
           onChange={props.handleChange} name="pointOfContact" type="text"/>
       </label>
-      <br/>
+      &nbsp;
   </div>
   )
 }
