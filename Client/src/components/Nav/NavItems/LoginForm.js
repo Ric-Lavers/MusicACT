@@ -2,9 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-
-import { ValidatorForm } from 'react-form-validator-core';
-import { TextValidator } from 'react-material-ui-form-validator';
+import validator from 'validator';
 
 class LoginForm extends React.Component {
   state = {
