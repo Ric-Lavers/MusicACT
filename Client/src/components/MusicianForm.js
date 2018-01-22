@@ -25,14 +25,16 @@ class MusicianForm extends React.Component {
   }
 
   componentDidUpdate() {
-    TweenMax.set("#crossSVG", {roatation: 0,transformOrigin:"50% 50%"});
-
-    if(this.state.minimized){
-      TweenMax.to('#crossSVG', 0.8, {morphSVG:'#tickSVG',fill:'green'})
-      console.log( `%c ${this.state.minimized}` , 'color:red; background-color:black; font-size:1.2em' )
-   }else{
-     TweenMax.to('#crossSVG', 0.8, {morphSVG:'#crossSVG',fill:'red'})
-   }
+   //  if( document.getElementById('crossSVG') ){
+   //    TweenMax.set("#crossSVG", {transformOrigin:"50% 50%"});
+   //
+   //    if(this.state.minimized){
+   //      TweenMax.to('#crossSVG', 0.8, {morphSVG:'#tickSVG',fill:'green'})
+   //      console.log( `%c ${this.state.minimized}` , 'color:red; background-color:black; font-size:1.2em' )
+   //   }else{
+   //     TweenMax.to('#crossSVG', 0.8, {morphSVG:'#crossSVG',fill:'red'})
+   //   }
+   // }
   }
 
   render(){
