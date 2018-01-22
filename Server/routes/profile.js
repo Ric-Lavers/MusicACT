@@ -4,12 +4,15 @@ const MusicianProfile = require('../models/musicianProfile');
 
 module.exports = app => {
   app.post('/directory/create', (req, res) => {
+    console.log(`###### here ###########`);
+    console.log(req.body);
+    console.log(req.body.id);
     var profile = new MusicianProfile(req.body);
+    // console.log(`now here ${profile}`);
     profile.save();
+    console.log(`5a659344315085ee20736d4a ${req.body.id}`);
 
-    console.log(profile.token);
-
-    User.update({ _id: profile.token }, { profile: [profile] }, function(
+    User.update({ _id: req.body.id }, { profile: [profile] }, function(
       err,
       raw
     ) {
@@ -22,8 +25,8 @@ module.exports = app => {
       console.log(raw);
     });
   });
-  app.post('/profile/create', (req,res) => {
-    console.log(req.body)
-  })
 
+  app.post('/profile/create', (req, res) => {
+    console.log(req.body);
+  });
 };

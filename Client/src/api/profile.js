@@ -10,15 +10,25 @@ export function token() {
   return null;
 }
 
-export function createProfile({ input, token }) {
+export function createProfile(profile) {
+  // console.log(profile);
+  const id = { _id: profile._id };
+  const contactDetails = profile.contactDetails;
+  const bio = profile.profile;
+  const socialIcons = profile.socialMedia;
+  const socialEmbed = profile.multimedia;
+
   return fetch('/directory/create', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      input,
-      token
+      id,
+      contactDetails,
+      bio,
+      socialIcons,
+      socialEmbed
     })
   })
     .then(res => res.json())

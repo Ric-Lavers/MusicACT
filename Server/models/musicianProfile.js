@@ -3,63 +3,88 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
-const contactDetailsSchema = mongoose.Schema({
-  emailMusician: {
-    type: String,
-    trim: true,
-    required: true,
-    unique: true,
-    validate: {
-      validator: validator.isEmail,
-      message: '{ value } is not a Email'
-    }
+const MusicianProfileSchema = mongoose.Schema({
+  _id: String,
+  contactDetails: {
+    _id: String,
+    email: String,
+    phoneNumber: String,
+    pointOfContact: String
   },
-  phoneNumber:{
-    type: String,
-    required: false,
-    minlength: 8
+  bio: {
+    imageSrc: String,
+    name: String,
+    bio: String
   },
-  pointOfContact:{
-    type: String,
-    required: true
-  }
-});
-const profileMusicianSchema = mongoose.Schema({
-  imageSrc: {
-    type:String,
-    trim: true,
-    required:true
+  socialIcons: {
+    website: String,
+    instagram: String
   },
-  name:{
-    type:String,
-    required:true
-  },
-  bio:{
-    type:String,
-    required:true
-  }
-});
-const socialMediaIconSchema = mongoose.Schema({
-  address: {
-    type: String,
-    required:true
-  }
-});
-const multimediaSchema = mongoose.Schema({
-  address: {
-    type: String,
-    required:true
+  socialEmbed: {
+    soundcloudLink: String,
+    youtubeLink: String
   }
 });
 
-const MusicianProfileSchema= mongoose.Schema({
-  contactDetails:{ contactDetailsSchema },
-  profile:{ profileMusicianSchema },
-  socialMediaIcons:[socialMediaIconSchema],
-  multimedia: [multimediaSchema]
-});
+// const contactDetailsSchema = mongoose.Schema({
+//   emailMusician: {
+//     type: String,
+//     trim: true,
+//     required: true,
+//     unique: true,
+//     validate: {
+//       validator: validator.isEmail,
+//       message: '{ value } is not a Email'
+//     }
+//   },
+//   phoneNumber: {
+//     type: String,
+//     required: false,
+//     minlength: 8
+//   },
+//   pointOfContact: {
+//     type: String,
+//     required: true
+//   }
+// });
+//
+// const profileMusicianSchema = mongoose.Schema({
+//   imageSrc: {
+//     type: String,
+//     trim: true,
+//     required: true
+//   },
+//   name: {
+//     type: String,
+//     required: true
+//   },
+//   bio: {
+//     type: String,
+//     required: true
+//   }
+// });
+// const socialMediaIconSchema = mongoose.Schema({
+//   address: {
+//     type: String,
+//     required: true
+//   }
+// });
+// const multimediaSchema = mongoose.Schema({
+//   address: {
+//     type: String,
+//     required: true
+//   }
+// });
+//
+// const MusicianProfileSchema = mongoose.Schema({
+//   contactDetails: { contactDetailsSchema },
+//   profile: { profileMusicianSchema },
+//   socialMediaIcons: [socialMediaIconSchema],
+//   multimedia: [multimediaSchema]
+// });
 
+const MusicianProfile =
+  mongoose.models.MusicianProfile ||
+  mongoose.model('MusicianProfile', MusicianProfileSchema);
 
-const MusicianProfile = mongoose.models.MusicianProfile || mongoose.model('MusicianProfile', MusicianProfileSchema);
-
-module.exports = MusicianProfile
+module.exports = MusicianProfile;
