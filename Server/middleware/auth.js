@@ -48,7 +48,8 @@ function signJWTForUser(req, res, next) {
   const user = req.user;
   const token = jwt.sign(
     {
-      email: user.email
+      email: user.email,
+      type: user.type
     },
     'topsecret',
     {

@@ -32,55 +32,55 @@ const validate = values => {
   return errors;
 };
 
-const renderTextField = ({
-  input,
-  label,
-  meta: { touched, error },
-  ...custom
-}) => (
-  <TextField
-    hintText={label}
-    floatingLabelText={label}
-    errorText={touched && error}
-    {...input}
-    {...custom}
-  />
-);
-
-const renderSelectField = ({
-  input,
-  label,
-  meta: { touched, error },
-  children,
-  ...custom
-}) => (
-  <SelectField
-    floatingLabelText={label}
-    errorText={touched && error}
-    {...input}
-    onChange={(event, index, value) => input.onChange(value)}
-    children={children}
-    {...custom}
-  />
-);
-
 export const minLength = min => value =>
   value && value.length < min ? `Must be ${min} characters or more` : undefined;
 export const minLength6 = minLength(6);
 
 class RegisterForm extends Component {
-  // handleInputChange = (event, validate) => {
-  //    const attr = event.target.name
-  //    const value = event.target.value
-  //    const movie = this.state.movie
-  //    const errors = this.state.errors
-  //    password[attr] = value
-  //    errors[attr] = validate(value)
-  //    this.setState({ password, errors })
-  //  }
+  state = {
+    value: 0
+  };
+
+  SelectFieldhandleChange = (event, key, payload) => {
+    console.log(event.target, key);
+    this.setState({ value: Number(key) });
+  };
 
   render() {
     const { handleSubmit, pristine, reset, submitting, error } = this.props;
+
+    const renderTextField = ({
+      input,
+      label,
+      meta: { touched, error },
+      ...custom
+    }) => (
+      <TextField
+        hintText={label}
+        floatingLabelText={label}
+        errorText={touched && error}
+        {...input}
+        {...custom}
+      />
+    );
+
+    const renderSelectField = ({
+      input,
+      label,
+      meta: { touched, error },
+      children,
+      ...custom
+    }) => (
+      <SelectField
+        floatingLabelText={label}
+        errorText={touched && error}
+        {...input}
+        onChange={(event, index, value) => input.onChange(value)}
+        children={children}
+        {...custom}
+      />
+    );
+
     return (
       <div>
         <div>
@@ -131,12 +131,16 @@ class RegisterForm extends Component {
             name="type"
             component={renderSelectField}
             label="type"
-            type="address"
+            // value={this.state.value}
+            onChange={this.SelectFieldhandleChange}
           >
             <MenuItem value="1" primaryText="Musicians" />
             <MenuItem value="2" primaryText="Venues" />
             <MenuItem value="3" primaryText="Businesses" />
           </Field>
+        </div>
+        <div>
+          <input type="hidden" name="type" value={this.state.value} />
         </div>
       </div>
     );
