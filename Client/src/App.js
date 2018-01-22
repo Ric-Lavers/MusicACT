@@ -20,22 +20,6 @@ class App extends Component {
   // }
   //
 
-  // createProfile = event => {
-  //   event.preventDefault();
-  //   const form = event.target;
-  //   const elements = form.elements;
-  //   const input = elements.input.value;
-  //   const token = elements.token.value;
-  //   auth
-  //     .createProfile({ input, token })
-  //     .then(res => {
-  //       console.log('Done', res);
-  //     })
-  //     .catch(err => {
-  //       console.log('error', err);
-  //     });
-  // };
-
   render() {
     return (
       <Router>
@@ -43,13 +27,6 @@ class App extends Component {
           <MuiThemeProvider>
             <Header />
           </MuiThemeProvider>
-
-          {/* <form onSubmit={this.createProfile}>
-            <label> Input </label>
-            <input type="text" name="input" />
-            <input type="hidden" name="token" value={this.state.tokenId} />
-            <input type="submit" />
-          </form> */}
 
           <Route exact path="/" component={Home} />
           <Switch>

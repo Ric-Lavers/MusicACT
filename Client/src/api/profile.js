@@ -12,7 +12,7 @@ export function token() {
 
 export function createProfile(profile) {
   // console.log(profile);
-  const id = { _id: profile._id };
+  const id = { user: profile._id };
   const contactDetails = profile.contactDetails;
   const bio = profile.profile;
   const socialIcons = profile.socialMedia;
