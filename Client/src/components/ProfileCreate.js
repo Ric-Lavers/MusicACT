@@ -78,12 +78,7 @@ class ProfileCreate extends React.Component {
       if(name === "email" && !validator.isEmail(value)){errors.email = "email is not valid"}
       if(name === "phoneNumber"&& value.length <8){errors.phoneNumber = "Phone number too short"}
       if(name === "phoneNumber"&& !validator.isNumeric(value.replace(/\s/g, ''))){errors.phoneNumber = "Phone number must be numbers"}
-      // if(name === "pointOfContact" && )
-      // if (!value.title) {errors.title = "title is required"}
-      // if (!value.yearReleased) {errors.title = "year released is required"}
-      // if (!(value.title || value.yearReleased)) errors.base = 'Please fill out the form'
-      // //or
-      // if (value && isAlphanumeric(value.title)) = "invalid input"
+
       return errors
     }
 
