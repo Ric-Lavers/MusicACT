@@ -11,7 +11,22 @@ body {
 
 .header {
   margin-left: -12px;
-  margin-right: -12px; }
+  margin-right: -12px;
+  position: relative; }
+
+.logo-container {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  float: left;
+  z-index: 2000; }
+  .logo-container .nav-logo {
+    height: 80px;
+    z-index: 12;
+    position: absolute;
+    top: 0; }
 
 .selected {
   color: green;

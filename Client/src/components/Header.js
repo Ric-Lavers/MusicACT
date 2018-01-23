@@ -18,6 +18,7 @@ import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import * as auth from '../api/auth';
 
+
 export default class DrawerSimpleExample extends React.Component {
   constructor(props) {
     super(props);
@@ -134,6 +135,7 @@ export default class DrawerSimpleExample extends React.Component {
   render() {
     return (
       <div className="header">
+
         {/* login modal */}
         <Dialog
           show={this.state.dialog}
@@ -166,7 +168,7 @@ export default class DrawerSimpleExample extends React.Component {
           onRequestChange={open => this.setState({ drawer: open })}
         >
           <MenuItem onClick={() => this.setState({ drawer: false })}>
-            <NavLink to={`/`}>Logo</NavLink>
+            <NavLink to={`/`}>Home</NavLink>
           </MenuItem>
           <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/directory`}>
@@ -231,6 +233,7 @@ export default class DrawerSimpleExample extends React.Component {
               )}
             />
           </Switch> */}
+
       </div>
     );
   }

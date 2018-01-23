@@ -17,11 +17,11 @@ import Footer from './components/Footer';
 import Profile from './pages/Profiles';
 import ProfileCreate from './components/ProfileCreate';
 import Directory from './components/Directory';
-import Contact from './components/Contact'
-import Downloads from './pages/Downloads';
+import Contact from './components/Contact';
 
 import * as auth from './api/profile';
 import jwt_decode from 'jwt-decode';
+const logo = require('./images/MusicACTlogo.png')
 
 class App extends Component {
   state = {
@@ -53,12 +53,15 @@ class App extends Component {
     return (
       <Router>
         <div className="app">
+          <div className="logo-container">
+              <img className="nav-logo" style={{ textAlign:"center" }} src={ logo } alt=""/>
+          </div>
           <MuiThemeProvider>
             <Header />
           </MuiThemeProvider>
 
           {/* testing dynamic route */}
-          <div>
+          <div style={{marginTop:20}}>
             <button onClick={this.onClick} />
           </div>
 
@@ -81,7 +84,6 @@ class App extends Component {
             {/* <Route path="/directory/:id" component={Profile} /> */}
             <Route path="/directory" component={Directory} />
             <Route path="/contact" component={Contact} />
-            <Route path="/downloads" component={Downloads} />
           </Switch>
 
           <Footer />
