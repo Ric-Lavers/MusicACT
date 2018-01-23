@@ -3,7 +3,13 @@ import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ContactForm from './components/ContactForm';
 import MusicianForm from './components/MusicianForm';
-import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import {
+  HashRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom';
 
 import Header from './components/Header';
 import Home from './components/Home';
@@ -18,7 +24,8 @@ import jwt_decode from 'jwt-decode';
 
 class App extends Component {
   state = {
-    tokenId: null
+    tokenId: null,
+    myProfile: null
   };
   //   if (env.REACT_APP_SECRET_CODE) {s
   //   console.log(env.REACT_APP_SECRET_CODE);
@@ -27,7 +34,7 @@ class App extends Component {
   onClick = () => {
     const id = this.state.tokenId;
     console.log(`************ ${id}`);
-    auth.fetchProfile(id);
+    auth.fetchProfile(id).then(res => this.setState({ myProfile: res }));
   };
 
   componentWillMount() {
@@ -52,12 +59,24 @@ class App extends Component {
           {/* testing dynamic route */}
           <div>
             <button onClick={this.onClick} />
-            {/* <a href={'/directory/' + this.state.tokenId} > show profile </a> */}
           </div>
+
+          {JSON.stringify(this.state.myProfile)}
 
           <Route exact path="/" component={Home} />
           <Switch>
-            <Route path="/directory/create" component={ProfileCreate} />
+            {/* <Route
+              path="/directory/create"
+              render={() => {
+                const id = this.state.tokenId;
+                auth.hasProfileId(id) ? <Redirect to="/" /> : <ProfileCreate />;
+              }}
+            /> */}
+            <Route
+              path="/directory/create"
+              myProfile={this.state.myProfile}
+              component={ProfileCreate}
+            />
             {/* <Route path="/directory/:id" component={Profile} /> */}
             <Route path="/directory" component={Directory} />
             <Route path="/contact" component={Contact} />

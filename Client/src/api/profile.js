@@ -12,6 +12,11 @@ export function token() {
   return null;
 }
 
+// export function hasProfileId(id){
+//
+//
+// }
+
 export function createProfile(profile) {
   // console.log(profile);
   const id = { user: profile._id };
@@ -20,23 +25,26 @@ export function createProfile(profile) {
   const socialIcons = profile.socialMedia;
   const socialEmbed = profile.multimedia;
 
-  return fetch('/directory/create', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      id,
-      contactDetails,
-      bio,
-      socialIcons,
-      socialEmbed
+  return (
+    fetch('/directory/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id,
+        contactDetails,
+        bio,
+        socialIcons,
+        socialEmbed
+      })
     })
-  })
-    .then(res => res.json())
-    .catch(error => {
-      console.log(error);
-    });
+      .then(res => res.json())
+      // .then(res => localStorage.setItem('hasProfile', res))
+      .catch(error => {
+        console.log(error);
+      })
+  );
 }
 
 export function fetchProfile(id) {
@@ -49,12 +57,9 @@ export function fetchProfile(id) {
     headers: {
       'Content-Type': 'application/json'
     }
-    // body: JSON.stringify({
-    //   id,
-    //   contactDetails,
-    //   bio,
-    //   socialIcons,
-    //   socialEmbed
-    // })
-  });
+  })
+    .then(res => res.json())
+    .catch(error => {
+      console.log(error);
+    });
 }
