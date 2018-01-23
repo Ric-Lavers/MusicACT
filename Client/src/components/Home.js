@@ -1,5 +1,6 @@
 import React from 'react';
 import ImageSlide from './ImageSlide';
+// import { Timeline } from 'react-twitter-widgets';
 import { UncontrolledCarousel } from 'reactstrap';
 require('../style/home.css');
 require('../style/homehome.css');
@@ -9,6 +10,7 @@ const Home = () => {
   return (
     <div>
       <ImageSlide />
+
       <div class="splash">
         <div class="header-text">
           <h1>Music For Everyone.</h1>
@@ -40,7 +42,7 @@ const Home = () => {
           </div>
 
           <div class="photos">
-            <h3>Balloon photos</h3>
+            <h3>Ballooooooooon phoooootos</h3>
             <p>I have quite a few.</p>
           </div>
 
