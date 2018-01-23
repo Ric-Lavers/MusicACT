@@ -169,6 +169,11 @@ export default class DrawerSimpleExample extends React.Component {
             <NavLink to={`/`}>Logo</NavLink>
           </MenuItem>
           <MenuItem onClick={() => this.setState({ drawer: false })}>
+            <NavLink activeClassName="selected" to={`/admin`}>
+              Admin
+            </NavLink>
+          </MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/directory`}>
               Directory
             </NavLink>

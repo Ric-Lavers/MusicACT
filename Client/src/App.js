@@ -10,7 +10,6 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
-
 import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
@@ -18,7 +17,7 @@ import Profile from './pages/Profiles';
 import ProfileCreate from './components/ProfileCreate';
 import Directory from './components/Directory';
 import Contact from './components/Contact';
-
+import Admin from './components/Admin/Admin';
 import * as auth from './api/profile';
 import jwt_decode from 'jwt-decode';
 
@@ -80,6 +79,7 @@ class App extends Component {
             {/* <Route path="/directory/:id" component={Profile} /> */}
             <Route path="/directory" component={Directory} />
             <Route path="/contact" component={Contact} />
+            <Route path="/admin" component={Admin} />
           </Switch>
 
           <Footer />
