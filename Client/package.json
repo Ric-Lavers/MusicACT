@@ -7,7 +7,7 @@
     "npm": "~5.5.1"
   },
   "dependencies": {
-    "cloudinary-react": "^1.0.4",
+    "cloudinary-react": "^1.0.6",
     "colorize": "^0.1.0",
     "dotenv": "^4.0.0",
     "eslint": "^4.15.0",
