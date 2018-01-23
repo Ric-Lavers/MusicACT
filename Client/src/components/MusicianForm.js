@@ -6,6 +6,8 @@ import FormSocials from './FormSocials'
 import FormMultimedia from './FormMultimedia'
 import {TweenMax} from 'gsap'
 import ReactSVG from 'react-svg';
+import PlusSVG from './PlusSVG'
+import MinimizeSVG from './MinimizeSVG'
 
 import _ from 'lodash'
 
@@ -42,36 +44,37 @@ class MusicianForm extends React.Component {
       form_cls = "form-musician"
       inputs_cls = "none"
     }
-    const errors = this.props.errors
-    // console.log(this.props.errors);
 
-    // <ReactSVG path={tickAnimation} /> // issue with animation return
+    const styling={};
+
+    Object.keys(this.props.errors).map( (i) => {
+      styling[i] = this.props.errors[i]=== 0? ( {} ) : ( this.props.errors[i]=== 1?{border:"2px solid red",borderRadius:8} : {outline:'green',border:"2px solid green",borderRadius:6} )
+    })
+    const profileState = this.props.data
 
     return (
       <form
         onSubmit={this.props.handleSubmit} className={form_cls}>
         <div onClick={this.handleClick} className="minimize-icon">
-          {!this.state.minimized?(
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 12">
-            <rect width="32" height="12" rx="8" ry="8" data-name="Layer 2"/>
-          </svg>
-        ):
-          (<svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-            <path d="M28 10h-6V5a4 4 0 0 0-4-5h-3a4 4 0 0 0-5 5v5H4a4 4 0 0 0-4 4v4a4 4 0 0 0 4 4h6v6a4 4 0 0 0 5 4h3a4 4 0 0 0 4-4v-6h6a4 4 0 0 0 4-4v-4a4 4 0 0 0-4-4z" data-name="Layer 2"/>
-          </svg>)
-        }
+          {!this.state.minimized?<PlusSVG/>:<MinimizeSVG/>}
         </div>
         <div className={inputs_cls}>
           <FormContactDetails
+            placeholders = {profileState.contactDetails}
+            errors = {styling}
             handleChange={this.props.handleChange}
             tickAnimation={tickAnimation}
             />
-            <span style={{ color:'red' }}className="error">{_.values(errors)}</span>
-
-          <FormMusicianProfile  handleChange={this.props.handleChange}
+          <FormMusicianProfile
+            errors = {styling}
+            handleChange={this.props.handleChange}
             handleImageUpload={ this.props.handleImageUpload } />
-          <FormSocials handleChange={this.props.handleChange} />
-          <FormMultimedia handleChange={this.props.handleChange} />
+          <FormSocials
+            errors = {styling}
+            handleChange={this.props.handleChange} />
+          <FormMultimedia
+            errors = {styling}
+            handleChange={this.props.handleChange} />
           <input type="submit"/>
         </div>
       </form>
@@ -80,38 +83,3 @@ class MusicianForm extends React.Component {
 }
 
 export default MusicianForm;
-
-/*
-musicans data[]
-
-  type,
-  _id,
-  dateJoined,
-  emailLogin,
-  password,
-  contactDetails{
-    email: String,
-    phoneNumber: String,
-    pointOfContact: String
-  }
-  profile{
-    imageSrc: String,
-    name: String,
-    bio: Text
-  }
-  socialMedia{
-    facebook: String,
-    instagram: String,
-    soundcloud: String,
-    youtube: String,
-    spotify: String,
-    twitter: String,
-    website: String
-  }
-  multimedia{
-    soundcloudLink: String,
-    youtubeLink: String
-  }
-
-
-*/

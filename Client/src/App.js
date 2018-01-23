@@ -12,6 +12,7 @@ import Profile from './pages/Profiles';
 import ProfileCreate from './components/ProfileCreate';
 import Directory from './components/Directory';
 import Contact from './components/Contact'
+import Downloads from './pages/Downloads';
 
 //test delete after
 import * as auth from './api/profile';
@@ -76,6 +77,7 @@ class App extends Component {
             <Route path="/directory/:id" component={Profile} />
             <Route path="/directory" component={Directory} />
             <Route path="/contact" component={Contact} />
+            <Route path="/downloads" component={Downloads} />
           </Switch>
 
           <Footer />
