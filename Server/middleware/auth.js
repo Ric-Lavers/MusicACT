@@ -44,8 +44,8 @@ passport.use(
 );
 // given a user object, create a token based on that user object and sent back in the response object to either curl nor client app
 function signJWTForUser(req, res, next) {
-  // console.log('in signjwtforuser');
   const user = req.user;
+  console.dir(req.body);
   const token = jwt.sign(
     {
       email: user.email,
@@ -71,6 +71,37 @@ function signJWTForUser(req, res, next) {
   // res.json({ token });
   // console.log(token);
 }
+
+// given a user object, create a token based on that user object and sent back in the response object to either curl nor client app
+// function signJWTWithProfile(req, res, next) {
+//   const user = req.body.id.user;
+//   console.log(user);
+//   console.dir(res.body);
+//   const token = jwt.sign(
+//     {
+//       email: user.email,
+//       type: user.type
+//     },
+//     'topsecret',
+//     {
+//       algorithm: 'HS256',
+//       expiresIn: '7 days',
+//       //subject: if you want to check subject (sub), provide a value here
+//       subject: user._id.toString()
+//     }
+//   );
+//   // res.token = token;
+//   // console.log(res.token);
+//
+//   // Return token in response object
+//   res.json({
+//     token: token
+//   });
+//
+//   next();
+//   // res.json({ token });
+//   // console.log(token);
+// }
 
 function register(req, res, next) {
   // const user = new User(req.body);
