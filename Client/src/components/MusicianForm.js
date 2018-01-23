@@ -65,6 +65,7 @@ class MusicianForm extends React.Component {
           {!this.state.minimized?<PlusSVG/>:<MinimizeSVG/>}
         </div>
         <div className={inputs_cls}>
+
           <FormContactDetails
             placeholders = {profileState.contactDetails}
             errors = {styling}
@@ -74,11 +75,16 @@ class MusicianForm extends React.Component {
 
 
           <FormMusicianProfile
+            errors = {styling}
             handleChange={this.props.handleChange}
             handleImageUpload={this.props.handleImageUpload}
           />
-          <FormSocials handleChange={this.props.handleChange} />
-          <FormMultimedia handleChange={this.props.handleChange} />
+          <FormSocials
+            errors = {styling}
+            handleChange={this.props.handleChange} />
+          <FormMultimedia
+            errors = {styling}
+            handleChange={this.props.handleChange} />
           <input type="hidden" name="token" value={this.state.tokenId} />
           <input type="submit" />
         </div>
