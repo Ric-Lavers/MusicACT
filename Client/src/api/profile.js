@@ -1,5 +1,7 @@
 // import jwt_decode from 'jwt-decode';
 // import * as auth from './auth';
+import queryString from 'query-string';
+
 const TOKEN_KEY = 'token';
 
 export function token() {
@@ -10,16 +12,51 @@ export function token() {
   return null;
 }
 
-export function createProfile({ input, token }) {
-  return fetch('/directory/create', {
-    method: 'POST',
+// export function hasProfileId(id){
+//
+//
+// }
+
+export function createProfile(profile) {
+  // console.log(profile);
+  const id = { user: profile._id };
+  const contactDetails = profile.contactDetails;
+  const bio = profile.profile;
+  const socialIcons = profile.socialMedia;
+  const socialEmbed = profile.multimedia;
+
+  return (
+    fetch('/directory/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id,
+        contactDetails,
+        bio,
+        socialIcons,
+        socialEmbed
+      })
+    })
+      .then(res => res.json())
+      // .then(res => localStorage.setItem('hasProfile', res))
+      .catch(error => {
+        console.log(error);
+      })
+  );
+}
+
+export function fetchProfile(id) {
+  // const userID = encodeURIComponent(id);
+  // const userID = queryString.stringify(id);
+  // console.log(`user ID here ${userID}`);
+  // console.log(userID);
+  return fetch(`/directory/${id}`, {
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      input,
-      token
-    })
+    }
   })
     .then(res => res.json())
     .catch(error => {

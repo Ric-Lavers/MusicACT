@@ -40,7 +40,10 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     require: true
   },
-  profile: []
+  profile: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'MusicianProfile'
+  }
 });
 
 UserSchema.plugin(passportLocalMongoose, {
@@ -53,7 +56,6 @@ UserSchema.plugin(passportLocalMongoose, {
 // bcrypt to encrypt the password
 UserSchema.pre('save', function(next) {
   var user = this;
-
   if (user.isModified('password')) {
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(user.password, salt, (err, hash) => {
