@@ -95,14 +95,15 @@ export default class DrawerSimpleExample extends React.Component {
         <div>
           <MenuItem>
             <NavLink activeClassName="selected" to={`/signup`}>
-              SignUp
+              SignUp / Login
             </NavLink>
           </MenuItem>
+          {/* <br />
           <MenuItem>
             <NavLink activeClassName="selected" to={`/signin`}>
               Login
             </NavLink>
-          </MenuItem>
+          </MenuItem> */}
         </div>
       );
     } else {
@@ -196,23 +197,23 @@ export default class DrawerSimpleExample extends React.Component {
         </Drawer>
 
         {/* <Switch>
-          <Route
-            path="/signup"
-            render={() => (
-              <div>
-                <Register onSignUp={this.handleSignUp} />
-              </div>
-            )}
-          />
-          <Route
-            path="/signin"
-            render={() => (
-              <div>
-                <Login onSignIn={this.handleSignIn} />
-              </div>
-            )}
-          />
-        </Switch> */}
+            <Route
+              path="/signup"
+              render={() => (
+                <div>
+                  <Register onSignUp={this.handleSignUp} />
+                </div>
+              )}
+            />
+            <Route
+              path="/signin"
+              render={() => (
+                <div>
+                  <Login onSignIn={this.handleSignIn} />
+                </div>
+              )}
+            />
+          </Switch> */}
       </div>
     );
   }

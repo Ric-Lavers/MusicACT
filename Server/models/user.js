@@ -40,7 +40,10 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     require: true
   },
-  profile: []
+  profile: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'MusicianProfile'
+  }
 });
 
 UserSchema.plugin(passportLocalMongoose, {

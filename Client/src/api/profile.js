@@ -1,5 +1,7 @@
 // import jwt_decode from 'jwt-decode';
 // import * as auth from './auth';
+import queryString from 'query-string';
+
 const TOKEN_KEY = 'token';
 
 export function token() {
@@ -35,4 +37,24 @@ export function createProfile(profile) {
     .catch(error => {
       console.log(error);
     });
+}
+
+export function fetchProfile(id) {
+  // const userID = encodeURIComponent(id);
+  // const userID = queryString.stringify(id);
+  // console.log(`user ID here ${userID}`);
+  // console.log(userID);
+  return fetch(`/directory/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+    // body: JSON.stringify({
+    //   id,
+    //   contactDetails,
+    //   bio,
+    //   socialIcons,
+    //   socialEmbed
+    // })
+  });
 }

@@ -1,30 +1,6 @@
 const mongoose = require('../db/mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 const validator = require('validator');
-const bcrypt = require('bcryptjs');
-
-// const MusicianProfileSchema = mongoose.Schema({
-//   _id: String,
-//   contactDetails: {
-//     _id: String,
-//     email: String,
-//     phoneNumber: String,
-//     pointOfContact: String
-//   },
-//   bio: {
-//     imageSrc: String,
-//     name: String,
-//     bio: String
-//   },
-//   socialIcons: {
-//     website: String,
-//     instagram: String
-//   },
-//   socialEmbed: {
-//     soundcloudLink: String,
-//     youtubeLink: String
-//   }
-// });
 
 const contactDetailsSchema = mongoose.Schema({
   // _id: mongoose.Schema.Types.ObjectId,
@@ -66,18 +42,18 @@ const musicianProfileSchema = mongoose.Schema({
 
 const contactDetails =
   mongoose.models.contactDetails ||
-  mongoose.model('contactDetails', contactDetailsSchema);
+  mongoose.model('ContactDetails', contactDetailsSchema);
 const profileMusician =
   mongoose.models.profileMusician ||
-  mongoose.model('profileMusician', profileMusicianSchema);
+  mongoose.model('ProfileMusician', profileMusicianSchema);
 const socialMediaIcon =
   mongoose.models.socialMediaIcon ||
-  mongoose.model('socialMediaIcon', socialMediaIconSchema);
+  mongoose.model('SocialMediaIcon', socialMediaIconSchema);
 const multimedia =
-  mongoose.models.multimedia || mongoose.model('multimedia', multimediaSchema);
+  mongoose.models.multimedia || mongoose.model('Multimedia', multimediaSchema);
 const musicianProfile =
   mongoose.models.musicianProfile ||
-  mongoose.model('musicianProfile', musicianProfileSchema);
+  mongoose.model('MusicianProfile', musicianProfileSchema);
 
 // const MusicianProfile =
 //   mongoose.models.MusicianProfile ||

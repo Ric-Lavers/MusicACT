@@ -10,6 +10,7 @@ const Multimedia = models.multimedia;
 const MusicianProfile = models.musicianProfile;
 
 module.exports = app => {
+  //POST /directory/create
   app.post('/directory/create', (req, res) => {
     console.log(`###### here ###########`);
     // console.log(req.body);
@@ -47,8 +48,9 @@ module.exports = app => {
     // console.log(`profile hereeeeeee ${profile}`);
     // console.dir(id);
     // console.dir(req.body.id.user);
+    console.log(`profile id here  ******* ${profile._id}`);
 
-    User.update({ _id: req.body.id.user }, { profile: [profile] }, function(
+    User.update({ _id: req.body.id.user }, { profile: profile._id }, function(
       err,
       raw
     ) {
@@ -62,7 +64,36 @@ module.exports = app => {
     });
   });
 
-  app.post('/profile/create', (req, res) => {
-    console.log(req.body);
+  //GET /directory/:id
+  app.get('/directory/:userId', (req, res) => {
+    const userId = req.params.userId;
+    console.log(`this is profile ID ${userId}`);
+    User.findById(userId)
+      .populate('profile')
+      .populate('profile.multimedia')
+      .exec()
+      .then(profile => {
+        if (!profile) {
+          console.log("message: 'profile not found'");
+          return res.status(404).json({
+            message: 'profile not found'
+          });
+        }
+        // console.log(`complete ${profile}`);
+        console.log(`complete ${profile.profile}`);
+        console.log(`complete ${profile.profile.multimedia}`);
+        res.status(200).json({
+          profile: profile,
+          request: {
+            type: 'GET'
+            // url: "http://localhost:3000/orders"
+          }
+        });
+      })
+      .catch(err => {
+        res.status(500).json({
+          error: err
+        });
+      });
   });
 };

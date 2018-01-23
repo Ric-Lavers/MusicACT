@@ -17,8 +17,13 @@ export default class DialogExampleSimple extends React.Component {
     if (this.state.haveAccount == false) {
       return (
         <div>
+          <h1> SignUp </h1>
           <SignUpForm />
-          <input type="hidden" name="registrationDate" value={this.date} />
+          <input
+            type="hidden"
+            name="registrationDate"
+            value={this.state.date}
+          />
           <FlatButton
             label="Cancel"
             primary={true}
@@ -91,6 +96,7 @@ export default class DialogExampleSimple extends React.Component {
             onSubmit={
               this.state.haveAccount ? this.props.onLogin : this.props.onSignUp
             }
+            style={{ textAlignVertical: 'center', textAlign: 'center' }}
           >
             {this.renderForm()}
           </form>

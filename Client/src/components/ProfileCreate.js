@@ -79,15 +79,15 @@ class ProfileCreate extends React.Component {
     const profile = this.state.profile;
     console.log(name);
 
-    // const errors = validate(name, value, this.state.errors);
-    // this.setState({ errors });
-    // // if (Object.keys(errors).length > 0 ) {return}
-    // //check if errors validation is 2 before adding to profile
-    // if (errors[name] === 2) {
-    //   console.log(name, errors[name]);
-    //   profile[group][name] = value;
-    //   this.setState({ profile });
-    // }
+    const errors = validate(name, value, this.state.errors);
+    this.setState({ errors });
+    // if (Object.keys(errors).length > 0 ) {return}
+    //check if errors validation is 2 before adding to profile
+    if (errors[name] === 2) {
+      console.log(name, errors[name]);
+      profile[group][name] = value;
+      this.setState({ profile });
+    }
 
     window.localStorage.setItem('newProfile', JSON.stringify(profile));
   };
