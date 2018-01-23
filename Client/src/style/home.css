@@ -26,12 +26,12 @@ h3 + p {
   color: #fff; }
 
 .feature {
-  background-image: url("../images/guitar.jpeg");
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/12005/hero-demo1.jpg);
   background-position: bottom left;
   color: #fff; }
 
 .photos {
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/12005/hero-demo1.jpg);
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/12005/hero-demo2.jpg);
   color: #fff; }
 
 .news {

@@ -2,20 +2,38 @@ import React from 'react'
 
 const FormMultimedia = (props) => {
 
-  const handleSubmit = (event) => {
-
-  }
+  const styling=props.errors
 
   return (
-    <form onSubmit={handleSubmit} >
+    <div className="form-inputs">
       <h3>Social Embed</h3>
-      <label>Soundcloud: <input  name="soundcloudEmbed" type="url"/> </label>
+      <label>Soundcloud:
+        <input
+          style={styling.soundcloudLink}
+          name="soundcloudLink"
+          type="url"
+          className="multimedia"
+          onChange={props.handleChange}/>
+      </label>
       <br/>
-      <label>Youtube: <input name="youtubeEmbed" type="url"/> </label>
+      <label>Youtube:
+        <input
+          style={styling.youtubeLink}
+          name="youtubeLink"
+          type="url"
+          className="multimedia"
+          onChange={props.handleChange}/>
+      </label>
       <br/>
-      <label>Vimeo: <input name="vimeoEmbed" type="url"/> </label>
-      <input type="submit"/>
-    </form>
+      <label>Vimeo:
+        <input
+          style={styling.vimeoLink}
+          name="vimeoLink"
+          type="url"
+          className="multimedia"
+          onChange={props.handleChange}/>
+      </label>
+    </div>
   )
 }
 

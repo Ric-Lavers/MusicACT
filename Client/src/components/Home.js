@@ -2,14 +2,17 @@ import React from 'react';
 import ImageSlide from './ImageSlide';
 // import { Timeline } from 'react-twitter-widgets';
 import { UncontrolledCarousel } from 'reactstrap';
+import SponsorReel from './home/SponsorReel'
 require('../style/home.css');
 require('../style/homehome.css');
 
-
 const Home = () => {
   return (
-    <div>
+    <div> hello
       <ImageSlide />
+      <h1> this is Home Page</h1>
+      <SponsorReel />
+    <div class="wrapper">
 
       <div class="splash">
         <div class="header-text">
@@ -52,15 +55,12 @@ const Home = () => {
           </div>
 
         </div>
-      </div>
-
-    </div>
+        </div>
+        </div>
+        </div>
 
 
   )
 };
 
 export default Home;
-
-
-

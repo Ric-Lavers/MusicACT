@@ -1387,18 +1387,18 @@ clone@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.3.tgz#298d7e2231660f40c003c2ed3140decf3f53085f"
 
-cloudinary-core@^2.1.2:
+cloudinary-core@^2.3.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/cloudinary-core/-/cloudinary-core-2.4.0.tgz#d58edf2349bbb0d3ea5834e597b0004a6f7b9775"
   dependencies:
     lodash ">=3.0"
 
-cloudinary-react@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/cloudinary-react/-/cloudinary-react-1.0.4.tgz#25981e839d331ce06110108677e47e71efff50aa"
+cloudinary-react@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/cloudinary-react/-/cloudinary-react-1.0.6.tgz#13b6327ba2ba09225bddab266d4a8feed936ac1b"
   dependencies:
-    cloudinary-core "^2.1.2"
-    prop-types "^15.5.8"
+    cloudinary-core "^2.3.0"
+    prop-types "^15.6.0"
 
 co@^4.6.0:
   version "4.6.0"
@@ -1437,6 +1437,10 @@ color@^0.11.0:
     clone "^1.0.2"
     color-convert "^1.3.0"
     color-string "^0.3.0"
+
+colorize@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/colorize/-/colorize-0.1.0.tgz#9a567428fc581ca2fe0baf10aec7c7969150608a"
 
 colormin@^1.0.5:
   version "1.1.2"
@@ -1812,6 +1816,10 @@ decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
 
+decode-uri-component@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
+
 deep-equal@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
@@ -2014,7 +2022,7 @@ dot-prop@^3.0.0:
   dependencies:
     is-obj "^1.0.0"
 
-dotenv@4.0.0:
+dotenv@4.0.0, dotenv@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
 
@@ -2127,6 +2135,10 @@ es5-ext@^0.10.14, es5-ext@^0.10.35, es5-ext@^0.10.9, es5-ext@~0.10.14:
   dependencies:
     es6-iterator "~2.0.1"
     es6-symbol "~3.1.1"
+
+es6-error@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/es6-error/-/es6-error-4.1.1.tgz#9e3af407459deed47e9a91f9b885a84eb05c561d"
 
 es6-iterator@^2.0.1, es6-iterator@~2.0.1:
   version "2.0.3"
@@ -2733,6 +2745,10 @@ forever-agent@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
 
+form-data-to-object@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/form-data-to-object/-/form-data-to-object-0.2.0.tgz#f7a8e68ddd910a1100a65e25ac6a484143ff8168"
+
 form-data@^2.3.1, form-data@~2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-2.3.1.tgz#6fb94fbd71885306d73d15cc497fe4cc4ecd44bf"
@@ -2752,6 +2768,18 @@ form-data@~2.1.1:
 formidable@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/formidable/-/formidable-1.1.1.tgz#96b8886f7c3c3508b932d6bd70c4d3a88f35f1a9"
+
+formsy-material-ui@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/formsy-material-ui/-/formsy-material-ui-0.6.3.tgz#1b2032961e1b15a022a74f139f1b5dfe94d44d79"
+  dependencies:
+    keycode "^2.1.9"
+
+formsy-react@^0.18.0:
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/formsy-react/-/formsy-react-0.18.1.tgz#c52ee95baef2896f1547ce6df8dae5fcdbd9ab40"
+  dependencies:
+    form-data-to-object "^0.2.0"
 
 forwarded@~0.1.2:
   version "0.1.2"
@@ -3137,7 +3165,7 @@ hoek@4.x.x:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.0.tgz#72d9d0754f7fe25ca2d01ad8f8f9a9449a89526d"
 
-hoist-non-react-statics@^2.3.0, hoist-non-react-statics@^2.3.1:
+hoist-non-react-statics@^2.2.1, hoist-non-react-statics@^2.3.0, hoist-non-react-statics@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.3.1.tgz#343db84c6018c650778898240135a1420ee22ce0"
 
@@ -3377,7 +3405,7 @@ interpret@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
-invariant@^2.2.1, invariant@^2.2.2:
+invariant@^2.0.0, invariant@^2.2.1, invariant@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:
@@ -4042,7 +4070,11 @@ jsx-ast-utils@^2.0.0:
   dependencies:
     array-includes "^3.0.3"
 
-keycode@^2.1.8:
+jwt-decode@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-2.2.0.tgz#7d86bd56679f58ce6a84704a657dd392bba81a79"
+
+keycode@^2.1.8, keycode@^2.1.9:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.1.9.tgz#964a23c54e4889405b4861a5c9f0480d45141dfa"
 
@@ -4166,6 +4198,10 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
+lodash-es@^4.17.3, lodash-es@^4.2.0, lodash-es@^4.2.1:
+  version "4.17.4"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.4.tgz#dcc1d7552e150a0640073ba9cb31d70f032950e7"
+
 lodash._reinterpolate@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
@@ -4223,7 +4259,7 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-lodash@>=3.0, "lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.3.0, lodash@~4.17.4:
+lodash@>=3.0, "lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@~4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -4290,6 +4326,12 @@ map-stream@~0.1.0:
 material-design-icons@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/material-design-icons/-/material-design-icons-3.0.1.tgz#9a71c48747218ebca51e51a66da682038cdcb7bf"
+
+material-ui-icons@^1.0.0-beta.17:
+  version "1.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/material-ui-icons/-/material-ui-icons-1.0.0-beta.17.tgz#5f19af54a2d99eeef347a55414a6853e1c850dc3"
+  dependencies:
+    recompose "^0.26.0"
 
 material-ui@^0.20.0:
   version "0.20.0"
@@ -5380,7 +5422,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.9, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -5447,6 +5489,14 @@ query-string@^4.1.0:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-4.3.4.tgz#bbb693b9ca915c232515b228b1a02b609043dbeb"
   dependencies:
+    object-assign "^4.1.0"
+    strict-uri-encode "^1.0.0"
+
+query-string@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-5.0.1.tgz#6e2b86fe0e08aef682ecbe86e85834765402bd88"
+  dependencies:
+    decode-uri-component "^0.2.0"
     object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
 
@@ -5566,6 +5616,10 @@ react-event-listener@^0.5.1:
     prop-types "^15.6.0"
     warning "^3.0.0"
 
+react-file-download@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/react-file-download/-/react-file-download-0.3.5.tgz#7a4e75874528806bfa53ddddd98b4da427d3a897"
+
 react-form-validator-core@0.4.1, react-form-validator-core@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/react-form-validator-core/-/react-form-validator-core-0.4.1.tgz#fba6db1063b4816eb791794de204672e111e12ba"
@@ -5583,6 +5637,17 @@ react-player@^0.25.3:
     deepmerge "^2.0.0"
     load-script "^1.0.0"
     prop-types "^15.5.6"
+
+react-redux@^5.0.6:
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.6.tgz#23ed3a4f986359d68b5212eaaa681e60d6574946"
+  dependencies:
+    hoist-non-react-statics "^2.2.1"
+    invariant "^2.0.0"
+    lodash "^4.2.0"
+    lodash-es "^4.2.0"
+    loose-envify "^1.1.0"
+    prop-types "^15.5.10"
 
 react-router-dom@^4.2.2:
   version "4.2.2"
@@ -5649,6 +5714,12 @@ react-scripts@1.0.17:
     whatwg-fetch "2.0.3"
   optionalDependencies:
     fsevents "1.1.2"
+
+react-svg@^2.2.10:
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/react-svg/-/react-svg-2.2.10.tgz#3b9a13d566173b8a202bc8e530b2603b68b0a255"
+  dependencies:
+    svg-injector "^1.1.3"
 
 react-transition-group@^1.2.1:
   version "1.2.1"
@@ -5780,6 +5851,28 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
+redux-form@^7.2.1:
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/redux-form/-/redux-form-7.2.1.tgz#011f6ff0cf050552a4a182a271f22217f4584684"
+  dependencies:
+    deep-equal "^1.0.1"
+    es6-error "^4.1.1"
+    hoist-non-react-statics "^2.3.1"
+    invariant "^2.2.2"
+    is-promise "^2.1.0"
+    lodash "^4.17.3"
+    lodash-es "^4.17.3"
+    prop-types "^15.5.9"
+
+redux@^3.7.2:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/redux/-/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b"
+  dependencies:
+    lodash "^4.2.1"
+    lodash-es "^4.2.1"
+    loose-envify "^1.1.0"
+    symbol-observable "^1.0.3"
+
 regenerate@^1.2.1:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.3.tgz#0c336d3980553d755c39b586ae3b20aa49c82b7f"
@@ -5873,7 +5966,7 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-request@2, request@^2.79.0:
+request@2, request@^2.69.0, request@^2.79.0:
   version "2.83.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.83.0.tgz#ca0b65da02ed62935887808e6f510381034e3356"
   dependencies:
@@ -6518,6 +6611,10 @@ supports-color@^5.1.0:
   dependencies:
     has-flag "^2.0.0"
 
+svg-injector@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/svg-injector/-/svg-injector-1.1.3.tgz#8fba18d7419e5f818e712c4f82d83ee357610e61"
+
 svgo@^0.7.0:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/svgo/-/svgo-0.7.2.tgz#9f5772413952135c6fefbf40afe6a4faa88b4bb5"
@@ -6560,7 +6657,7 @@ sw-toolbox@^3.4.0:
     path-to-regexp "^1.0.1"
     serviceworker-cache-polyfill "^4.0.0"
 
-symbol-observable@^1.0.4:
+symbol-observable@^1.0.3, symbol-observable@^1.0.4:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.1.0.tgz#5c68fd8d54115d9dfb72a84720549222e8db9b32"
 
@@ -6808,6 +6905,12 @@ urijs@^1.16.1:
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.19.0.tgz#d8aa284d0e7469703a6988ad045c4cbfdf08ada0"
 
+url-exists@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/url-exists/-/url-exists-1.0.3.tgz#05b2875baf04950e27ef51e9846f1eff04716893"
+  dependencies:
+    request "^2.69.0"
+
 url-loader@0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/url-loader/-/url-loader-0.6.2.tgz#a007a7109620e9d988d14bce677a1decb9a993f7"
@@ -6879,6 +6982,10 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
+
+validator@^9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-9.2.0.tgz#ad216eed5f37cac31a6fe00ceab1f6b88bded03e"
 
 value-equal@^0.4.0:
   version "0.4.0"
