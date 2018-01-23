@@ -68,12 +68,12 @@ module.exports = app => {
   );
 
   //GET /directory/:id
-  app.get('/directory/:userId', (req, res) => {
+  app.get('/directory/:userId', (req, res, next) => {
     const userId = req.params.userId;
     console.log(`this is profile ID ${userId}`);
     User.findById(userId)
       .populate('profile')
-      .populate('profile.multimedia')
+      // .populate('profile.multimedia')
       .exec()
       .then(profile => {
         if (!profile) {
@@ -83,15 +83,11 @@ module.exports = app => {
           });
         }
         // console.log(`complete ${profile}`);
-        console.log(`complete ${profile.profile}`);
-        console.log(`complete ${profile.profile.multimedia}`);
-        res.status(200).json({
-          profile: profile,
-          request: {
-            type: 'GET'
-            // url: "http://localhost:3000/orders"
-          }
-        });
+        console.log(`1. complete ${profile}`);
+        console.log(`2. complete ${profile.profile}`);
+        console.log(`3. complete ${profile.profile.multimedia}`);
+        res.send({ profile });
+        next();
       })
       .catch(err => {
         res.status(500).json({

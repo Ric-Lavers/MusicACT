@@ -39,7 +39,12 @@ const errors = {
 class ProfileCreate extends React.Component {
   constructor(props) {
     super(props);
-    if (window.localStorage.getItem('newProfile')) {
+    if (this.props.myProfile != null) {
+      this.state = {
+        errors,
+        profile: this.props.myProfile
+      };
+    } else if (window.localStorage.getItem('newProfile')) {
       let profile = JSON.parse(window.localStorage.getItem('newProfile'));
       this.state = {
         errors,
@@ -48,24 +53,24 @@ class ProfileCreate extends React.Component {
     } else {
       this.state = {
         errors,
-        contactDetails: {
-          _id: '',
-          email: '',
-          phoneNumber: '',
-          pointOfContact: ''
-        },
         profile: {
-          imageSrc: '',
-          name: '',
-          bio: ''
-        },
-        socialMedia: {
-          instagram: '',
-          website: ''
-        },
-        multimedia: {
-          soundcloudLink: '',
-          youtubeLink: ''
+          type: 'DJs',
+          _id: '1234',
+          contactDetails: {
+            email: '',
+            phoneNumber: '',
+            pointOfContact: ''
+          },
+          profile: {
+            imageSrc: '',
+            name: '',
+            bio: ''
+          },
+          socialMedia: {},
+          multimedia: {
+            soundcloudLink: '',
+            youtubeLink: ''
+          }
         }
       };
     }

@@ -24,7 +24,8 @@ import jwt_decode from 'jwt-decode';
 
 class App extends Component {
   state = {
-    tokenId: null
+    tokenId: null,
+    myProfile: null
   };
   //   if (env.REACT_APP_SECRET_CODE) {s
   //   console.log(env.REACT_APP_SECRET_CODE);
@@ -33,7 +34,7 @@ class App extends Component {
   onClick = () => {
     const id = this.state.tokenId;
     console.log(`************ ${id}`);
-    auth.fetchProfile(id);
+    auth.fetchProfile(id).then(res => this.setState({ myProfile: res }));
   };
 
   componentWillMount() {
@@ -60,6 +61,8 @@ class App extends Component {
             <button onClick={this.onClick} />
           </div>
 
+          {JSON.stringify(this.state.myProfile)}
+
           <Route exact path="/" component={Home} />
           <Switch>
             {/* <Route
@@ -69,7 +72,11 @@ class App extends Component {
                 auth.hasProfileId(id) ? <Redirect to="/" /> : <ProfileCreate />;
               }}
             /> */}
-            <Route path="/directory/create" component={ProfileCreate} />
+            <Route
+              path="/directory/create"
+              myProfile={this.state.myProfile}
+              component={ProfileCreate}
+            />
             {/* <Route path="/directory/:id" component={Profile} /> */}
             <Route path="/directory" component={Directory} />
             <Route path="/contact" component={Contact} />

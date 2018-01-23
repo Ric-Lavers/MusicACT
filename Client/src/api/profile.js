@@ -57,12 +57,9 @@ export function fetchProfile(id) {
     headers: {
       'Content-Type': 'application/json'
     }
-    // body: JSON.stringify({
-    //   id,
-    //   contactDetails,
-    //   bio,
-    //   socialIcons,
-    //   socialEmbed
-    // })
-  });
+  })
+    .then(res => res.json())
+    .catch(error => {
+      console.log(error);
+    });
 }
