@@ -146,6 +146,20 @@ class ProfileCreate extends React.Component {
       });
   };
 
+  handleSocialDelete = (event) => {
+    console.log("%c ____!!!!", "color: green");
+    event.preventDefault();
+    const target = event.target.name;
+    console.log(target);
+    const profile = this.state.profile;
+    delete profile.socialMedia[target]
+    this.setState({
+      profile: profile
+    });
+    console.log(this.state.profile.socialMedia);
+    window.localStorage.setItem('newProfile', JSON.stringify(profile));
+  }
+
   render() {
     return (
       <div className="ProfileCreate">
@@ -155,6 +169,7 @@ class ProfileCreate extends React.Component {
           handleChange={this.handleChange}
           handleImageUpload={this.onImageDrop}
           handleSubmit={this.handleSubmit}
+          handleSocialDelete ={this.handleSocialDelete}
           errors={this.state.errors}
         />
 

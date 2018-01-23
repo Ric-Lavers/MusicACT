@@ -71,20 +71,25 @@ class MusicianForm extends React.Component {
             errors = {styling}
             handleChange={this.props.handleChange}
             tickAnimation={tickAnimation}
-          />
-
+            />
 
           <FormMusicianProfile
             errors = {styling}
             handleChange={this.props.handleChange}
             handleImageUpload={this.props.handleImageUpload}
-          />
+            />
+
           <FormSocials
             errors = {styling}
-            handleChange={this.props.handleChange} />
+            handleSocialDelete={this.props.handleSocialDelete}
+            handleChange={this.props.handleChange}
+            />
+
           <FormMultimedia
             errors = {styling}
-            handleChange={this.props.handleChange} />
+            handleChange={this.props.handleChange}
+            />
+
           <input type="hidden" name="token" value={this.state.tokenId} />
           <input type="submit" />
         </div>
