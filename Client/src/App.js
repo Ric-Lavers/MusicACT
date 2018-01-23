@@ -27,11 +27,11 @@ class App extends Component {
             <Header />
           </MuiThemeProvider>
 
-            <Route exact path="/" component={Home}/>
+          <Route exact path="/" component={Home} />
           <Switch>
-            <Route path="/directory/create" component={ProfileCreate}/>
-            <Route path="/directory/:id" component={Profile}/>
-            <Route path="/directory"   component={Directory}/>
+            <Route path="/directory/create" component={ProfileCreate} />
+            <Route path="/directory/:id" component={Profile} />
+            <Route path="/directory" component={Directory} />
 
           </Switch>
 
