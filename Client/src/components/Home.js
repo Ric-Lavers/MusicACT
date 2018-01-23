@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import SponsorReel from './home/SponsorReel'
 require('../style/home.css');
 
 const Home = () => {
   return (
     <div>
       <h1> this is Home Page</h1>
+      <SponsorReel/>
     <div class="wrapper">
         <div class="top">
           <header class="hero">
