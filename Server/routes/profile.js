@@ -22,4 +22,8 @@ module.exports = app => {
       console.log(raw);
     });
   });
+  app.post('/profile/create', (req,res) => {
+    console.log(req.body)
+  })
+
 };

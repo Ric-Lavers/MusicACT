@@ -17,6 +17,7 @@ export function signUp({
   lastName,
   email,
   password,
+  type,
   registrationDate
 }) {
   return fetch('/register', {
@@ -29,6 +30,7 @@ export function signUp({
       lastName,
       email,
       password,
+      type,
       registrationDate
     })
   })

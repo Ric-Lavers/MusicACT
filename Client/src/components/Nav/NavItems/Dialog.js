@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm';
+import submit from './Submit';
 
 export default class DialogExampleSimple extends React.Component {
   state = {
@@ -69,11 +70,12 @@ export default class DialogExampleSimple extends React.Component {
     }
   };
 
+  onSubmitWithProps = (values, dispatch, props) => {
+    alert('heoooo');
+    console.log(props); // Object
+  };
+
   render() {
-    // const actions = [
-    //   <FlatButton label="Cancel" primary={true} onClick={this.props.close} />,
-    //   <FlatButton label="Submit" primary={true} type="submit" />
-    // ];
     return this.props.show ? (
       <div>
         <Dialog
@@ -84,17 +86,15 @@ export default class DialogExampleSimple extends React.Component {
           onRequestClose={this.props.close}
           autoScrollBodyContent={true}
         >
-          {/********* Login form ******************/}
+          {/********* Login Form ******************/}
           <form
             onSubmit={
               this.state.haveAccount ? this.props.onLogin : this.props.onSignUp
             }
-            style={{ textAlign: 'center' }}
           >
             {this.renderForm()}
           </form>
           {/********* Login form ******************/}
-          {/* <a onClick={this.changeForm}> Do you already have an account? </a> */}
         </Dialog>
       </div>
     ) : null;

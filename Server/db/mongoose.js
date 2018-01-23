@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/MusicACT', {//get started mongoose guides.
+const keys = require('../config/keys');
+mongoose.connect(keys.MONGO_URI, {//get started mongoose guides.
   useMongoClient: true
 });
 
