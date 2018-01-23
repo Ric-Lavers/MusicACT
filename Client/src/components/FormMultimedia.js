@@ -2,15 +2,14 @@ import React from 'react'
 
 const FormMultimedia = (props) => {
 
-  const handleSubmit = (event) => {
-
-  }
+  const styling=props.errors
 
   return (
-    <div>
+    <div className="form-inputs">
       <h3>Social Embed</h3>
       <label>Soundcloud:
         <input
+          style={styling.soundcloudLink}
           name="soundcloudLink"
           type="url"
           className="multimedia"
@@ -19,6 +18,7 @@ const FormMultimedia = (props) => {
       <br/>
       <label>Youtube:
         <input
+          style={styling.youtubeLink}
           name="youtubeLink"
           type="url"
           className="multimedia"
@@ -27,6 +27,7 @@ const FormMultimedia = (props) => {
       <br/>
       <label>Vimeo:
         <input
+          style={styling.vimeoLink}
           name="vimeoLink"
           type="url"
           className="multimedia"

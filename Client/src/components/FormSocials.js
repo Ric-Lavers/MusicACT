@@ -3,6 +3,7 @@ import React from 'react'
 const FormSocials = (props) => {
 
   const names = ["facebook", "instagram","twitter", "soundcloud", "youtube", "spotify", "website"]
+  const styling=props.errors
 
   const socials = []
     names.map( (name, index) =>{
@@ -10,6 +11,7 @@ const FormSocials = (props) => {
         <label key={name+index}>{name}:
           <input
             key={`socialMedia_${index}`}
+            style={styling[name]}
             name= {name}
             type="url"
             className="socialMedia"
@@ -21,7 +23,7 @@ const FormSocials = (props) => {
     })
 
   return (
-    <div>
+    <div className="form-inputs">
       <h3>Social Icons</h3>
       {socials.map( (i) =>
         i

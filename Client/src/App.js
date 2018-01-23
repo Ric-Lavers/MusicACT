@@ -17,7 +17,8 @@ import Footer from './components/Footer';
 import Profile from './pages/Profiles';
 import ProfileCreate from './components/ProfileCreate';
 import Directory from './components/Directory';
-import Contact from './components/Contact';
+import Contact from './components/Contact'
+import Downloads from './pages/Downloads';
 
 import * as auth from './api/profile';
 import jwt_decode from 'jwt-decode';
@@ -80,6 +81,7 @@ class App extends Component {
             {/* <Route path="/directory/:id" component={Profile} /> */}
             <Route path="/directory" component={Directory} />
             <Route path="/contact" component={Contact} />
+            <Route path="/downloads" component={Downloads} />
           </Switch>
 
           <Footer />

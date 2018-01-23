@@ -150,6 +150,7 @@ class ProfileCreate extends React.Component {
     return (
       <div className="ProfileCreate">
         <MusicianForm
+          data = {this.state.profile}
           className="MusicianForm"
           handleChange={this.handleChange}
           handleImageUpload={this.onImageDrop}

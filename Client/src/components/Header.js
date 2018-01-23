@@ -201,6 +201,11 @@ export default class DrawerSimpleExample extends React.Component {
               Contact
             </NavLink>
           </MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
+            <NavLink activeClassName="selected" to={`/downloads`}>
+              Downloads
+            </NavLink>
+          </MenuItem>
           <MenuItem
             onClick={() => this.setState({ drawer: false, dialog: true })}
           >
