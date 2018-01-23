@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import {
   NavLink,
   BrowserRouter,
@@ -8,11 +7,10 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
-
 import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Directory from './Directory';
-import Dialog from './Dialog';
+import Dialog from './Nav/NavItems/Dialog';
 //material UI
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
@@ -61,6 +59,7 @@ export default class DrawerSimpleExample extends React.Component {
 
   //signUp event to assgin the localStorage to token
   handleSignUp = event => {
+    console.log('handleSignup');
     // stop refreshing the page
     event.preventDefault();
     const form = event.target;
@@ -69,9 +68,10 @@ export default class DrawerSimpleExample extends React.Component {
     const lastName = elements.lastName.value;
     const email = elements.email.value;
     const password = elements.password.value;
+    const type = elements.type.value;
     const registrationDate = elements.registrationDate.value;
     auth
-      .signUp({ firstName, lastName, email, password, registrationDate })
+      .signUp({ firstName, lastName, email, password, type, registrationDate })
       .then(res => {
         // console.log('res from signin', res);
         this.setState({ token: res });
