@@ -9,10 +9,10 @@ import {
 } from 'react-router-dom';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
+import AppBar from 'material-ui/AppBar';
 import Directory from './Directory';
 import Dialog from './Nav/NavItems/Dialog';
 //material UI
-import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
@@ -90,7 +90,15 @@ export default class DrawerSimpleExample extends React.Component {
 
   renderuserSign = () => {
     const TOKEN_KEY = 'token';
-    if (!auth.isSignedIn()) {
+    if (auth.isSignedIn()) {
+      return (
+        <div>
+          <MenuItem onClick={this.handleSignOut}>
+            <NavLink to={`/`}>SignOut </NavLink>
+          </MenuItem>
+        </div>
+      );
+    } else {
       return (
         <div>
           <MenuItem>
@@ -106,15 +114,21 @@ export default class DrawerSimpleExample extends React.Component {
           </MenuItem> */}
         </div>
       );
-    } else {
+    }
+  };
+
+  renderProfileLink = () => {
+    const TOKEN_KEY = 'token';
+    if (auth.isSignedIn()) {
       return (
-        <div>
-          <MenuItem onClick={this.handleSignOut}>
-            <NavLink to={`/`}>Logout</NavLink>
-          </MenuItem>
-        </div>
+        <MenuItem onClick={() => this.setState({ drawer: false })}>
+          <NavLink activeClassName="selected" to={`/directory/create`}>
+            Create Musician Profile
+          </NavLink>
+        </MenuItem>
       );
     }
+    null;
   };
 
   render() {
@@ -169,11 +183,9 @@ export default class DrawerSimpleExample extends React.Component {
               News
             </NavLink>
           </MenuItem>
-          <MenuItem onClick={() => this.setState({ drawer: false })}>
-            <NavLink activeClassName="selected" to={`/directory/create`}>
-              Create Musician Profile
-            </NavLink>
-          </MenuItem>
+
+          {this.renderProfileLink()}
+
           <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/venues`}>
               Venues
