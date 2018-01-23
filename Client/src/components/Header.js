@@ -25,7 +25,11 @@ export default class DrawerSimpleExample extends React.Component {
   }
 
   //click Nav iconElementLet to openDrawer
-  handleToggle = () => this.setState({ drawer: !this.state.drawer });
+  handleToggle = () => {
+    this.setState({ drawer: !this.state.drawer });
+    console.log(this.state.drawer);
+  };
+
   handleClose = () => this.setState({ drawer: false });
 
   //click Nav iconElementRight to handleSignUp
