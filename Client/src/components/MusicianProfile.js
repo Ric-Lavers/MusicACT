@@ -203,6 +203,7 @@ class MusicainProfile extends React.Component {
             className="more-button">
           more
           </div>)}
+          <div>hi, please delete me later</div>
 
         {multimedia && multimediaLinks.map( (address) => (
           <ReactPlayer
