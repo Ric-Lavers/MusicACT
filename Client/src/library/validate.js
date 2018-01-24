@@ -6,7 +6,7 @@ function validate(name,value, errors){
     if(name === "phoneNumber" &&
                 validator.isNumeric( value.replace(/\s/g, '') ) &&
                 value.length > 7  ) {errors.phoneNumber = 2}
-    if(name === "pointOfContact" && validator.isAlpha(value)){errors.pointOfContact = 2}
+    if(name === "pointOfContact" ){errors.pointOfContact = 2}
     if(name === "name" && value.length >2 ){errors.name = 2}
     if(name === "bio" && value.length >2 ){errors.bio = 2}
     if(name === "soundcloud" && validator.contains(value,"soundcloud.com") ){errors.soundcloud = 2}

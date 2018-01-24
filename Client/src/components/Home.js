@@ -1,70 +1,60 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ImageSlide from './ImageSlide';
+// import { Timeline } from 'react-twitter-widgets';
+import { UncontrolledCarousel } from 'reactstrap';
+import SponsorReel from './home/SponsorReel';
 require('../style/home.css');
+require('../style/homehome.css');
 
 const Home = () => {
   return (
     <div>
+      <ImageSlide />
       <h1> this is Home Page</h1>
-    <div class="wrapper">
-        <div class="top">
-          <header class="hero">
-            <h1>MusicACT</h1>
-            <p>Enlivening the capital!</p>
-          </header>
-          <div class="cta cta1">
-            <p class="price">Something</p>
-            <p>Something here</p>
+      <SponsorReel />
+      <div class="wrapper">
+        <div class="splash">
+          <div class="header-text">
+            <h1>Music For Everyone.</h1>
+            <h3>Enlivening The Capitals </h3>
           </div>
-          <div class="cta cta2">
-            <p class="price">Something</p>
-            <p>Something here</p>
-          </div>
-
         </div>
 
-        <section class="features">
-          <div class="feature">
-            <span class="icon">👋</span>
-            <h3>BECOME A MEMBER</h3>
-          </div>
-          <div class="feature">
-            <span class="icon">🎹</span>
-            <h3>COOL LITTLE CAPITAL</h3>
-          </div>
-          <div class="feature">
-            <span class="icon">🍷</span>
-            <h3>MUSICACT ANNUAL MUSIC AWARDS 2017</h3>
-          </div>
-          <div class="feature">
-            <span class="icon">🎵</span>
-            <h3>WORKSHOPS</h3>
-          </div>
-        </section>
+        <div class="wrapper">
+          <div class="home-hero">
+            <div class="feature">
+              <h3>Music ACT</h3>
+              <p>You can find all kinds of balloon related things here.</p>
+            </div>
 
-        <section class="about">
-          <img src="images/queso-taco.png" alt="EarGasm" class="about__mockup"/>
-          <div class="about__details">
-            <h2>Lastest Blog Entry</h2>
-            <p>This is amazing!!!!</p>
-            <p>This is the one you have been waiting for</p>
-            <button>Learn More →</button>
+            <div class="special">
+              <h3>Special Shapes</h3>
+              <p>Why are some of them so scary looking?</p>
+            </div>
+
+            <div class="amazing">
+              <h3>10 things you discover when taking a balloon ride.</h3>
+              <p>Number 8 will AMAZE you.</p>
+            </div>
+
+            <div class="news">
+              <h3>Angry people at balloon fiestas</h3>
+              <p>Hot air balloons. A bit weather sensitive. </p>
+            </div>
+
+            <div class="photos">
+              <h3>Ballooooooooon phoooootos</h3>
+              <p>I have quite a few.</p>
+            </div>
+
+            <div class="cta">
+              <p>Sign up for more information about balloons. </p>
+              <a class="spam-button" href="/spam-machine">
+                Sign me up!
+              </a>
+            </div>
           </div>
-        </section>
-
-
-        <section class="gallery">
-          <h2>Our Past Events</h2>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-        </section>
+        </div>
       </div>
     </div>
   );

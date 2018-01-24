@@ -26,7 +26,7 @@ export function createProfile(profile) {
   const socialEmbed = profile.multimedia;
 
   return (
-    fetch('/directory/create', {
+    fetch('/api/directory/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ export function fetchProfile(id) {
   // const userID = queryString.stringify(id);
   // console.log(`user ID here ${userID}`);
   // console.log(userID);
-  return fetch(`/directory/${id}`, {
+  return fetch(`/api/directory/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'

@@ -11,64 +11,56 @@ const auth = require('../middleware/auth');
 
 module.exports = app => {
   //POST /directory/create
-  app.post(
-    '/directory/create',
-    (req, res, next) => {
-      console.log(`###### here ###########`);
-      const id = req.body.id;
+  app.post('/api/directory/create', (req, res, next) => {
+    console.log(`###### here ###########`);
+    const id = req.body.id;
 
-      // assign user_id in order to populate the data
-      const contact = Object.assign(req.body.contactDetails, id);
-      const bio = Object.assign(req.body.bio, id);
-      const icons = Object.assign(req.body.socialIcons, id);
-      const embed = Object.assign(req.body.socialEmbed, id);
-      // console.log(contact);
+    // assign user_id in order to populate the data
+    const contact = Object.assign(req.body.contactDetails, id);
+    const bio = Object.assign(req.body.bio, id);
+    const icons = Object.assign(req.body.socialIcons, id);
+    const embed = Object.assign(req.body.socialEmbed, id);
+    // console.log(contact);
 
-      // create model
-      // var profile = new MusicianProfile(req.body);
-      var contactDetails = new ContactDetails(contact);
-      var profileMusician = new ProfileMusician(bio);
-      var socialMediaIcon = new SocialMediaIcon(icons);
-      var socialEmbed = new ContactDetails(embed);
+    // create model
+    // var profile = new MusicianProfile(req.body);
+    var contactDetails = new ContactDetails(contact);
+    var profileMusician = new ProfileMusician(bio);
+    var socialMediaIcon = new SocialMediaIcon(icons);
+    var socialEmbed = new ContactDetails(embed);
 
-      // profile.save();
-      contactDetails.save();
-      profileMusician.save();
-      socialMediaIcon.save();
-      socialEmbed.save();
+    // profile.save();
+    contactDetails.save();
+    profileMusician.save();
+    socialMediaIcon.save();
+    socialEmbed.save();
 
-      var profile = new MusicianProfile({
-        contactDetails: [contactDetails],
-        profile: [profileMusician],
-        socialMediaIcons: [socialMediaIcon],
-        multimedia: [socialEmbed],
-        user: id.user
-      });
-      profile.save();
+    var profile = new MusicianProfile({
+      contactDetails: [contactDetails],
+      profile: [profileMusician],
+      socialMediaIcons: [socialMediaIcon],
+      multimedia: [socialEmbed],
+      user: id.user
+    });
+    profile.save();
 
-      User.update({ _id: req.body.id.user }, { profile: profile._id }, function(
-        err,
-        raw
-      ) {
-        if (err) {
-          res.send(err);
-        }
-        res.send(raw);
+    User.update({ _id: req.body.id.user }, { profile: profile._id }, function(
+      err,
+      raw
+    ) {
+      if (err) {
+        res.send(err);
+      }
+      res.send(raw);
 
-        console.dir(raw);
-        console.log(raw);
-        next();
-      });
-    }
-    // authMiddleware.signJWTWithProfile,
-    // (req, res) => {
-    //   console.log(`something ${res.user}`);
-    //   res.send(res);
-    // }
-  );
+      console.dir(raw);
+      console.log(raw);
+      next();
+    });
+  });
 
   //GET /directory/:id
-  app.get('/directory/:userId', (req, res, next) => {
+  app.get('/api/directory/:userId', (req, res, next) => {
     const userId = req.params.userId;
     console.log(`this is profile ID ${userId}`);
     User.findById(userId)

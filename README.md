@@ -58,6 +58,7 @@ _____________
 ### Homepage
 
 ### Blog
+followed a tutorial at (https://buttercms.com/react-blog-engine/) using **buttercms** 
 
 ### Form Creates
 - [cloudinary uploading ](https://css-tricks.com/image-upload-manipulation-react/)

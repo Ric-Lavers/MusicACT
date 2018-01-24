@@ -1,3 +1,6 @@
+* {
+  font-family: roboto; }
+
 .profile-container {
   margin: 0 auto;
   max-width: 1200px;
@@ -72,3 +75,26 @@
       width: 80%;
       border-radius: 16px;
       background-color: #D4FC76; }
+
+.drop-message {
+  padding: 16px;
+  padding-top: 25%;
+  text-align: center; }
+
+label {
+  display: flex;
+  align-items: center;
+  width: 100%; }
+  label input {
+    margin-right: 0;
+    width: 65%;
+    outline: none;
+    font-size: 1.3em;
+    margin-top: 8px; }
+  label textarea {
+    font-size: 1.2em;
+    color: yellow; }
+
+input textarea {
+  outline: none;
+  margin-right: 0px !important; }

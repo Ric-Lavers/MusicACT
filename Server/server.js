@@ -35,6 +35,11 @@ app.use(
   })
 );
 
+// middleware to access this page
+// app.use((req, res, next) => {
+//  res.render();
+//  });
+
 //allow to accesss 'Access-Control-Allow-Origin' header
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');

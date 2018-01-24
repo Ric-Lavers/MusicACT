@@ -23,11 +23,10 @@ const Contact = () => {
 
     return(
       <div className='Contact'>
-        <h3>CONTACT MUSICACT</h3>
         <p></p>
         <form onSubmit={handleSubmit} style={{maxWidth:700}}>
           <fieldset>
-            <legend>To contact MusicACT please send your message and contact details using the form below.</legend>
+            <legend>To contact MusicACT please use the form below.</legend>
           <label htmlFor="name">
             Your Name:
             <input name="name" type="text"/>
