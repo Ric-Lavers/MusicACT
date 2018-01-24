@@ -13,8 +13,6 @@ import jwt_decode from 'jwt-decode';
 
 require('../style/forms.css');
 
-// Models
-
 const CLOUDINARY_UPLOAD_PRESET = 'profile_image';
 const CLOUDINARY_UPLOAD_URL =
   'https://api.cloudinary.com/v1_1/aeonknight/upload';
@@ -49,37 +47,21 @@ console.log("this.props.myProfile != null");
         errors,
         profile: this.props.myProfile
       };
-    }else if(this.props.myProfile === null){
+    }else if ( window.localStorage.getItem('newProfile') ) {
+console.log("window.localStorage.getItem('newProfile')");
+     let profile = JSON.parse(window.localStorage.getItem('newProfile'));
+     this.state = {
+       errors,
+       profile: profile
+     };
+   }else if(this.props.myProfile === null){
 console.log("%c this.props.myProfile === null","color:green");
       this.state = {
         errors,
         profile: "none"
       }
-      // const getToken = auth.token();
-      //
-      // if (getToken !== null) {
-      //   const decodeToken = jwt_decode(getToken);
-      //   const tokenId = decodeToken.sub;
-      //   console.log(decodeToken,tokenId);
-      //   auth.fetchProfile(tokenId).then(res =>{
-      //     console.log("res.profile",res.profile.profile),
-      //     this.state = {
-      //       errors,
-      //       profile: res.profile.profile
-      //     }
-      //   })
-      // }else {
-      //   console.log('No token');
-      // }
     }
-     else if ( window.localStorage.getItem('newProfile') ) {
-console.log("window.localStorage.getItem('newProfile')");
-      let profile = JSON.parse(window.localStorage.getItem('newProfile'));
-      this.state = {
-        errors,
-        profile: profile
-      };
-    } else {
+      else {
 console.log("else");
       this.state = {
         errors,
@@ -216,7 +198,6 @@ console.log("else");
   }
 
   render() {
-    console.log("this.state",this.state);
     return (this.state.profile === "none" ?
       (null)
     :

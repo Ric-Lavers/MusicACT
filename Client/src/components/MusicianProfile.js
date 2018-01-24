@@ -189,9 +189,12 @@ class MusicainProfile extends React.Component {
 
     return (
       <div style={{ marginLeft: 24 }} className="MusicainProfile">
-        <SocialIcons
-          socialMediaIcons = {socialMediaIcons}
-          />
+        <div className="profile-social-icons">
+          <SocialIcons
+            socialMediaIcons = {socialMediaIcons}
+            />
+        </div>
+
       </div>
       );
     }
@@ -209,13 +212,7 @@ class MusicainProfile extends React.Component {
       //         )}
       //       </div>
       //
-      //       <div className="profile-social-icons">
-      //         {!!icons &&
-      //           icons.length != 0 &&
-      //           icons.map(i => {
-      //             return i;
-      //           })}
-      //       </div>
+      //
       //
       //       <div className="profile-contact-info">
       //         <div className="hide">
