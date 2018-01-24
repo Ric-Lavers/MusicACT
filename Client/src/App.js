@@ -79,7 +79,10 @@ class App extends Component {
             <Route
               path="/directory/create"
               myProfile={this.state.myProfile}
-              component={ProfileCreate}
+              render={() =>
+                <ProfileCreate  myProfile={this.state.myProfile}
+                />
+            }
             />
             {/* <Route path="/directory/:id" component={Profile} /> */}
             <Route path="/directory" component={Directory} />

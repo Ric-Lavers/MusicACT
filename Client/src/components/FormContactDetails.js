@@ -20,7 +20,7 @@ const FormContactDetails = (props) => {
     <div className="form-inputs">
       <label>Email:
         <input
-          placeholder={props.placeholders.email}
+
           style = {styling.email}
           className="contactDetails"
           onChange={props.handleChange}
@@ -31,7 +31,7 @@ const FormContactDetails = (props) => {
       &nbsp;
       <label>Phone Number:
         <input
-          placeholder={props.placeholders.phoneNumber}
+
           style = {styling.phoneNumber}
           className="contactDetails"
           autoComplete="tel"
@@ -43,7 +43,7 @@ const FormContactDetails = (props) => {
 
       <label>Point of contact:
         <input
-          placeholder={props.placeholders.pointOfContact}
+
           style = {styling.pointOfContact}
           className="contactDetails"
           onChange={props.handleChange}
