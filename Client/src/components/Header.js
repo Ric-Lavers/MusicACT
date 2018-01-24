@@ -26,7 +26,11 @@ export default class DrawerSimpleExample extends React.Component {
   }
 
   //click Nav iconElementLet to openDrawer
-  handleToggle = () => this.setState({ drawer: !this.state.drawer });
+  handleToggle = () => {
+    this.setState({ drawer: !this.state.drawer });
+    console.log(this.state.drawer);
+  };
+
   handleClose = () => this.setState({ drawer: false });
 
   //click Nav iconElementRight to handleSignUp
@@ -95,7 +99,7 @@ export default class DrawerSimpleExample extends React.Component {
       return (
         <div>
           <MenuItem onClick={this.handleSignOut}>
-            <NavLink to={`/`}>SignOut </NavLink>
+            <NavLink to={`/`}> SignOut </NavLink>
           </MenuItem>
         </div>
       );
@@ -170,6 +174,18 @@ export default class DrawerSimpleExample extends React.Component {
           <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink to={`/`}>Home</NavLink>
           </MenuItem>
+          {/* these two are test (after need to delete App.js <Route>) */}
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
+            <NavLink activeClassName="selected" to={`/admin`}>
+              Admin
+            </NavLink>
+          </MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
+            <NavLink activeClassName="selected" to={`/progress`}>
+              Progress
+            </NavLink>
+          </MenuItem>
+          {/* these two are test  */}
           <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/directory`}>
               Directory
