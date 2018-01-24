@@ -8,7 +8,7 @@ const cookieSeesion = require('cookie-session');
 
 var app = express();
 
-// setup env running on heroku
+// setup env running on HEROKU
 const port = process.env.PORT || 5000;
 
 //configuring express to use body-parser as middle-ware.
