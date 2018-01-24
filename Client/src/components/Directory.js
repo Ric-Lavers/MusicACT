@@ -35,8 +35,25 @@ class Directory extends React.Component {
   };
 
   componentDidMount() {
-    auth.findAllUser().then(res => console.log(res));
-    // this.setState({ demo });
+    let directory = []
+    auth.findAllUser().then(res => {
+      res.map( (profile) => {
+        const ob = {}
+        ob._id = profile.profile._id
+        ob.user =  profile.profile.user
+        ob.type =  profile.profile.type
+        ob.contactDetails = profile.profile.contactDetails[0]
+        ob.multimedia = profile.profile.multimedia[0]
+        ob.profile = profile.profile.profile[0]
+        ob.socialMediaIcons = profile.profile.socialMediaIcons[0]
+
+        directory.push(ob)
+      });
+    })
+    console.log("directory", directory);
+
+
+    this.setState({ directory: directory });
   }
 
   typeFilter = event => {
@@ -67,9 +84,6 @@ class Directory extends React.Component {
     });
   };
 
-  handleHover = event => {
-    console.log(event.target);
-  };
 
   handleFilter = () => {
     let nav1 = this.state.navButtonActive;
@@ -106,44 +120,6 @@ class Directory extends React.Component {
 
 
       return (
-        <div className="directory">
-          <div className="filters">
-            <FilterForm
-              color="#C8FF5D"
-              handleClick={this.handleNavButtonClick}
-              activeButton={this.state.navButtonActive}
-              array={ nav } />
-
-            {navButtonActive === 1?
-              (<FilterForm
-                color="#FF2D61"
-                handleClick={this.handleMusicianButtonClick}
-                activeButton={this.state.musicianButtonActive}
-                array={ musicians } />):
-                ( navButtonActive === 2?
-                  (<FilterForm
-                    color="#E8CF3B"
-                    handleClick={this.handleVenueButtonClick}
-                    activeButton={this.state.venueButtonActive}
-                    array={ venues } />):
-                    (<div style={{height:58}}></div>)
-                 )
-            }
-
-          </div>
-          {navButtonActive === 0 &&
-          <DirectoryGrid listing= {all} />}
-
-
-          {navButtonActive === 1 &&
-          <DirectoryGrid
-            listing= {bandNames}/>}
-          {navButtonActive === 2 &&
-          <DirectoryGrid listing= {venueNames}/>}
-          {navButtonActive === 3 &&
-          <DirectoryGrid listing= {businessNames}/>}
-
-    return (
       <div className="directory">
         <div className="filters">
           <FilterForm
@@ -172,12 +148,11 @@ class Directory extends React.Component {
           )}
         </div>
         {navButtonActive === 0 && <DirectoryGrid listing={all} />}
-
         {navButtonActive === 1 && <DirectoryGrid listing={bandNames} />}
         {navButtonActive === 2 && <DirectoryGrid listing={venueNames} />}
         {navButtonActive === 3 && <DirectoryGrid listing={businessNames} />}
       </div>
-    );
+    )
   }
 }
 
