@@ -35,8 +35,25 @@ class Directory extends React.Component {
   };
 
   componentDidMount() {
-    auth.findAllUser().then(res => console.log(res));
-    // this.setState({ demo });
+    let directory = []
+    auth.findAllUser().then(res => {
+      res.map( (profile) => {
+        const ob = {}
+        ob._id = profile.profile._id
+        ob.user =  profile.profile.user
+        ob.type =  profile.profile.type
+        ob.contactDetails = profile.profile.contactDetails[0]
+        ob.multimedia = profile.profile.multimedia[0]
+        ob.profile = profile.profile.profile[0]
+        ob.socialMediaIcons = profile.profile.socialMediaIcons[0]
+
+        directory.push(ob)
+      });
+    })
+    console.log("directory", directory);
+
+
+    this.setState({ directory: directory });
   }
 
   typeFilter = event => {
@@ -67,9 +84,6 @@ class Directory extends React.Component {
     });
   };
 
-  handleHover = event => {
-    console.log(event.target);
-  };
 
   handleFilter = () => {
     let nav1 = this.state.navButtonActive;
@@ -78,6 +92,7 @@ class Directory extends React.Component {
 
   render() {
     const { navButtonActive } = this.state;
+
 
     const nav = ['all', 'Musicians', 'Venues', 'Businesses'];
     const musicians = ['all', 'Bands', 'Djs', 'Soloists'];
@@ -172,7 +187,7 @@ class Directory extends React.Component {
           {navButtonActive === 3 && <DirectoryGrid listing={businessNames} />}
         </div>
       </div>
-    );
+    )
   }
 }
 
