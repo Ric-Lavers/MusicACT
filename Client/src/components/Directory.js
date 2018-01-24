@@ -129,7 +129,6 @@ class Directory extends React.Component {
                  )
             }
 
-
           </div>
           {navButtonActive === 0 &&
           <DirectoryGrid listing= {all} />}
