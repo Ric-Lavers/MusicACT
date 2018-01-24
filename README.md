@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ### Website redesign
 #### Client: MusicACT
 #### address: (www.musicact.com.au)
@@ -71,3 +72,6 @@ _____________
 
 _____________
 ### Deployment
+=======
+
+>>>>>>> kevin
