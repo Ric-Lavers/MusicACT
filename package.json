@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node Server/server",
     "heroku-postbuild":
-      "NPM_CONFIG_PRODUCTION=false npm install --prefix Client && npm run build --prefix Client"
+      "NPM_CONFIG_PRODUCTION=false npm install --prefix Client && npm run build --prefix Client && npm install --prefix Server && npm run build --prefix Server"
   },
   "author": "",
   "license": "ISC",
