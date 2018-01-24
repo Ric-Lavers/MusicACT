@@ -120,7 +120,7 @@ console.log("else");
           profile.socialMediaIcons = res.profile.profile.socialMediaIcons[0]
           profile.profile = res.profile.profile.profile[0]
           profile.contactDetails = res.profile.profile.contactDetails[0]
-
+          profile.type = decodeToken.type // this is just to make it work for musician!!
           this.setState({
             profile: profile
           })
@@ -216,8 +216,10 @@ console.log("else");
   }
 
   render() {
-    console.log(this.state);
-    return (
+    console.log("this.state",this.state);
+    return (this.state.profile === "none" ?
+      (null)
+    :
       <div className="ProfileCreate">
         <MusicianForm
           data = {this.state.profile}
@@ -228,9 +230,10 @@ console.log("else");
           handleSocialDelete ={this.handleSocialDelete}
           errors={this.state.errors}
         />
-      {/*
-        <MusicianProfile _id="1234" data={this.state.profile} />
-      */}
+        {<MusicianProfile
+          _id="1234"
+          data={this.state.profile}
+          type={this.state.profile.type} />}
     </div>
     );
   }
