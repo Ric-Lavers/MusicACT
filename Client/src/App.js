@@ -75,15 +75,13 @@ class App extends Component {
               }}
             /> */}
 
-            <Route path="/directory" component={Directory} />
-
             <Route
               path="/directory/create"
               myProfile={this.state.myProfile}
               component={ProfileCreate}
             />
             <Route path="/directory/:id" component={Profile} />
-
+            <Route path="/directory" component={Directory} />
             <Route path="/contact" component={Contact} />
             <Route path="/downloads" component={Downloads} />
             <Route path="/admin" component={Admin} />

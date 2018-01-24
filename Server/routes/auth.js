@@ -18,6 +18,9 @@ module.exports = app => {
           User: users.map(user => {
             if (user.profile) {
               array.push({
+                user_id: user.profile._id,
+                profile_id: user.profile.user,
+                type: user.type,
                 profile: user.profile
               });
             }
