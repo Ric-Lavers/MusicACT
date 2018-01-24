@@ -18,6 +18,7 @@ import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import * as auth from '../api/auth';
 
+
 export default class DrawerSimpleExample extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +26,11 @@ export default class DrawerSimpleExample extends React.Component {
   }
 
   //click Nav iconElementLet to openDrawer
-  handleToggle = () => this.setState({ drawer: !this.state.drawer });
+  handleToggle = () => {
+    this.setState({ drawer: !this.state.drawer });
+    console.log(this.state.drawer);
+  };
+
   handleClose = () => this.setState({ drawer: false });
 
   //click Nav iconElementRight to handleSignUp
@@ -94,7 +99,7 @@ export default class DrawerSimpleExample extends React.Component {
       return (
         <div>
           <MenuItem onClick={this.handleSignOut}>
-            <NavLink to={`/`}>SignOut </NavLink>
+            <NavLink to={`/`}> SignOut </NavLink>
           </MenuItem>
         </div>
       );
@@ -134,6 +139,7 @@ export default class DrawerSimpleExample extends React.Component {
   render() {
     return (
       <div className="header">
+
         {/* login modal */}
         <Dialog
           show={this.state.dialog}
@@ -166,8 +172,20 @@ export default class DrawerSimpleExample extends React.Component {
           onRequestChange={open => this.setState({ drawer: open })}
         >
           <MenuItem onClick={() => this.setState({ drawer: false })}>
-            <NavLink to={`/`}>Logo</NavLink>
+            <NavLink to={`/`}>Home</NavLink>
           </MenuItem>
+          {/* these two are test (after need to delete App.js <Route>) */}
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
+            <NavLink activeClassName="selected" to={`/admin`}>
+              Admin
+            </NavLink>
+          </MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
+            <NavLink activeClassName="selected" to={`/progress`}>
+              Progress
+            </NavLink>
+          </MenuItem>
+          {/* these two are test  */}
           <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/directory`}>
               Directory
@@ -231,6 +249,7 @@ export default class DrawerSimpleExample extends React.Component {
               )}
             />
           </Switch> */}
+
       </div>
     );
   }

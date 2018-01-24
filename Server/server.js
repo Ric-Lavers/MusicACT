@@ -8,7 +8,7 @@ const cookieSeesion = require('cookie-session');
 
 var app = express();
 
-// setup env running on heroku
+// setup env running on HEROKU
 const port = process.env.PORT || 5000;
 
 //configuring express to use body-parser as middle-ware.
@@ -34,6 +34,11 @@ app.use(
     keys: ['uenjngnajnjannoopkopoao']
   })
 );
+
+// middleware to access this page
+// app.use((req, res, next) => {
+//  res.render();
+//  });
 
 //allow to accesss 'Access-Control-Allow-Origin' header
 app.use(function(req, res, next) {

@@ -1,3 +1,6 @@
+*{
+  font-family: roboto;
+}
 .profile-container{
   margin: 0 auto;
   max-width: 1200px;
@@ -10,6 +13,7 @@
       padding-top:12px;
       border-width:0;
       height: 300px;width:300px;
+
       img{
         height: 100%;width:100%;
         border-radius:8px;
@@ -99,6 +103,8 @@
 }
 label {
     // border: 2px solid green;
+    display: flex;
+    align-items: center;
     width:100%;
   input{
     margin-right:0;

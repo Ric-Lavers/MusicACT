@@ -1,6 +1,7 @@
 import React from "react";
 import ImageSlide from "./ImageSlide";
 // import { Timeline } from 'react-twitter-widgets';
+
 import { UncontrolledCarousel } from "reactstrap";
 import { Link } from "react-router-dom";
 import SponsorReel from "./home/SponsorReel";
@@ -16,18 +17,21 @@ import Image8 from "../images/blocks/8.png";
 require("../style/home.css");
 require("../style/homehome.css");
 
+
 const Home = () => {
   return (
     <div>
-      {" "}
-      hello
+
       <ImageSlide />
       <h1> this is Home Page</h1>
+      <SponsorReel />
+
       <div class="wrapper">
         <div class="splash">
           <div class="header-text">
             <h1>Music For Everyone.</h1>
             <h3>Enlivening The Capitals </h3>
+
           </div>
         </div>
 
@@ -68,6 +72,7 @@ const Home = () => {
             </Link>
           </div>
           <SponsorReel />
+
         </div>
       </div>
     </div>

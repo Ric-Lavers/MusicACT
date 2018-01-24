@@ -17,6 +17,7 @@ const FormSocials = (props) => {
             className="socialMedia"
             onChange={props.handleChange}
             />
+          <button name={name} onClick={props.handleSocialDelete} style={{position:"absolute",float:"right"}}>X</button>
           <br/>
         </label>
       )

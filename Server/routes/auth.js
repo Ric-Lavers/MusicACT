@@ -1,12 +1,46 @@
 const authMiddleware = require('../middleware/auth');
-const { User } = require('../models/user');
+const User = require('../models/user');
 
 require('colorize');
 
 module.exports = app => {
-  // User SignUp
+  //GET Index (Access to the top page)
+  app.get('/api/user', (req, res, next) => {
+    console.log('Hit the Home');
+    User.find()
+      .populate('profile')
+      // .populate('profile')
+      .exec()
+      .then(users => {
+        const array = [];
+        const response = {
+          count: users.length,
+          User: users.map(user => {
+            if (user.profile) {
+              array.push({
+                user_id: user.profile._id,
+                profile_id: user.profile.user,
+                type: user.type,
+                profile: user.profile
+              });
+            }
+            return array;
+          })
+        };
+        console.log(array);
+        res.send(array);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({
+          error: err
+        });
+      });
+  });
+
+  //POST /register(User SignUp)
   app.post(
-    '/register',
+    '/api/register',
     authMiddleware.register,
     authMiddleware.signJWTForUser,
     (req, res) => {
@@ -17,9 +51,9 @@ module.exports = app => {
     }
   );
 
-  // User Login
+  //POST /signin User Login
   app.post(
-    '/signin',
+    '/api/signin',
     (req, res, next) => {
       console.log('in signin');
       next();
@@ -32,17 +66,17 @@ module.exports = app => {
     }
   );
 
-  // User Logout  (http://www.passportjs.org/docs/logout/)
-  app.get('/logout', function(req, res) {
+  //GET /logout User Logout  (http://www.passportjs.org/docs/logout/)
+  app.get('/api/logout', function(req, res) {
     req.logout();
     res.redirect('/');
   });
 
-  // Fetch the user data??? to setupthe middlware
-  app.get('/current_user', authMiddleware.requireJWT, (req, res) => {
-    console.log(req);
-    // console.log(req.token);
-    // res.send(req.user);
-    // console.log(req.body);
-  });
+  // // Fetch the user data??? to setupthe middlware
+  // app.get('/current_user', authMiddleware.requireJWT, (req, res) => {
+  //   console.log(req);
+  //   // console.log(req.token);
+  //   // res.send(req.user);
+  //   // console.log(req.body);
+  // });
 };
