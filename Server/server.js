@@ -58,6 +58,17 @@ app.use(authMiddleware.initialize);
 require('./routes/auth')(app);
 require('./routes/profile')(app);
 
+//set up heroku Environment
+if (process.env.NODE_ENV == 'production') {
+  //Express will serve up production assets
+  app.use(express.static('Client/build'));
+  //Express will serve up the index.html
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'Client', 'build', 'index.html'));
+  });
+}
+
 // create a listen with callback function
 app.listen(port, () => {
   console.log(`started on port ${port}`);
