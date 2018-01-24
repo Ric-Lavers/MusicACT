@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Route, Link,Switch} from 'react-router-dom';
 
 import Header from './components/Header';
 import Landing from './components/Landing';
-import Footer from './components/Footer';
+import Footer from './components/Footer/Footer';
 import Profile from './pages/Profiles'
 
 import Directory from './components/Directory'
