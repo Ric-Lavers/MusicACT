@@ -9,6 +9,7 @@ import urlExists from 'url-exists';
 import _ from 'lodash';
 import validate from '../library/validate';
 import * as auth from '../api/profile';
+import jwt_decode from 'jwt-decode';
 
 require('../style/forms.css');
 
@@ -39,18 +40,47 @@ const errors = {
 class ProfileCreate extends React.Component {
   constructor(props) {
     super(props);
+
+    console.log("%c this.props","font-size: 1.3em; color:blue",this.props);
+
     if (this.props.myProfile != null) {
+console.log("this.props.myProfile != null");
       this.state = {
         errors,
         profile: this.props.myProfile
       };
-    } else if (window.localStorage.getItem('newProfile')) {
+    }else if(this.props.myProfile === null){
+console.log("%c this.props.myProfile === null","color:green");
+      this.state = {
+        errors,
+        profile: "none"
+      }
+      // const getToken = auth.token();
+      //
+      // if (getToken !== null) {
+      //   const decodeToken = jwt_decode(getToken);
+      //   const tokenId = decodeToken.sub;
+      //   console.log(decodeToken,tokenId);
+      //   auth.fetchProfile(tokenId).then(res =>{
+      //     console.log("res.profile",res.profile.profile),
+      //     this.state = {
+      //       errors,
+      //       profile: res.profile.profile
+      //     }
+      //   })
+      // }else {
+      //   console.log('No token');
+      // }
+    }
+     else if ( window.localStorage.getItem('newProfile') ) {
+console.log("window.localStorage.getItem('newProfile')");
       let profile = JSON.parse(window.localStorage.getItem('newProfile'));
       this.state = {
         errors,
         profile: profile
       };
     } else {
+console.log("else");
       this.state = {
         errors,
         profile: {
@@ -73,6 +103,31 @@ class ProfileCreate extends React.Component {
           }
         }
       };
+    }
+  }
+  componentDidMount() {
+    if (this.state.profile ===  "none") {
+      const getToken = auth.token();
+
+      if (getToken !== null) {
+        const decodeToken = jwt_decode(getToken);
+        const tokenId = decodeToken.sub;
+        console.log(decodeToken,tokenId);
+        auth.fetchProfile(tokenId).then(res =>{
+          let profile = {}
+
+          profile.multimedia = res.profile.profile.multimedia[0]
+          profile.socialMediaIcons = res.profile.profile.socialMediaIcons[0]
+          profile.profile = res.profile.profile.profile[0]
+          profile.contactDetails = res.profile.profile.contactDetails[0]
+
+          this.setState({
+            profile: profile
+          })
+        })
+      }else {
+        console.log('No token');
+      }
     }
   }
 
@@ -161,6 +216,7 @@ class ProfileCreate extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="ProfileCreate">
         <MusicianForm
@@ -172,9 +228,10 @@ class ProfileCreate extends React.Component {
           handleSocialDelete ={this.handleSocialDelete}
           errors={this.state.errors}
         />
-
+      {/*
         <MusicianProfile _id="1234" data={this.state.profile} />
-      </div>
+      */}
+    </div>
     );
   }
 }

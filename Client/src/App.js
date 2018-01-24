@@ -23,6 +23,7 @@ import Progress from './components/RequestProgress';
 
 import * as auth from './api/profile';
 import jwt_decode from 'jwt-decode';
+const logo = require('./images/MusicACTlogo.png')
 
 class App extends Component {
   state = {
@@ -53,12 +54,15 @@ class App extends Component {
     return (
       <Router>
         <div className="app">
+          <div className="logo-container">
+              <img className="nav-logo" style={{ textAlign:"center" }} src={ logo } alt=""/>
+          </div>
           <MuiThemeProvider>
             <Header />
           </MuiThemeProvider>
 
           {/* testing dynamic route */}
-          <div>
+          <div style={{marginTop:20}}>
             <button onClick={this.onClick} />
           </div>
 
@@ -80,7 +84,10 @@ class App extends Component {
             <Route
               path="/directory/create"
               myProfile={this.state.myProfile}
-              component={ProfileCreate}
+              render={() =>
+                <ProfileCreate  myProfile={this.state.myProfile}
+                />
+            }
             />
             <Route path="/directory/:id" component={Profile} />
 
@@ -88,6 +95,7 @@ class App extends Component {
             <Route path="/downloads" component={Downloads} />
             <Route path="/admin" component={Admin} />
             <Route path="/progress" component={Progress} />
+
           </Switch>
 
           <Footer />
