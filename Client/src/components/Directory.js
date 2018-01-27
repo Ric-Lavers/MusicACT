@@ -41,23 +41,6 @@ class Directory extends React.Component {
 
 
   componentDidMount() {
-<<<<<<< HEAD
-    const directory = []
-    auth.findAllUser().then(res => {
-      res.map( (profile) => {
-        let ob = {}
-        ob._id = profile.profile._id
-        ob.user =  profile.profile.user
-        ob.type =  profile.type
-        ob.contactDetails = profile.profile.contactDetails[0]
-        ob.multimedia = profile.profile.multimedia[0]
-        ob.profile = profile.profile.profile[0]
-        ob.socialMediaIcons = profile.profile.socialMediaIcons[0]
-        directory.push(ob)
-      })
-      this.setState({ directory });
-    })
-=======
     // let directory = []
     // auth.findAllUser().then(res => {
     //   res.map( (profile) => {
@@ -85,7 +68,6 @@ class Directory extends React.Component {
     TweenMax.staggerFrom( "#ani", 1,
     {opacity:0.2,x:200, backgroundColor:"blue"}
     )*/
->>>>>>> dev
   }
 
   typeFilter = event => {
@@ -177,17 +159,10 @@ class Directory extends React.Component {
       })
 
     }
-
-
-<<<<<<< HEAD
       return (!Array.isArray(this.state.directory) ?
         (null)
       : (
-        <div className="directory">
-=======
-      return (
       <div id="ani" className="directory">
->>>>>>> dev
         <div className="filters">
           <FilterForm
             color="#C8FF5D"
