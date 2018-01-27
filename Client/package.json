@@ -12,6 +12,7 @@
     "colorize": "^0.1.0",
     "dotenv": "^4.0.0",
     "eslint": "^4.15.0",
+    "express": "^4.16.2",
     "formsy-material-ui": "^0.6.3",
     "formsy-react": "^0.18.0",
     "gsap": "^1.20.3",
