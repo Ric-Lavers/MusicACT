@@ -1,7 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom'
 import FilterForm from './FilterForm';
 import DirectoryGrid from './DirectoryGrid';
 import * as auth from '../api/auth';
+import {TweenMax, SlowMo, TimelineMax} from "gsap";
+
 
 const demo = require('../demoData/demo.json');
 
@@ -26,6 +29,7 @@ const VenueButtonsEnum = {
 
 class Directory extends React.Component {
   state = {
+    directory: null,
     demo,
     filterType: 'all',
     categoryFilter: 'all',
@@ -34,26 +38,36 @@ class Directory extends React.Component {
     venueButtonActive: VenueButtonsEnum.ALL
   };
 
+
+
   componentDidMount() {
-    let directory = []
-    auth.findAllUser().then(res => {
-      res.map( (profile) => {
-        const ob = {}
-        ob._id = profile.profile._id
-        ob.user =  profile.profile.user
-        ob.type =  profile.profile.type
-        ob.contactDetails = profile.profile.contactDetails[0]
-        ob.multimedia = profile.profile.multimedia[0]
-        ob.profile = profile.profile.profile[0]
-        ob.socialMediaIcons = profile.profile.socialMediaIcons[0]
+    // let directory = []
+    // auth.findAllUser().then(res => {
+    //   res.map( (profile) => {
+    //     const ob = {}
+    //     ob._id = profile.profile._id
+    //     ob.user =  profile.profile.user
+    //     ob.type =  profile.profile.type
+    //     ob.contactDetails = profile.profile.contactDetails[0]
+    //     ob.multimedia = profile.profile.multimedia[0]
+    //     ob.profile = profile.profile.profile[0]
+    //     ob.socialMediaIcons = profile.profile.socialMediaIcons[0]
+    //
+    //     directory.push(ob)
+    //   });
+    // })
+    // console.log("directory", directory);
+    //
+    //
+    // this.setState({ directory: directory });
 
-        directory.push(ob)
-      });
-    })
-    console.log("directory", directory);
-
-
-    this.setState({ directory: directory });
+/*    const node = ReactDOM.findDOMNode(this);
+    // const node =document.getElementById("ani")
+    // console.log("node",node)
+    // TweenMax.to("#ani", 4, {y:"300"})
+    TweenMax.staggerFrom( "#ani", 1,
+    {opacity:0.2,x:200, backgroundColor:"blue"}
+    )*/
   }
 
   typeFilter = event => {
@@ -91,37 +105,65 @@ class Directory extends React.Component {
   };
 
   render() {
+    const nav =   ['all','Musicians','Venues', 'Businesses'];
+    const musicians =   ['all','Bands','Djs', 'Soloists'];
+    const venues =   ['all','Civic','North', 'South'];
+
+    let norm = "filter-button"
+    let active = "filter-button active"
+
     const { navButtonActive } = this.state;
 
+    if ( Array.isArray(this.state.directory) ) {
+      console.log("%c TRUE", "color:green");
 
-    const nav = ['all', 'Musicians', 'Venues', 'Businesses'];
-    const musicians = ['all', 'Bands', 'Djs', 'Soloists'];
-    const venues = ['all', 'Civic', 'North', 'South'];
+      const findSelectedListDB = (value, array) => {
+        let result = []
+        console.log(array,  value);
+        array.map( (listing) => {
+          if (listing.type === value){
+            console.log("yes",value);
+            result.push(listing)
+          }
+        })
+        return result
+      }
 
-    let norm = 'filter-button';
-    let active = 'filter-button active';
+      const bandNames = findSelectedListDB("1", this.state.directory)
+      const venueNames = findSelectedListDB("2", this.state.directory)
+      const businessNames = findSelectedListDB("3", this.state.directory)
+      const all = bandNames.concat(venueNames).concat(businessNames)
+      const selected = []
+      bandNames.filter( (band) => {
+        band.type === musicians[this.state.musicianButtonActive] && selected.push(band);
+      })
+    }else{
+      console.log("%c FALSE", "color:red");
 
-    const findSelectedList = type => {
-      let result = [];
-      this.state.demo.data[type].filter(k => {
-        result.push(k);
-      });
-      return result;
-    };
+      const findSelectedList = (type) => {
+        let result = []
+        this.state.demo.data[type].filter( (k) => {
+          result.push(k)
+        })
+        return result
+      }
 
-    let bandNames = findSelectedList('musicians');
-    let venueNames = findSelectedList('venues');
-    let businessNames = findSelectedList('businesses');
-    const all = bandNames.concat(venueNames).concat(businessNames);
-    console.log(all);
-    const selected = [];
-    bandNames.filter(band => {
-      band.type === musicians[this.state.musicianButtonActive] &&
-        selected.push(band);
-    });
+      const bandNames = findSelectedList('musicians')
+      const venueNames = findSelectedList('venues')
+      const businessNames = findSelectedList('businesses')
+      const all = bandNames.concat(venueNames).concat(businessNames)
 
-    return (
-      <div className="directory">
+      const selected = []
+      bandNames.filter( (band) => {
+        band.type === musicians[this.state.musicianButtonActive] && selected.push(band);
+      })
+
+    }
+      return (!Array.isArray(this.state.directory) ?
+        (null)
+      : (
+      <div id="ani" className="directory">
+
         <div className="filters">
           <FilterForm
             color="#C8FF5D"
@@ -148,46 +190,14 @@ class Directory extends React.Component {
             <div style={{ height: 58 }} />
           )}
         </div>
+        {/*
         {navButtonActive === 0 && <DirectoryGrid listing={all} />}
         {navButtonActive === 1 && <DirectoryGrid listing={bandNames} />}
         {navButtonActive === 2 && <DirectoryGrid listing={venueNames} />}
         {navButtonActive === 3 && <DirectoryGrid listing={businessNames} />}
-        return (
-        <div className="directory">
-          <div className="filters">
-            <FilterForm
-              color="#C8FF5D"
-              handleClick={this.handleNavButtonClick}
-              activeButton={this.state.navButtonActive}
-              array={nav}
-            />
-
-            {navButtonActive === 1 ? (
-              <FilterForm
-                color="#FF2D61"
-                handleClick={this.handleMusicianButtonClick}
-                activeButton={this.state.musicianButtonActive}
-                array={musicians}
-              />
-            ) : navButtonActive === 2 ? (
-              <FilterForm
-                color="#E8CF3B"
-                handleClick={this.handleVenueButtonClick}
-                activeButton={this.state.venueButtonActive}
-                array={venues}
-              />
-            ) : (
-              <div style={{ height: 58 }} />
-            )}
-          </div>
-          {navButtonActive === 0 && <DirectoryGrid listing={all} />}
-
-          {navButtonActive === 1 && <DirectoryGrid listing={bandNames} />}
-          {navButtonActive === 2 && <DirectoryGrid listing={venueNames} />}
-          {navButtonActive === 3 && <DirectoryGrid listing={businessNames} />}
-        </div>
+        */}
       </div>
-    )
+    ))
   }
 }
 

@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ContactForm from './components/ContactForm';
 import MusicianForm from './components/MusicianForm';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Link,
   Switch,
