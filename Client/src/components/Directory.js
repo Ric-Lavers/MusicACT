@@ -1,7 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom'
 import FilterForm from './FilterForm';
 import DirectoryGrid from './DirectoryGrid';
 import * as auth from '../api/auth';
+import {TweenMax, SlowMo, TimelineMax} from "gsap";
+
 
 const demo = require('../demoData/demo.json');
 
@@ -38,6 +41,7 @@ class Directory extends React.Component {
 
 
   componentDidMount() {
+<<<<<<< HEAD
     const directory = []
     auth.findAllUser().then(res => {
       res.map( (profile) => {
@@ -53,6 +57,35 @@ class Directory extends React.Component {
       })
       this.setState({ directory });
     })
+=======
+    // let directory = []
+    // auth.findAllUser().then(res => {
+    //   res.map( (profile) => {
+    //     const ob = {}
+    //     ob._id = profile.profile._id
+    //     ob.user =  profile.profile.user
+    //     ob.type =  profile.profile.type
+    //     ob.contactDetails = profile.profile.contactDetails[0]
+    //     ob.multimedia = profile.profile.multimedia[0]
+    //     ob.profile = profile.profile.profile[0]
+    //     ob.socialMediaIcons = profile.profile.socialMediaIcons[0]
+    //
+    //     directory.push(ob)
+    //   });
+    // })
+    // console.log("directory", directory);
+    //
+    //
+    // this.setState({ directory: directory });
+
+/*    const node = ReactDOM.findDOMNode(this);
+    // const node =document.getElementById("ani")
+    // console.log("node",node)
+    // TweenMax.to("#ani", 4, {y:"300"})
+    TweenMax.staggerFrom( "#ani", 1,
+    {opacity:0.2,x:200, backgroundColor:"blue"}
+    )*/
+>>>>>>> dev
   }
 
   typeFilter = event => {
@@ -146,10 +179,15 @@ class Directory extends React.Component {
     }
 
 
+<<<<<<< HEAD
       return (!Array.isArray(this.state.directory) ?
         (null)
       : (
         <div className="directory">
+=======
+      return (
+      <div id="ani" className="directory">
+>>>>>>> dev
         <div className="filters">
           <FilterForm
             color="#C8FF5D"

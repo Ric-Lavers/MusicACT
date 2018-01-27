@@ -9,14 +9,15 @@ $leftCol: 300px;
 * {
   margin: 0 auto;
 }
-body {
-  background-color: #fafafa;
+body{
+  background-color: #FAFAFA;
 }
 
 .app {
   margin-left: 12px;
   margin-right: 12px;
   text-align: center;
+  background-color: #FAFAFA;
 }
 .header {
   margin-left: -12px;
@@ -89,7 +90,6 @@ body {
 // _____________directory-grid
 .container {
   width: 100%;
-  // background-color: black;
 }
 
 .directory-grid {
@@ -206,20 +206,26 @@ body {
     width: 60%;
     text-align: left !important;
     .profile-title {
-      height: 30px;
       text-align: center;
+      h2{
+        line-height: 1rem;
+        margin-top: 0;
+      }
     }
     .profile-bio {
-      background-color: white;
       margin-bottom: 6px;
       min-height: 270px;
       position: relative;
-      // .readmoreSVG{
-      //   position:absolute;
-      //   z-index: -1;
-      //   height: 115%;width:100%;
-      // }
+      z-index: 1;
+      .profile-overlay{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 5;
+      }
       p {
+        z-index: 2;
       }
     }
     .more-button {
@@ -231,8 +237,7 @@ body {
       font-family: cursive;
       font-size: 1.2em;
       color: blue;
-      text-align: left;
-      padding-left: 20px;
+      text-align: center;
       border: 1px solid blue;
       cursor: pointer;
     }
@@ -251,9 +256,7 @@ body {
     }
   }
 }
-* {
-  // border: 1px solid blue;
-}
+
 .hide {
   z-index: 20;
   border: 2px solid #f5f4f4;

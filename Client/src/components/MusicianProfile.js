@@ -1,5 +1,12 @@
 import React from 'react';
+
+import ContactInfo from './musicianProfile/ContactInfo'
+import ImageMain from './musicianProfile/ImageMain'
+import ProfileTags from './musicianProfile/ProfileTags'
+import SocialIcons from './musicianProfile/SocialIcons'
+import Bio from './musicianProfile/Bio'
 import ReactPlayer from 'react-player';
+import Multimedia from './musicianProfile/Multimedia'
 import '../profile.css';
 import { TweenMax, Power2, TimelineLite, SlowMo, TimelineMax } from 'gsap';
 import SocialIcons from './show_profile/SocialIcons'
@@ -45,7 +52,6 @@ class MusicainProfile extends React.Component {
       this.state = {
         profile: listing,
         bioOverflow: null,
-        viewContacts: ['none', 'block']
       };
     } else {
       let demoP = demo.data.musicians.find(obj => obj._id === props._id);
@@ -53,7 +59,6 @@ class MusicainProfile extends React.Component {
       this.state = {
         profile: demoP,
         bioOverflow: null,
-        viewContacts: ['none', 'block']
       };
     }
   }
@@ -65,28 +70,6 @@ class MusicainProfile extends React.Component {
     }
   }
 
-  isOverflown = element => {
-    return (
-      element.scrollHeight > element.clientHeight ||
-      element.scrollWidth > element.clientWidth
-    );
-  };
-  componentDidMount() {
-  //   let bioHeight = document.getElementById('profile-bio-content').clientHeight;
-  //   if (bioHeight > 270) {
-  //     this.setState({ bioOverflow: true, bioHeight: bioHeight });
-  //   } else {
-  //     this.setState({ bioOverflow: false, bioHeight: bioHeight });
-  //   }
-  //   console.log(bioHeight);
-  //   // let overflow = this.isOverflown(document.getElementsByClassName('profile-bio')[0])
-  //   // this.setState({bioOverflow:overflow})
-  }
-
-  handleBioOverflow = () => {
-    this.setState({ bioOverflow: !this.state.bioOverflow });
-  };
-
   handleContact = () => {
     console.log('handleContact');
     this.setState({
@@ -95,17 +78,10 @@ class MusicainProfile extends React.Component {
   };
 
   render() {
-    //Destructuring advance methods ---  https://medium.com/@pyrolistical/destructuring-nested-objects-9dabdd01a3b8
-    //http://2ality.com/2015/01/es6-destructuring.html
-    // console.log(this.props._id);
-    // console.log("______",this.state.profile  );
-    const { type } = this.state.profile.type;
-    const {
-      email,
-      phoneNumber,
-      pointOfContact
-    } = this.state.profile.contactDetails;
+    const { type } = this.state.profile;
+    const {contactDetails} = this.state.profile;
     const { imageSrc, name, bio } = this.state.profile.profile;
+    const { multimedia } = this.state.profile;
     const {
       facebook,
       instagram,
@@ -116,83 +92,78 @@ class MusicainProfile extends React.Component {
       website
     } = this.state.profile.socialMediaIcons;
 
+// _______________
+    const { socialMedia } = this.state.profile;
+    const socialIconsLinks = _.values(socialMedia);
+    const socialIconsNames = _.keys(socialMedia);
+    socialIcons;
+    const icons = [];
 
-    // find the social media icons and attach them to the icons
-    const { socialMediaIcons } = this.state.profile;
-    delete socialMediaIcons._id
-    delete socialMediaIcons.user
-
-
-    // const socialIconsLinks = _.values(socialMediaIcons);
-    // const socialIconsNames = _.keys(socialMediaIcons);
-    // //
-    // const icons = [];
-    // socialIcons[searchStringInArray('facebook', socialIcons)];
-    //
-    // console.log("%c |_____|","font-size:1.3em;color:purple",socialMediaIcons);
-    // //
-    // if (!!socialIconsLinks && socialIconsLinks.length != 0) {
-    //   socialIconsLinks.forEach((address, index) => {
-    //     if (socialIconsNames[index] !== 'website') {
-    //       let src =
-    //         socialIcons[
-    //           searchStringInArray(socialIconsNames[index], socialIcons)
-    //         ];
-    //       icons.push(
-    //         <a key={index} href={address} target="_blank">
-    //           {' '}
-    //           <img
-    //             key={`img_${index}`}
-    //             className="profile-social"
-    //             src={src}
-    //             alt=""
-    //           />
-    //         </a>
-    //       );
-    //     } else {
-    //       icons.push(
-    //         <a key={index} href={address} target="_blank">
-    //           {' '}
-    //           <img
-    //             key={`img_${index}`}
-    //             className="profile-social"
-    //             src={websiteIcon}
-    //             alt=""
-    //           />
-    //         </a>
-    //       );
-    //     }
-    //   });
-    // }
-    //
-    // const {soundcloudLink, youtubeLink} = this.state.profile.profile.multimedia
-    const { multimedia } = this.state.profile;
-    // console.log("multimedia",multimedia);
-    const multimediaLinks = [];
-    Object.values(multimedia).map(address => {
-      if (address.match('soundcloud')) {
-        multimediaLinks.push([address, 150]);
-      } else if (address.match('youtube')) {
-        //640x360 standard
-        multimediaLinks.push([address, 450]);
-      } else if (address.match('vimeo')) {
-        multimediaLinks.push([address, 400]);
-      }
-    });
-
-    const bioStyle = this.state.bioOverflow
-      ? { maxHeight: 270 }
-      : { height: '100%' };
-    let view = this.state.viewContacts[0];
-    let view2 = this.state.viewContacts[1];
-    const style = { display: { view } };
+    if (!!socialIconsLinks && socialIconsLinks.length != 0) {
+      socialIconsLinks.forEach((address, index) => {
+        if (socialIconsNames[index] !== 'website') {
+          let src =
+            socialIcons[
+              searchStringInArray(socialIconsNames[index], socialIcons)
+            ];
+          icons.push(
+            <a key={index} href={address} target="_blank">
+              {' '}
+              <img
+                key={`img_${index}`}
+                className="profile-social"
+                src={src}
+                alt=""
+              />
+            </a>
+          );
+        } else {
+          icons.push(
+            <a key={index} href={address} target="_blank">
+              {' '}
+              <img
+                key={`img_${index}`}
+                className="profile-social"
+                src={websiteIcon}
+                alt=""
+              />
+            </a>
+          );
+        }
+      });
+    }
+// _______________
 
     return (
       <div style={{ marginLeft: 24 }} className="MusicainProfile">
-        <div className="profile-social-icons">
-          <SocialIcons
-            socialMediaIcons = {socialMediaIcons}
-            />
+        <div className="profile-container">
+          <div className="profile-left">
+
+            <ImageMain imageSrc= {imageSrc} />
+
+            <div className="profile-social-icons">
+              {!!icons &&
+                icons.length != 0 &&
+                icons.map(i => {
+                  return i;
+                })}
+            </div>
+
+            <ContactInfo contactDetails = {contactDetails} />
+          </div>{ /*profile-left*/ }
+          <div className="profile-body">
+              <Bio
+                name = {name}
+                bio  = {bio}
+                />
+              <Multimedia
+                multimedia = {multimedia}
+                />
+              <div className="profile-gallery" />
+          </div>{ /*profile-body*/ }
+          <div className="profile-right">
+            <ProfileTags />
+          </div> { /*profile-right*/ }
         </div>
 
       </div>
@@ -200,111 +171,4 @@ class MusicainProfile extends React.Component {
     }
   }
 
-  export default MusicainProfile;
-      //
-      //   <div className="profile-container">
-      //     <div className="profile-left">
-      //       <div className="profile-image">
-      //         {this.state.profile.profile.imageSrc ? (
-      //           <img src={imageSrc} alt="" />
-      //         ) : (
-      //           <img src={this.state.profile.profile.imageSrcBuild} alt="" />
-      //         )}
-      //       </div>
-      //
-      //
-      //
-      //       <div className="profile-contact-info">
-      //         <div className="hide">
-      //           <br />
-      //           <h3>Contact</h3>
-      //           <ul>
-      //             <li className="profile-email">
-      //               <p>
-      //                 <strong>Email:</strong> <span>{email}</span>
-      //               </p>
-      //             </li>
-      //             <li className="profile-phone">
-      //               <p>
-      //                 <strong>Phone:</strong> <span>{phoneNumber}</span>
-      //               </p>
-      //             </li>
-      //             <li className="profile-person">
-      //               <p>
-      //                 <strong>Person:</strong> <span>{pointOfContact}</span>
-      //               </p>
-      //             </li>
-      //           </ul>
-      //           <br />
-      //         </div>
-      //       </div>
-      //     </div>
-      //     <div className="profile-body">
-      //       <div className="profile-header">
-      //         {!this.state.bioOverflow &&
-      //           this.state.bioHeight > 270 && (
-      //             <div
-      //               onClick={this.handleBioOverflow}
-      //               id="less-button"
-      //               className="more-button"
-      //             >
-      //               less
-      //             </div>
-      //           )}
-      //         <div className="profile-title">
-      //           <h2>{name}</h2>
-      //         </div>
-      //       </div>
-      //       <div className="profile-bio">
-      //         {/*<img src={readMore} alt="" className="readmoreSVG"/>*/}
-      //         <p style={bioStyle} id="profile-bio-content">
-      //           {bio}
-      //         </p>
-      //       </div>
-      //
-      //       {this.state.bioOverflow && (
-      //         <div
-      //           onClick={this.handleBioOverflow}
-      //           id="more-button"
-      //           className="more-button"
-      //         >
-      //           more
-      //         </div>
-      //       )}
-      //
-      //       {multimedia &&
-      //         multimediaLinks.map(address => (
-      //           <ReactPlayer
-      //             className="profile-react-player"
-      //             url={address[0]}
-      //             controls
-      //             width="100%"
-      //             height={address[1]}
-      //           />
-      //         ))}
-      //
-      //       <div className="profile-gallery" />
-      //     </div>
-      //
-      //     <div className="profile-right">
-      //       <div className="profile-tag" />
-      //       <div className="profile-tag" />
-      //       <div className="profile-tag" />
-      //       <div className="profile-tag" />
-      //       <div className="profile-tag" />
-      //     </div>
-      //   </div>
-      // </div>
-
-/*
-<div onClick={this.handleContact} style={{display:view2, backgroundColor:"powderblue"}} className="profile-social-icons">
-  <p className="profile-social">
-    SOCIALS LINKS
-  </p>
-  </div>
-<div onClick={this.handleContact} style={{display: view }} className="profile-social-icons">
-  {icons.map( (i) => {
-    return i
-  } )}
-</div>
-*/
+export default MusicainProfile;
