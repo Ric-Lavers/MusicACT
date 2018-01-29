@@ -1,6 +1,6 @@
 import validator from 'validator';
 
-function validate(name,value, errors){
+function validate(name, value, errors){
     if(value.length > 0) errors[name] = 1
     if(name === "email" && validator.isEmail(value)){errors.email = 2}
     if(name === "phoneNumber" &&
@@ -15,7 +15,7 @@ function validate(name,value, errors){
     if(name === "facebook" && validator.contains(value,"facebook.com") ){errors.facebook = 2}
     if(name === "youtube" && validator.contains(value,"youtube.com") ){errors.youtube = 2}
     if(name === "website"){errors.website = 2}
-    if(name === "twitter" && validator.contains(value,"twitter.com") ){errors.twitterLink = 2}
+    if(name === "twitter" && validator.contains(value,"twitter.com") ){errors.twitter = 2}
 
     if(name === "soundcloudLink" && validator.contains(value,"soundcloud.com") ){errors.soundcloudLink = 2}
     if(name === "youtubeLink" && validator.contains(value,"youtube.com") ){errors.youtubeLink = 2}

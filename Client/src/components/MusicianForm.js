@@ -1,7 +1,7 @@
 import React from 'react';
 import FormContactDetails from './FormContactDetails';
 import FormMusicianProfile from './FormMusicianProfile';
-import FormSocials from './FormSocials';
+import FormSocials from './formProfile/FormSocials';
 import FormMultimedia from './FormMultimedia';
 import { TweenMax } from 'gsap';
 import ReactSVG from 'react-svg';
@@ -26,8 +26,6 @@ class MusicianForm extends React.Component {
   handleClick = () => {
     this.setState({ minimized: !this.state.minimized });
   };
-
-  componentDidUpdate() {}
 
   // assign token for user
   componentWillMount() {

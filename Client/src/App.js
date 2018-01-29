@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ContactForm from './components/ContactForm';
 import MusicianForm from './components/MusicianForm';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Link,
   Switch,
@@ -23,8 +23,9 @@ import Progress from './components/RequestProgress';
 
 import * as auth from './api/profile';
 import jwt_decode from 'jwt-decode';
-const logo = require('./images/MusicACTlogo.png')
+const logo = require('./images/logo-02.png')
 
+console.time("check")
 class App extends Component {
   state = {
     tokenId: null,
@@ -55,7 +56,7 @@ class App extends Component {
       <Router>
         <div className="app">
           <div className="logo-container">
-              <img className="nav-logo" style={{ textAlign:"center" }} src={ logo } alt=""/>
+              <img className="nav-logo" style={{ textAlign:"center", marginBottom:6 }} src={ logo } alt=""/>
           </div>
           <MuiThemeProvider>
             <Header />
@@ -102,5 +103,5 @@ class App extends Component {
     );
   }
 }
-
+console.timeEnd("check")
 export default App;

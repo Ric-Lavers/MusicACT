@@ -1,4 +1,5 @@
 import React from 'react'
+import {ReactCSSTransitionGroup} from 'react-addons-transition-group'
 
 const youtubeIcon = require('../../images/001-youtube.svg');
 const twitterIcon = require('../../images/008-twitter.svg');
@@ -26,54 +27,55 @@ function searchStringInArray(str, strArray) {
 }
 
 const SocialIconsNew = (props) => {
-  const socialIconsLinks = Object.values(props.socialMedia)
-  const socialIconsNames = Object.keys(props.socialMedia)
-  console.log(socialIconsLinks,
-socialIconsNames);
-  const icons = [];
 
-  if (!!socialIconsLinks && socialIconsLinks.length != 0) {
-    socialIconsLinks.forEach((address, index) => {
-      if (socialIconsNames[index] !== 'website') {
-        let src =
-          socialIcons[
-            searchStringInArray(socialIconsNames[index], socialIcons)
-          ];
-        icons.push(
-          <a key={index} href={address} target="_blank">
-            <img
-              key={`img_${index}`}
-              className="profile-social"
-              src={src}
-              alt=""
-            />
-          </a>
-        );
-      } else {
-        icons.push(
-          <a key={index} href={address} target="_blank">
-            {' '}
-            <img
-              key={`img_${index}`}
-              className="profile-social"
-              src={websiteIcon}
-              alt=""
-            />
-          </a>
-        );
-      }
-    });
+  if ( typeof(props.socialMedia)==='object' ){
+    const socialIconsLinks = Object.values(props.socialMedia)
+    const socialIconsNames = Object.keys(props.socialMedia)
+
+    const icons = [];
+
+    if (!!socialIconsLinks && socialIconsLinks.length != 0) {
+      socialIconsLinks.forEach((address, index) => {
+        if (socialIconsNames[index] !== 'website') {
+          let src =
+            socialIcons[
+              searchStringInArray(socialIconsNames[index], socialIcons)
+            ];
+          icons.push(
+            <a key={index} href={address} target="_blank">
+              <img
+                key={`img_${index}`}
+                className="profile-social"
+                src={src}
+                alt=""
+              />
+            </a>
+          );
+        } else {
+          icons.push(
+            <a key={index} href={address} target="_blank">
+              {' '}
+              <img
+                key={`img_${index}`}
+                className="profile-social"
+                src={websiteIcon}
+                alt=""
+              />
+            </a>
+          );
+        }
+      });
+    }
+
+    return (
+      <div className="profile-social-icons">
+        {!!icons && icons}
+      </div>
+    )
   }
-
-  return (
-    <div className="profile-social-icons">
-      {!!icons &&
-        icons.length != 0 &&
-        icons.map(i => {
-          return i;
-        })}
-    </div>
-  )
+  else{
+    return( <div className="profile-social-icons" />)
+  }
 }
 
 export default SocialIconsNew

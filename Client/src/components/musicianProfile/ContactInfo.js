@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ContactInfo = (props) => {
-  console.log(props);
   const { email, phoneNumber, pointOfContact } = props.contactDetails
   return(
     <div className="profile-contact-info">

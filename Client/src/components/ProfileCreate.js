@@ -13,6 +13,9 @@ import jwt_decode from 'jwt-decode';
 
 require('../style/forms.css');
 
+const tick = require('../images/tick.svg')
+const cross = require('../images/cross.svg')
+
 const CLOUDINARY_UPLOAD_PRESET = 'profile_image';
 const CLOUDINARY_UPLOAD_URL =
   'https://api.cloudinary.com/v1_1/aeonknight/upload';
@@ -38,57 +41,48 @@ const errors = {
 class ProfileCreate extends React.Component {
   constructor(props) {
     super(props);
-
-    console.log("%c this.props","font-size: 1.3em; color:blue",this.props);
-
+    console.table(this.props);
+    //checks for a profile in passed via props
     if (this.props.myProfile != null) {
-console.log("this.props.myProfile != null");
+console.debug("this.props.myProfile != null");
       this.state = {
         errors,
         profile: this.props.myProfile
       };
+    //checks for a unsubmitted profile in the localStorage
     }else if ( window.localStorage.getItem('newProfile') ) {
-console.log("window.localStorage.getItem('newProfile')");
+console.debug("unfinished new profile");
      let profile = JSON.parse(window.localStorage.getItem('newProfile'));
      this.state = {
        errors,
        profile: profile
      };
-   }else if(this.props.myProfile === null){
-console.log("%c this.props.myProfile === null","color:green");
-      this.state = {
-        errors,
-        profile: "none"
-      }
-    }
-      else {
-console.log("else");
+  }
+    //New user sets up a blank profile
+    else if(this.props.myProfile === null){
+      console.debug("New User");
       this.state = {
         errors,
         profile: {
           type: 'DJs',
           _id: '1234',
-          contactDetails: {
-            email: '',
-            phoneNumber: '',
-            pointOfContact: ''
-          },
-          profile: {
-            imageSrc: '',
-            name: '',
-            bio: ''
-          },
-          socialMedia: {},
-          multimedia: {
-            soundcloudLink: '',
-            youtubeLink: ''
-          }
+          contactDetails: {},
+          profile: {},
+          socialMediaIcons: {},
+          multimedia: {}
         }
-      };
+      }
+    }  //sets profile to "none", check for login token and sends fetch to DB
+    else{
+      console.debug("Edit profile");
+      this.state = {
+        errors,
+        profile: "edit"
+      }
     }
   }
   componentDidMount() {
-    if (this.state.profile ===  "none") {
+    if (this.state.profile ===  "edit") {
       const getToken = auth.token();
 
       if (getToken !== null) {
@@ -107,6 +101,9 @@ console.log("else");
             profile: profile
           })
         })
+        .catch(error => {
+          console.log(error);
+        })
       }else {
         console.log('No token');
       }
@@ -123,9 +120,8 @@ console.log("else");
 
     const errors = validate(name, value, this.state.errors);
     this.setState({ errors });
-    // if (Object.keys(errors).length > 0 ) {return}
-    //check if errors validation is 2 before adding to profile
     if (errors[name] === 2) {
+      console.log("group",group)
       console.log(name, errors[name]);
       profile[group][name] = value;
       this.setState({ profile });
@@ -144,13 +140,11 @@ console.log("else");
       if (err) {
         console.error(err);
       }
-
       if (response.body.secure_url !== '') {
         const profile = this.state.profile;
         profile.profile.imageSrc = response.body.secure_url;
-        this.setState({
-          profile: profile
-        });
+
+        this.setState( {profile: profile} );
       }
     });
   };
@@ -158,9 +152,9 @@ console.log("else");
   onImageDrop = files => {
     const profile = this.state.profile;
     profile.profile.imageSrcBuild = files[0];
-    this.setState({
-      profile: profile
-    });
+
+    this.setState( {profile: profile} );
+
     this.handleImageUpload(files[0]);
   };
 
@@ -170,34 +164,33 @@ console.log("else");
     const elements = form.elements;
     const token = elements.token.value;
     const profile = { ...this.state.profile };
-    // console.dir(`this is profile.create ${profile}`);
     profile._id = token;
-    // console.dir(`this is profile.create ${profile}`);
-    auth
-      .createProfile(profile)
+    auth.createProfile(profile)
+      .then( this.setState( {success:"pending"} ))
       .then(res => {
         console.log('Done', res);
+        setInterval( () => { this.setState( {success:"sucess"} ) }, 1000 )
       })
       .catch(err => {
         console.log('error', err);
+        setInterval( () => { this.setState( {success:"failure"} ) }, 1000 )
       });
   };
 
   handleSocialDelete = (event) => {
-    console.log("%c ____!!!!", "color: green");
     event.preventDefault();
     const target = event.target.name;
-    console.log(target);
     const profile = this.state.profile;
-    delete profile.socialMedia[target]
-    this.setState({
-      profile: profile
-    });
-    console.log(this.state.profile.socialMedia);
+    delete profile.socialMediaIcons[target]
+
+    this.setState( {profile: profile} );
     window.localStorage.setItem('newProfile', JSON.stringify(profile));
   }
 
   render() {
+    if(this.state.success){
+     const tick =  this.state.success === "sucess"? <img src={tick} alt=""/>: <img src={cross} alt=""/>
+    }
     return (this.state.profile === "none" ?
       (null)
     :
