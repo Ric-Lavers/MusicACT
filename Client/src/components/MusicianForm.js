@@ -33,7 +33,7 @@ class MusicianForm extends React.Component {
     if (getToken !== null) {
       var decodeToken = jwt_decode(getToken);
       var tokenId = decodeToken.sub;
-      this.setState({ tokenId });
+      this.props.handleId(tokenId)
     } else {
       console.log('No token');
     }

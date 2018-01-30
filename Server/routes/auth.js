@@ -6,29 +6,29 @@ require('colorize');
 module.exports = app => {
   //GET Index (Access to the top page)
   app.get('/api/user', (req, res, next) => {
-    console.log('Hit the Home');
+    console.log('_______Hit the Home______');
     User.find()
       .populate('profile')
       // .populate('profile')
       .exec()
       .then(users => {
         const array = [];
+        users.map(user => {
+          if (user.profile) {
+            array.push({
+              user_id: user.profile._id,
+              profile_id: user.profile.user,
+              type: user.type,
+              profile: user.profile
+            })
+          }
+        });
         const response = {
           count: users.length,
-          User: users.map(user => {
-            if (user.profile) {
-              array.push({
-                user_id: user.profile._id,
-                profile_id: user.profile.user,
-                type: user.type,
-                profile: user.profile
-              });
-            }
-            return array;
-          })
+          User: array
         };
-        console.log(array);
-        res.send(array);
+        console.log("_____",response);
+        res.send(response);
       })
       .catch(err => {
         console.log(err);

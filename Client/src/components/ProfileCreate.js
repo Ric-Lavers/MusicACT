@@ -91,7 +91,7 @@ console.debug("unfinished new profile");
         console.log(decodeToken,tokenId);
         auth.fetchProfile(tokenId).then(res =>{
           let profile = {}
-
+          profile._id = tokenId
           profile.multimedia = res.profile.profile.multimedia[0]
           profile.socialMediaIcons = res.profile.profile.socialMediaIcons[0]
           profile.profile = res.profile.profile.profile[0]
@@ -108,6 +108,24 @@ console.debug("unfinished new profile");
         console.log('No token');
       }
     }
+
+    var getToken = localStorage.getItem('token')
+    if (getToken !== null) {
+      var decodeToken = jwt_decode(getToken);
+      var tokenId = decodeToken.sub;
+      let profile = this.state.profile
+      profile._id = tokenId
+      this.setState({profile})
+      console.log("got token");
+    } else {
+      console.log('No token');
+    }
+
+  }
+  setProfileId = (_id) => {
+    let profile = this.state.profile
+    profile._id = _id
+    this.setState({profile})
   }
 
   handleChange = event => {
@@ -160,13 +178,8 @@ console.debug("unfinished new profile");
 
   handleSubmit = event => {
     event.preventDefault();
-    const form = event.target;
-    const elements = form.elements;
-    const token = elements.token.value;
     const profile = { ...this.state.profile };
-    profile._id = token;
     auth.createProfile(profile)
-      .then( this.setState( {success:"pending"} ))
       .then(res => {
         console.log('Done', res);
         setInterval( () => { this.setState( {success:"sucess"} ) }, 1000 )
@@ -196,6 +209,7 @@ console.debug("unfinished new profile");
     :
       <div className="ProfileCreate">
         <MusicianForm
+          handleId ={this.setProfileId}
           data = {this.state.profile}
           className="MusicianForm"
           handleChange={this.handleChange}

@@ -18,12 +18,12 @@ export function token() {
 // }
 
 export function createProfile(profile) {
-  // console.log(profile);
+  console.table(profile);
   const id = { user: profile._id };
   const contactDetails = profile.contactDetails;
   const bio = profile.profile;
-  const socialIcons = profile.socialMedia;
-  const socialEmbed = profile.multimedia;
+  const socialIcons = profile.socialMediaIcons;
+  const multiMedia = profile.multimedia;
 
   return (
     fetch('/api/directory/create', {
@@ -36,7 +36,7 @@ export function createProfile(profile) {
         contactDetails,
         bio,
         socialIcons,
-        socialEmbed
+        multiMedia
       })
     })
       .then(res => res.json())
