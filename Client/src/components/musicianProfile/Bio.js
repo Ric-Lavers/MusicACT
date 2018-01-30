@@ -51,7 +51,6 @@ class Bio extends React.Component {
             {this.props.bio && this.props.bio}
           </p>
           <div className="profile-overlay" style={overlay}>
-
           </div>
         </div>
           {this.state.bioOverflow && <div
