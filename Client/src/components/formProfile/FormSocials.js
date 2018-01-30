@@ -3,7 +3,7 @@ import React from 'react'
 const FormSocials = (props) => {
 
   const names = ["facebook", "instagram","twitter", "soundcloud", "youtube", "spotify", "website"]
-  const styling=props.errors
+  const styling = props.errors
 
   const socials = []
     names.map( (name, index) =>{
@@ -14,7 +14,7 @@ const FormSocials = (props) => {
             style={styling[name]}
             name= {name}
             type="url"
-            className="socialMedia"
+            className="socialMediaIcons"
             onChange={props.handleChange}
             />
           <button name={name} onClick={props.handleSocialDelete} style={{position:"absolute",float:"right"}}>X</button>

@@ -34,10 +34,10 @@ class MusicainProfile extends React.Component {
   }
 
   render() {
-    const { type } = this.state.profile;
+    const { type } = this.state.profile || "";
     const {contactDetails} = this.state.profile;
     const { imageSrc, name, bio } = this.state.profile.profile;
-    const { socialMedia } = this.state.profile;
+    const { socialMediaIcons } = this.state.profile;
     const { multimedia } = this.state.profile;
 
     return (
@@ -45,18 +45,16 @@ class MusicainProfile extends React.Component {
         <div className="profile-container">
           <div className="profile-left">
             <ImageMain imageSrc= {imageSrc} />
-            <SocialIconsNew socialMedia = {socialMedia} />
+            <SocialIconsNew socialMedia = {socialMediaIcons} />
             <ContactInfo contactDetails = {contactDetails} />
           </div>{ /*profile-left*/ }
           <div className="profile-body">
-              <Bio
-                name = {name}
-                bio  = {bio}
-                />
-              <Multimedia
-                multimedia = {multimedia}
-                />
-              <div className="profile-gallery" />
+            <Bio
+              name = {name}
+              bio  = {bio}
+              />
+            <Multimedia  multimedia = {multimedia}/>
+            <div className="profile-gallery" />
           </div>{ /*profile-body*/ }
           <div className="profile-right">
             <ProfileTags />

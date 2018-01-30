@@ -143,119 +143,6 @@ body{
     }
   }
 }
-// _____________profile
-.profile-container {
-  margin: 0 auto;
-  width: 100%;
-  a {
-    text-decoration: none;
-  }
-
-  display: flex;
-  padding-bottom: 16px;
-  .profile-left {
-    width: 300px;
-    .profile-image {
-      padding-top: 12px;
-      border-width: 0;
-      height: 300px;
-      width: 300px;
-      img {
-        height: 100%;
-        width: 100%;
-        border-radius: 8px;
-        object-fit: cover;
-      }
-    }
-    .profile-social-icons {
-      padding-top: 16px;
-      padding-bottom: 16px;
-      display: flex;
-      justify-content: flex-start;
-      .profile-social {
-        filter: grayscale(100%);
-        transition: filter 1s ease-in;
-        height: 42px;
-        min-width: 42px;
-      }
-      .profile-social:hover {
-        filter: none;
-        transition: filter 0.1s;
-      }
-    }
-    .profile-contact-info {
-      padding-top: 16px;
-      padding-bottom: 16px;
-      text-align: left;
-      .profile-email {
-        list-style: none;
-      }
-      .profile-phone {
-        list-style: none;
-      }
-      .profile-person {
-        list-style: none;
-      }
-    }
-  }
-
-  .profile-body {
-    white-space: pre-line;
-    padding: 12px 12px 0px;
-    min-width: 300px;
-    width: 60%;
-    text-align: left !important;
-    .profile-title {
-      text-align: center;
-      h2{
-        line-height: 1rem;
-        margin-top: 0;
-      }
-    }
-    .profile-bio {
-      margin-bottom: 6px;
-      min-height: 270px;
-      position: relative;
-      z-index: 1;
-      .profile-overlay{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        z-index: 5;
-      }
-      p {
-        z-index: 2;
-      }
-    }
-    .more-button {
-      background-color: white;
-      height: 30px;
-      width: 60px;
-      margin: 0 0 0 0px;
-      font-weight: bold;
-      font-family: cursive;
-      font-size: 1.2em;
-      color: blue;
-      text-align: center;
-      border: 1px solid blue;
-      cursor: pointer;
-    }
-    .profile-react-player {
-      margin-top: 18px;
-    }
-  }
-  .profile-right {
-    width: 105px;
-    .profile-tag {
-      margin-top: 8px;
-      height: 32px;
-      width: 80%;
-      border-radius: 16px;
-      background-color: #d4fc76;
-    }
-  }
-}
 
 .hide {
   z-index: 20;
@@ -294,6 +181,14 @@ body{
 
 .MusicianProfile {
   margin-left: 24px;
+}
+
+.fade-enter{
+  right:100px;
+}
+.fade-enter-active{
+  right:0px;
+  transition: .5s ease-out all;
 }
 
 @media screen and (max-width: 908px) {
