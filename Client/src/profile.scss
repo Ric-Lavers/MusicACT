@@ -102,7 +102,7 @@
       z-index: 10;
     }
     .less-active{
-      
+
     }
     .profile-react-player{
       margin-top:18px;
@@ -153,6 +153,49 @@
   padding-top:25%;
   text-align: center;
 }
+.form-inputs{
+
+}
+.drop-title{
+  width:100%;height:2em;
+  background-color: #41EBEB;
+  justify-content:flex-start !important;
+  cursor: pointer;
+  label {
+    cursor: pointer;
+    h3{
+      pointer-events: none;
+      cursor: pointer;
+    }
+  }
+}
+.drop-state{
+  display:none;
+  justify-content:space-between;
+}
+.example-leave.example-leave-active{
+  background-color: red;
+  height:0px;
+  overflow:hidden;
+
+  transition: height 1s;
+}
+.example-enter.example-enter-active{
+  background-color: green;
+  height:100%;
+
+  transition: height 1s;
+}
+.off{
+  overflow:hidden;
+  height:0px;
+
+  transition: height 1s;
+}
+.input-title{
+
+}
+
 label {
     // border: 2px solid green;
     display: flex;
@@ -172,4 +215,11 @@ label {
 input textarea{
   outline:none;
   margin-right: 0px !important;
+}
+//crazy materialise
+h3{
+  margin-top:0px !important;
+}
+.social-icon-inputs{
+
 }
