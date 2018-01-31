@@ -8,7 +8,7 @@ const SocialMediaIcon = models.socialMediaIcon;
 const Multimedia = models.multimedia;
 const MusicianProfile = models.musicianProfile;
 const auth = require('../middleware/auth');
-require('colorize')
+require('colors')
 
 module.exports = app => {
   //POST /directory/create
@@ -70,11 +70,14 @@ module.exports = app => {
   app.get('/api/directory/:userId', (req, res, next) => {
     const userId = req.params.userId;
     console.log(`this is profile ID ${userId}`);
-    User.findById(userId)
+    User.findById(userId, function(err,doc){
+      console.log(`${doc}`.blue)
+    })
       .populate('profile')
       // .populate('profile.multimedia')
       .exec()
       .then(profile => {
+
         if (!profile) {
           console.log("message: 'profile not found'");
           return res.status(404).json({

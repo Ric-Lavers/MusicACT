@@ -1,7 +1,7 @@
 const authMiddleware = require('../middleware/auth');
 const User = require('../models/user');
 
-require('colorize');
+require('colors');
 
 module.exports = app => {
   //GET Index (Access to the top page)

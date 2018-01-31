@@ -14,14 +14,6 @@ const DirectoryGrid = ( {num,listing} ) => {
   console.groupCollapsed("in the grid")
   console.log("num, listing, listing[0]",num, listing, listing[0]);
 
-// console.groupCollapsed("listing.map")
-//   listing.map( (i) =>{
-//     console.log(i);
-//   })
-// console.groupEnd()
-
-
-
   const listings = []
   for (let i = 0; i < listing.length; i++) {
       console.log(listing[i])
