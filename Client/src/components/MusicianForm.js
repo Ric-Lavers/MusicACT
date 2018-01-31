@@ -1,8 +1,8 @@
 import React from 'react';
-import FormContactDetails from './FormContactDetails';
-import FormMusicianProfile from './FormMusicianProfile';
+import FormContactDetails from './formProfile/FormContactDetails';
+import FormMusicianProfile from './formProfile/FormMusicianProfile';
 import FormSocials from './formProfile/FormSocials';
-import FormMultimedia from './FormMultimedia';
+import FormMultimedia from './formProfile/FormMultimedia';
 import { TweenMax } from 'gsap';
 import ReactSVG from 'react-svg';
 
@@ -20,7 +20,13 @@ require('../style/forms.css');
 class MusicianForm extends React.Component {
   state = {
     minimized: false,
-    tokenId: null
+    tokenId: null,
+    drop:{
+      contactDetails:true,
+      bio:false,
+      socialIcons:false,
+      Multimedia:false
+    }
   };
 
   handleClick = () => {
@@ -37,6 +43,14 @@ class MusicianForm extends React.Component {
     } else {
       console.log('No token');
     }
+  }
+  drop = (event) => {
+    console.log(event.target.checked);
+    let on = event.target.checked;
+    let tab = event.target.id
+    const drop =  this.state.drop
+    drop[tab] = on
+    this.setState(drop)
   }
 
   render() {
@@ -65,6 +79,8 @@ class MusicianForm extends React.Component {
         <div className={inputs_cls}>
 
           <FormContactDetails
+            open={this.state.drop.contactDetails}
+            drop={this.drop}
             placeholders = {profileState.contactDetails}
             errors = {styling}
             handleChange={this.props.handleChange}
@@ -72,18 +88,24 @@ class MusicianForm extends React.Component {
             />
 
           <FormMusicianProfile
+            open={this.state.drop.bio}
+            drop={this.drop}
             errors = {styling}
             handleChange={this.props.handleChange}
             handleImageUpload={this.props.handleImageUpload}
             />
 
           <FormSocials
+            open={this.state.drop.socialIcons}
+            drop={this.drop}
             errors = {styling}
             handleSocialDelete={this.props.handleSocialDelete}
             handleChange={this.props.handleChange}
             />
 
           <FormMultimedia
+            open={this.state.drop.Multimedia}
+            drop={this.drop}
             errors = {styling}
             handleChange={this.props.handleChange}
             />

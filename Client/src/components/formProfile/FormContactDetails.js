@@ -1,24 +1,32 @@
 import React from 'react'
-
-import ReactSVG from 'react-svg';
-require('../library/MorphSVGPlugin')
-const tickAnimation =  require('../images/tickAnimation.svg')
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+// import ReactSVG from 'react-svg';
+// require('../library/MorphSVGPlugin')
+// const tickAnimation =  require('../images/tickAnimation.svg')
 
 
 const FormContactDetails = (props) => {
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    const {elements} = event.target;
-    const {email, phone, person} = elements;
-    console.log(email.value,phone.value, person.value);
 
-  }
   const styling=props.errors
+  const drop = props.open?"body on":"body off"
 
   return (
     <div className="form-inputs">
-      <label>Email:
+      <div className="drop-title">
+        <label
+
+          style={{justifyContent:"flex-start"}} for="contactDetails"><h3>Contact Details</h3>
+        </label>
+        <input
+          onClick={props.drop}
+          className="drop-state" id="contactDetails" type="checkbox"
+          defaultChecked={props.drop}/>
+
+      </div>
+
+      <div className= {drop}>
+      <label className="input-title">Email: <br/>
         <input
 
           style = {styling.email}
@@ -29,7 +37,7 @@ const FormContactDetails = (props) => {
           />
       </label>
       &nbsp;
-      <label>Phone Number:
+      <label className="input-title">Phone Number:
         <input
 
           style = {styling.phoneNumber}
@@ -41,7 +49,7 @@ const FormContactDetails = (props) => {
       </label>
       &nbsp;
 
-      <label>Point of contact:
+      <label className="input-title">Point of contact:
         <input
 
           style = {styling.pointOfContact}
@@ -49,7 +57,7 @@ const FormContactDetails = (props) => {
           onChange={props.handleChange}
           name="pointOfContact" type="text"/>
       </label>
-      &nbsp;
+    </div>
   </div>
   )
 }
