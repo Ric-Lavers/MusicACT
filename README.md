@@ -113,7 +113,7 @@ _This shows the journey of signing up and creating a profile for the directory_
 ### Wireframes
 ![Directory](./docs/directory_wirframe.png)
 _This shows the mock for the directory as a desktop view. as the screen shrinks to mobile the rows of reduce to 2 then 1_
-![Profile](./docs/musicain profile.png)
+![Profile](./docs/musicain\ profile.png)
 _This mock for the musican profile allows for the basics for presenting a professional artist_
 
 
