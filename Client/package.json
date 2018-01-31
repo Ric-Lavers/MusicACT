@@ -25,6 +25,7 @@
     "npm-run-all": "^4.1.2",
     "query-string": "^5.0.1",
     "react": "^16.2.0",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-addons-transition-group": "^15.6.2",
     "react-dom": "^16.2.0",
     "react-dropzone": "^4.2.5",

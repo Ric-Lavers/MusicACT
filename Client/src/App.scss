@@ -154,15 +154,14 @@ body{
   li {
     opacity: 0;
   }
-  h3 {
-    width: $leftCol;
-    text-align: center;
-    align-self: center;
-    padding-top: 14px;
-    position: absolute;
-    opacity: 0.8;
-    transition: opacity 4;
-  }
+  // h3 {
+  //   text-align: center;
+  //   align-self: center;
+  //   padding-top: 14px;
+  //   position: absolute;
+  //   opacity: 0.8;
+  //   transition: opacity 4;
+  // }
 }
 .hide:hover {
   border: 2px solid #8290fa;
@@ -173,10 +172,13 @@ body{
   li {
     opacity: 1;
   }
-  h3 {
-    opacity: 0.01;
-    transition: opacity 4;
+  h3{
+    margin-top:0px !important;
   }
+  // h3 {
+  //   opacity: 0.01;
+  //   transition: opacity 4;
+  // }
 }
 
 .MusicianProfile {

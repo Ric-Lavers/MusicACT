@@ -116,14 +116,6 @@ body {
   transition: opacity 0.9; }
   .hide li {
     opacity: 0; }
-  .hide h3 {
-    width: 300px;
-    text-align: center;
-    align-self: center;
-    padding-top: 14px;
-    position: absolute;
-    opacity: 0.8;
-    transition: opacity 4; }
 
 .hide:hover {
   border: 2px solid #8290fa;
@@ -134,8 +126,7 @@ body {
   .hide:hover li {
     opacity: 1; }
   .hide:hover h3 {
-    opacity: 0.01;
-    transition: opacity 4; }
+    margin-top: 0px !important; }
 
 .MusicianProfile {
   margin-left: 24px; }

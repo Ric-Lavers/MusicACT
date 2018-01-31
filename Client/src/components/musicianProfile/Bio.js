@@ -3,7 +3,10 @@ import {ReactCSSTransitionGroup as CTG} from 'react-addons-transition-group'
 // This displays the Bioography and measures the div's height, if above 300px of text a more button is displayed, and less  when clicked. If below 300px of text no buttons are displayed
 
 class Bio extends React.Component {
-  state= { bioOverflow: null }
+  state= {
+    bioOverflow: null,
+    bioHeight:null
+  }
 
   handleBioOverflow = () => {
     this.setState({ bioOverflow: !this.state.bioOverflow });
@@ -32,9 +35,11 @@ class Bio extends React.Component {
     }else{
       lessStyle={opacity:0};moreStyle={opacity:1}
     };
+    const bioHeight = this.state.bioHeight
+
     return(
       <div>
-            {!this.state.bioOverflow && <div
+            {this.state.bioHeight>270 && !this.state.bioOverflow && <div
               key="_1"
               onClick={this.handleBioOverflow}
               id="less-button"

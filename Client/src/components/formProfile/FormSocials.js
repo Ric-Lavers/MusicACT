@@ -4,31 +4,43 @@ const FormSocials = (props) => {
 
   const names = ["facebook", "instagram","twitter", "soundcloud", "youtube", "spotify", "website"]
   const styling = props.errors
+  const drop = props.open?"on":"off"
 
   const socials = []
     names.map( (name, index) =>{
       socials.push(
-        <label key={name+index}>{name}:
-          <input
-            key={`socialMedia_${index}`}
-            style={styling[name]}
-            name= {name}
-            type="url"
-            className="socialMediaIcons"
-            onChange={props.handleChange}
-            />
-          <button name={name} onClick={props.handleSocialDelete} style={{position:"absolute",float:"right"}}>X</button>
-          <br/>
-        </label>
+        <div className="social-icon-inputs">
+          <label key={name+index}>{name}:
+            <input
+              key={`socialMedia_${index}`}
+              style={styling[name]}
+              name= {name}
+              type="url"
+              className="socialMediaIcons"
+              onChange={props.handleChange}
+              />
+            <button name={name} onClick={props.handleSocialDelete} style={{position:"absolute",float:"right"}}>X</button>
+            <br/>
+          </label>
+        </div>
+
       )
     })
 
   return (
     <div className="form-inputs">
-      <h3>Social Icons</h3>
-      {socials.map( (i) =>
-        i
-      )}
+
+      <div className="drop-title">
+        <label
+          style={{justifyContent:"flex-start"}} for="socialIcons"><h3>Social Icons</h3></label>
+        <input
+          onClick={props.drop}
+          className="drop-state" id="socialIcons" type="checkbox"/>
+      </div>
+
+      <div className= {`body ${drop}`}>
+        {socials}
+      </div>
     </div>
   )
 }
