@@ -16,6 +16,10 @@ _____________
 
 #### BE
 - [validator](https://github.com/chriso/validator.js)
+- express
+- passport
+- jsonwebtoken
+- mongoose
 
 
 #### Package Notes
@@ -25,6 +29,56 @@ _____________
 - We encounted a issue with ReactRouter as the pages could not be refreshed , the solution was to use HashRouter insteat of BrowserRouter.
 _____________
 ### Client Interviews
+10th Jan 2018
+Skype Interviews
+_This interview was to formally start the project and for us to get a understanding of the most important elements of the site_
+#### Development
+
+###### Q] How does admin access work?
+###### A]
+"I will provide you with a admin username and password to that you can see the current access, really theres a lot of stuff we don't use in there."
+###### Q] How does member access work?
+###### A]
+"You will be able to see what the member sees with the admin access, its similar just obvious much more limited."
+###### Q] How does automatic emails access work?
+###### A]
+"I'm not sure actually.. we use mail chimp to send our emails to the members."
+
+###### Q] What database information is important to the organisation?
+###### A]
+"umm really just their email, name and type of  membership (musician, business, band). Obviously any other information we can use when presenting the organisation to other is valuable"
+
+#### Style
+_We provided a list of potentially similar sites as examples of features and styles_
+###### Q] Not being graphic designers, are there any site or styles that jumped out at you that we could use to inspire the look and feel of this site?
+###### A]
+"really happy to let you take creative control with that and just do what you feel " - ( _hmmm not the answer we wanted_ )
+
+#### Purpose
+_We needed to find the real reasons for the site, who will be using it and why_
+###### Q] Who is the most important user?
+###### A]
+Well there could be a few... Our goal is to represent the music industry as a lobbying body. But for now we want to use the site to bring in more members, these are going to be primarily musicians.
+###### Q] Whats your call to action aka the goal?
+###### A]
+There are few main parts, which are the blog, profiles (the directory), committee page, and tweets (which is the most active.) We'd love a music playlist too!
+###### Q] Where are you most active? social media (where), emails, print etc
+###### A]
+Twitter, followed by facebook, and then our blog articles.
+###### Q] What else is important for the site
+###### A]
+We need to show off the sponsors, if you could somehow create a box on the homepage that cycled through the sponsors logos that would be amazing!
+
+###### _Great thanks for your time_
+
+#### Our Conclusions
+We determined that the site had two main features, the blog and the directory. However the directory was the most important feature due to its uniqueness in the region, it's potential in bringing in new members and the under use of the blog.
+For style we were given very little to go off.
+Backend and database design seemed to be of less importance then we predicted and benefits of the Drupal backend were going mostly unused. 
+_____
+
+
+
 
 _____________
 ### Inspiration
@@ -58,7 +112,7 @@ _____________
 ### Homepage
 
 ### Blog
-followed a tutorial at (https://buttercms.com/react-blog-engine/) using **buttercms** 
+followed a tutorial at (https://buttercms.com/react-blog-engine/) using **buttercms**
 
 ### Form Creates
 - [cloudinary uploading ](https://css-tricks.com/image-upload-manipulation-react/)

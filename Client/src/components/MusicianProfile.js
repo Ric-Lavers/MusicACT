@@ -49,10 +49,7 @@ class MusicainProfile extends React.Component {
             <ContactInfo contactDetails = {contactDetails} />
           </div>{ /*profile-left*/ }
           <div className="profile-body">
-            <Bio
-              name = {name}
-              bio  = {bio}
-              />
+            <Bio name = {name} bio = {bio} />
             <Multimedia  multimedia = {multimedia}/>
             <div className="profile-gallery" />
           </div>{ /*profile-body*/ }
