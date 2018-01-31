@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import {
   NavLink,
   BrowserRouter,
@@ -8,17 +7,17 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
-
 import Register from '../pages/Register';
 import Login from '../pages/Login';
-import Directory from './Directory';
-import Dialog from './Dialog';
-//material UI
 import AppBar from 'material-ui/AppBar';
+import Directory from './Directory';
+import Dialog from './Nav/NavItems/Dialog';
+//material UI
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import * as auth from '../api/auth';
+
 
 export default class DrawerSimpleExample extends React.Component {
   constructor(props) {
@@ -27,7 +26,11 @@ export default class DrawerSimpleExample extends React.Component {
   }
 
   //click Nav iconElementLet to openDrawer
-  handleToggle = () => this.setState({ drawer: !this.state.drawer });
+  handleToggle = () => {
+    this.setState({ drawer: !this.state.drawer });
+    console.log(this.state.drawer);
+  };
+
   handleClose = () => this.setState({ drawer: false });
 
   //click Nav iconElementRight to handleSignUp
@@ -61,6 +64,7 @@ export default class DrawerSimpleExample extends React.Component {
 
   //signUp event to assgin the localStorage to token
   handleSignUp = event => {
+    console.log('handleSignup');
     // stop refreshing the page
     event.preventDefault();
     const form = event.target;
@@ -69,9 +73,10 @@ export default class DrawerSimpleExample extends React.Component {
     const lastName = elements.lastName.value;
     const email = elements.email.value;
     const password = elements.password.value;
+    const type = elements.type.value;
     const registrationDate = elements.registrationDate.value;
     auth
-      .signUp({ firstName, lastName, email, password, registrationDate })
+      .signUp({ firstName, lastName, email, password, type, registrationDate })
       .then(res => {
         // console.log('res from signin', res);
         this.setState({ token: res });
@@ -90,35 +95,51 @@ export default class DrawerSimpleExample extends React.Component {
 
   renderuserSign = () => {
     const TOKEN_KEY = 'token';
-    if (!auth.isSignedIn()) {
+    if (auth.isSignedIn()) {
       return (
         <div>
-          <MenuItem>
-            <NavLink activeClassName="selected" to={`/signup`}>
-              SignUp
-            </NavLink>
-          </MenuItem>
-          <MenuItem>
-            <NavLink activeClassName="selected" to={`/signin`}>
-              Login
-            </NavLink>
+          <MenuItem onClick={this.handleSignOut}>
+            <NavLink to={`/`}> SignOut </NavLink>
           </MenuItem>
         </div>
       );
     } else {
       return (
         <div>
-          <MenuItem onClick={this.handleSignOut}>
-            <NavLink to={`/`}>Logout</NavLink>
+          <MenuItem>
+            <NavLink activeClassName="selected" to={`/signup`}>
+              SignUp / Login
+            </NavLink>
           </MenuItem>
+          {/* <br />
+          <MenuItem>
+            <NavLink activeClassName="selected" to={`/signin`}>
+              Login
+            </NavLink>
+          </MenuItem> */}
         </div>
       );
     }
   };
 
+  renderProfileLink = () => {
+    const TOKEN_KEY = 'token';
+    if (auth.isSignedIn()) {
+      return (
+        <MenuItem onClick={() => this.setState({ drawer: false })}>
+          <NavLink activeClassName="selected" to={`/directory/create`}>
+            Create Musician Profile
+          </NavLink>
+        </MenuItem>
+      );
+    }
+    null;
+  };
+
   render() {
     return (
       <div className="header">
+
         {/* login modal */}
         <Dialog
           show={this.state.dialog}
@@ -151,8 +172,20 @@ export default class DrawerSimpleExample extends React.Component {
           onRequestChange={open => this.setState({ drawer: open })}
         >
           <MenuItem onClick={() => this.setState({ drawer: false })}>
-            <NavLink to={`/`}>Logo</NavLink>
+            <NavLink to={`/`}>Home</NavLink>
           </MenuItem>
+          {/* these two are test (after need to delete App.js <Route>) */}
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
+            <NavLink activeClassName="selected" to={`/admin`}>
+              Admin
+            </NavLink>
+          </MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
+            <NavLink activeClassName="selected" to={`/progress`}>
+              Progress
+            </NavLink>
+          </MenuItem>
+          {/* these two are test  */}
           <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/directory`}>
               Directory
@@ -168,11 +201,9 @@ export default class DrawerSimpleExample extends React.Component {
               News
             </NavLink>
           </MenuItem>
-          <MenuItem onClick={() => this.setState({ drawer: false })}>
-            <NavLink activeClassName="selected" to={`/directory/create`}>
-              Create Musician Profile
-            </NavLink>
-          </MenuItem>
+
+          {this.renderProfileLink()}
+
           <MenuItem onClick={() => this.setState({ drawer: false })}>
             <NavLink activeClassName="selected" to={`/venues`}>
               Venues
@@ -188,6 +219,11 @@ export default class DrawerSimpleExample extends React.Component {
               Contact
             </NavLink>
           </MenuItem>
+          <MenuItem onClick={() => this.setState({ drawer: false })}>
+            <NavLink activeClassName="selected" to={`/downloads`}>
+              Downloads
+            </NavLink>
+          </MenuItem>
           <MenuItem
             onClick={() => this.setState({ drawer: false, dialog: true })}
           >
@@ -196,23 +232,24 @@ export default class DrawerSimpleExample extends React.Component {
         </Drawer>
 
         {/* <Switch>
-          <Route
-            path="/signup"
-            render={() => (
-              <div>
-                <Register onSignUp={this.handleSignUp} />
-              </div>
-            )}
-          />
-          <Route
-            path="/signin"
-            render={() => (
-              <div>
-                <Login onSignIn={this.handleSignIn} />
-              </div>
-            )}
-          />
-        </Switch> */}
+            <Route
+              path="/signup"
+              render={() => (
+                <div>
+                  <Register onSignUp={this.handleSignUp} />
+                </div>
+              )}
+            />
+            <Route
+              path="/signin"
+              render={() => (
+                <div>
+                  <Login onSignIn={this.handleSignIn} />
+                </div>
+              )}
+            />
+          </Switch> */}
+
       </div>
     );
   }

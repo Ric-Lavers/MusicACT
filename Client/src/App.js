@@ -3,47 +3,43 @@ import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ContactForm from './components/ContactForm';
 import MusicianForm from './components/MusicianForm';
-import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
-
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Profile from './pages/Profiles';
 import ProfileCreate from './components/ProfileCreate';
 import Directory from './components/Directory';
-import Contact from './components/Contact'
+import Contact from './components/Contact';
+import Downloads from './pages/Downloads';
+import Admin from './components/Admin/Admin';
+import Progress from './components/RequestProgress';
 
-//test delete after
 import * as auth from './api/profile';
 import jwt_decode from 'jwt-decode';
+const logo = require('./images/logo-02.png')
 
+console.time("check")
 class App extends Component {
-  //
+  state = {
+    tokenId: null,
+    myProfile: null
+  };
   //   if (env.REACT_APP_SECRET_CODE) {s
   //   console.log(env.REACT_APP_SECRET_CODE);
   // }
-  //
-  state = {
-    tokenId: null
+
+  onClick = () => {
+    const id = this.state.tokenId;
+    auth.fetchProfile(id).then(res => this.setState({ myProfile: res }));
   };
 
-  createProfile = event => {
-    event.preventDefault();
-    const form = event.target;
-    const elements = form.elements;
-    const input = elements.input.value;
-    const token = elements.token.value;
-    auth
-      .createProfile({ input, token })
-      .then(res => {
-        console.log('Done', res);
-      })
-      .catch(err => {
-        console.log('error', err);
-      });
-  };
-
-  // in order to avoid this error (InvalidTokenError: Invalid token specified)
   componentWillMount() {
     var getToken = auth.token();
     if (getToken !== null) {
@@ -51,7 +47,7 @@ class App extends Component {
       var tokenId = decodeToken.sub;
       this.setState({ tokenId });
     } else {
-      console.log('error');
+      console.log('No token');
     }
   }
 
@@ -59,23 +55,46 @@ class App extends Component {
     return (
       <Router>
         <div className="app">
+          <div className="logo-container">
+              <img className="nav-logo" style={{ textAlign:"center", marginBottom:6 }} src={ logo } alt=""/>
+          </div>
           <MuiThemeProvider>
             <Header />
           </MuiThemeProvider>
 
-          <form onSubmit={this.createProfile}>
-            <label> Input </label>
-            <input type="text" name="input" />
-            <input type="hidden" name="token" value={this.state.tokenId} />
-            <input type="submit" />
-          </form>
+          {/* testing dynamic route */}
+          <div style={{marginTop:20}}>
+            <button onClick={this.onClick} />
+          </div>
+
+          {JSON.stringify(this.state.myProfile)}
 
           <Route exact path="/" component={Home} />
+
           <Switch>
-            <Route path="/directory/create" component={ProfileCreate} />
+            {/* <Route
+              path="/directory/create"
+              render={() => {
+                const id = this.state.tokenId;
+                auth.hasProfileId(id) ? <Redirect to="/" /> : <ProfileCreate />;
+              }}
+            /> */}
+
+            <Route
+              path="/directory/create"
+              myProfile={this.state.myProfile}
+              render={() =>
+                <ProfileCreate  myProfile={this.state.myProfile}
+                />
+            }
+            />
             <Route path="/directory/:id" component={Profile} />
             <Route path="/directory" component={Directory} />
             <Route path="/contact" component={Contact} />
+            <Route path="/downloads" component={Downloads} />
+            <Route path="/admin" component={Admin} />
+            <Route path="/progress" component={Progress} />
+
           </Switch>
 
           <Footer />
@@ -84,5 +103,5 @@ class App extends Component {
     );
   }
 }
-
+console.timeEnd("check")
 export default App;

@@ -12,14 +12,29 @@ export function token() {
   return localStorage.getItem(TOKEN_KEY);
 }
 
+export function findAllUser() {
+  console.log('hit this point');
+  return fetch(`/api/user`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(res => res.json())
+    .catch(error => {
+      console.log(error);
+    });
+}
+
 export function signUp({
   firstName,
   lastName,
   email,
   password,
+  type,
   registrationDate
 }) {
-  return fetch('/register', {
+  return fetch('/api/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -29,6 +44,7 @@ export function signUp({
       lastName,
       email,
       password,
+      type,
       registrationDate
     })
   })
@@ -45,7 +61,7 @@ export function signUp({
 }
 
 export function signIn({ email, password }) {
-  return fetch('/signin', {
+  return fetch('/api/signin', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

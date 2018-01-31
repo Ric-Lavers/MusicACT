@@ -1,70 +1,79 @@
-import React, { Component } from 'react';
-require('../style/home.css');
+import React from "react";
+import ImageSlide from "./ImageSlide";
+// import { Timeline } from 'react-twitter-widgets';
+
+import { UncontrolledCarousel } from "reactstrap";
+import { Link } from "react-router-dom";
+import SponsorReel from "./home/SponsorReel";
+import Image1 from "../images/blocks/1.png";
+import Image2 from "../images/blocks/2.png";
+import Directory from "../images/blocks/3.png";
+import Image4 from "../images/blocks/4.png";
+import Image5 from "../images/blocks/5.png";
+import Image6 from "../images/blocks/6.png";
+import Image7 from "../images/blocks/7.png";
+import Image8 from "../images/blocks/8.png";
+
+require("../style/home.css");
+require("../style/homehome.css");
+
 
 const Home = () => {
   return (
     <div>
-      <h1> this is Home Page</h1>
-    <div class="wrapper">
-        <div class="top">
-          <header class="hero">
-            <h1>MusicACT</h1>
-            <p>Enlivening the capital!</p>
-          </header>
-          <div class="cta cta1">
-            <p class="price">Something</p>
-            <p>Something here</p>
-          </div>
-          <div class="cta cta2">
-            <p class="price">Something</p>
-            <p>Something here</p>
-          </div>
 
+      <ImageSlide />
+      <h1> this is Home Page</h1>
+      <SponsorReel />
+
+      <div class="wrapper">
+        <div class="splash">
+          <div class="header-text">
+            <h1>Music For Everyone.</h1>
+            <h3>Enlivening The Capitals </h3>
+
+          </div>
         </div>
 
-        <section class="features">
-          <div class="feature">
-            <span class="icon">👋</span>
-            <h3>BECOME A MEMBER</h3>
+        <div class="grid">
+          <div>
+            <Link to={`/directory`}>
+              <img src={Image8} alt="Sample photo" />
+            </Link>
           </div>
-          <div class="feature">
-            <span class="icon">🎹</span>
-            <h3>COOL LITTLE CAPITAL</h3>
+          <div>
+            <Link to={`/directory`}>
+              <img src={Image2} alt="Sample photo" />
+            </Link>
           </div>
-          <div class="feature">
-            <span class="icon">🍷</span>
-            <h3>MUSICACT ANNUAL MUSIC AWARDS 2017</h3>
+          <div>
+            <Link to={`/directory`}>
+              <img src={Directory} alt="Sample photo" />
+            </Link>
           </div>
-          <div class="feature">
-            <span class="icon">🎵</span>
-            <h3>WORKSHOPS</h3>
+          <div>
+            <Link to={`/news`}>
+              <img src={Image4} alt="Sample photo" />
+            </Link>
           </div>
-        </section>
+          <div>
+            <Link to={`/directory`}>
+              <img src={Image5} alt="Sample photo" />
+            </Link>
+          </div>
+          <div>
+            <Link to={`/directory`}>
+              <img src={Image6} alt="Sample photo" />
+            </Link>
+          </div>
+          <div>
+            <Link to={`/directory`}>
+              <img src={Image7} alt="Sample photo" />
+            </Link>
+          </div>
+          <SponsorReel />
 
-        <section class="about">
-          <img src="images/queso-taco.png" alt="EarGasm" class="about__mockup"/>
-          <div class="about__details">
-            <h2>Lastest Blog Entry</h2>
-            <p>This is amazing!!!!</p>
-            <p>This is the one you have been waiting for</p>
-            <button>Learn More →</button>
-          </div>
-        </section>
-
-
-        <section class="gallery">
-          <h2>Our Past Events</h2>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-          <img src="../assets/images/smiley.jpg" alt=""/>
-        </section>
+        </div>
       </div>
     </div>
   );

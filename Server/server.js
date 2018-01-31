@@ -8,7 +8,7 @@ const cookieSeesion = require('cookie-session');
 
 var app = express();
 
-// setup env running on heroku
+// setup env running on HEROKU
 const port = process.env.PORT || 5000;
 
 //configuring express to use body-parser as middle-ware.
@@ -35,6 +35,11 @@ app.use(
   })
 );
 
+// middleware to access this page
+// app.use((req, res, next) => {
+//  res.render();
+//  });
+
 //allow to accesss 'Access-Control-Allow-Origin' header
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -52,6 +57,17 @@ app.use(authMiddleware.initialize);
 //routes passing app
 require('./routes/auth')(app);
 require('./routes/profile')(app);
+
+//set up heroku Environment
+if (process.env.NODE_ENV == 'production') {
+  //Express will serve up production assets
+  app.use(express.static('Client/build'));
+  //Express will serve up the index.html
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'Client', 'build', 'index.html'));
+  });
+}
 
 // create a listen with callback function
 app.listen(port, () => {
