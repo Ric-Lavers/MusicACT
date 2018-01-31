@@ -22,10 +22,10 @@ const Home = () => {
   return (
     <div>
 
-      <ImageSlide />
+      {/*<ImageSlide />
       <h1> this is Home Page</h1>
       <SponsorReel />
-
+*/}
       <div class="wrapper">
         <div class="splash">
           <div class="header-text">
