@@ -8,11 +8,13 @@ This Node.JS API and React app is a redesign of the current MusicACT website.
 
 Its intention is to improve the UX of the site providing users a modern experience, and build upon previous features. The previous site was built in Drupal around 2012 and has limited updating (save for blog posts around 3 times a year), in addition to the blog the other main feature is a directory that allows musicians, venues and businesses create a profile that listed on the site. Minor features include a members sign up, email confirmation, admin rights (including editing, deleting profiles, banning users), password recovery, JWT tokens, document downloads.
 
----
+
+**Due  to time restrictions the assignment was scoped to focus on the directory, meaning member login, profile creation, and viewing profiles**
+_____________
 
 ### Significant Packages
 
-#### FE
+#### Front-end
 
 * React
 * [React Router](https://reacttraining.com/react-router/)
@@ -20,7 +22,14 @@ Its intention is to improve the UX of the site providing users a modern experien
 * [react-player](https://www.npmjs.com/package/react-player)
 * [cloudinary-react](https://github.com/cloudinary/cloudinary-react)
 
-#### BE
+#### Back-end
+
+- [validator](https://github.com/chriso/validator.js)
+- express
+- passport
+- jsonwebtoken
+- mongoose
+
 
 * [validator](https://github.com/chriso/validator.js)
 
@@ -35,6 +44,56 @@ Its intention is to improve the UX of the site providing users a modern experien
 ---
 
 ### Client Interviews
+10th Jan 2018
+Skype Interviews
+_This interview was to formally start the project and for us to get a understanding of the most important elements of the site_
+#### Development
+
+###### Q] How does admin access work?
+###### A]
+"I will provide you with a admin username and password to that you can see the current access, really theres a lot of stuff we don't use in there."
+###### Q] How does member access work?
+###### A]
+"You will be able to see what the member sees with the admin access, its similar just obvious much more limited."
+###### Q] How does automatic emails access work?
+###### A]
+"I'm not sure actually.. we use mail chimp to send our emails to the members."
+
+###### Q] What database information is important to the organisation?
+###### A]
+"umm really just their email, name and type of  membership (musician, business, band). Obviously any other information we can use when presenting the organisation to other is valuable"
+
+#### Style
+_We provided a list of potentially similar sites as examples of features and styles_
+###### Q] Not being graphic designers, are there any site or styles that jumped out at you that we could use to inspire the look and feel of this site?
+###### A]
+"really happy to let you take creative control with that and just do what you feel " - ( _hmmm not the answer we wanted_ )
+
+#### Purpose
+_We needed to find the real reasons for the site, who will be using it and why_
+###### Q] Who is the most important user?
+###### A]
+Well there could be a few... Our goal is to represent the music industry as a lobbying body. But for now we want to use the site to bring in more members, these are going to be primarily musicians.
+###### Q] Whats your call to action aka the goal?
+###### A]
+There are few main parts, which are the blog, profiles (the directory), committee page, and tweets (which is the most active.) We'd love a music playlist too!
+###### Q] Where are you most active? social media (where), emails, print etc
+###### A]
+Twitter, followed by facebook, and then our blog articles.
+###### Q] What else is important for the site
+###### A]
+We need to show off the sponsors, if you could somehow create a box on the homepage that cycled through the sponsors logos that would be amazing!
+
+###### _Great thanks for your time_
+
+#### Our Conclusions
+We determined that the site had two main features, the blog and the directory. However the directory was the most important feature due to its uniqueness in the region, it's potential in bringing in new members and the under use of the blog.
+For style we were given very little to go off.
+Backend and database design seemed to be of less importance then we predicted and benefits of the Drupal backend were going mostly unused.
+_____
+
+
+
 
 ---
 
@@ -46,17 +105,17 @@ Its intention is to improve the UX of the site providing users a modern experien
 (https://bandcamp.com/ (search limiting))
 (https://warp.net/ (blog page))
 
----
+_____________
+### User Journeys
 
-### User Journeys & Wireframes
+![user Journey](./docs/user_journey.png)
+_This shows the journey of signing up and creating a profile for the directory_
+### Wireframes
+![Directory](./docs/directory_wirframe.png)
+_This shows the mock for the directory as a desktop view. as the screen shrinks to mobile the rows of reduce to 2 then 1_
+![Profile](./docs/musicain profile.png)
+_This mock for the musican profile allows for the basics for presenting a professional artist_
 
-##### Musicians & bands
-
-##### Venues
-
-##### Businesses
-
-##### Admin
 
 ---
 
@@ -68,9 +127,29 @@ Its intention is to improve the UX of the site providing users a modern experien
 1. `echo "**/.env" >> .git`
 1. [set up preprocessor for sass](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-preprocessor-sass-less-etc)
 
+### ERD
+![ERD](./docs/ERD.png)
+_The ERD was created on DB Design, although it contains a rough design for the whole site this assignments only focuses on the coloured collections._
 ### API
+Our api has a number of routes and authentication
+- POST new user
+- PUT user
+- DELETE user
+- POST new profile
+- PUT profile
+- DELETE profile
+- GET Profile by id
+- GET all profiles
+
+The Design found complications due to the breaking the profile information in to 4 seperate sections of ;
+- contact details
+- socialMedia Links
+- Multimedia Links
+- bio information
 
 ### Layout End-to-end
+Our React front-end contains 38 components, below is a simplified diagram of the layout.
+![Simply react structure](./docs/simple react diagram.png)
 
 ### Homepage
 
@@ -94,11 +173,6 @@ localStorage.clear(); //clears profile
 
 * the JSON data holds line breaks as \n and did not import properly, so we needed to add a .replace(/\n/g, '<br />') method. **correction**( This turned out to not the right approach _instead_ simple css `white-space: pre-line;` does the same thing to better effect.)
 
-### Admin
-
----
-
-### Tests
 
 ### Bugs and Fixes
 
