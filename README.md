@@ -5,6 +5,8 @@
 This Node.JS API and React app is a redesign of the current MusicACT website.
 
 Its intention is to improve the UX of the site providing users a modern experience, and build upon previous features. The previous site was built in Drupal around 2012 and has limited updating (save for blog posts around 3 times a year), in addition to the blog the other main feature is a directory that allows musicians, venues and businesses create a profile that listed on the site. Minor features include a members sign up, email confirmation, admin rights (including editing, deleting profiles, banning users), password recovery, JWT tokens, document downloads.
+
+**Due  to time restrictions the assignment was scoped to focus on the directory, meaning member login, profile creation, and viewing profiles**
 _____________
 ### Significant Packages
 #### FE
@@ -74,7 +76,7 @@ We need to show off the sponsors, if you could somehow create a box on the homep
 #### Our Conclusions
 We determined that the site had two main features, the blog and the directory. However the directory was the most important feature due to its uniqueness in the region, it's potential in bringing in new members and the under use of the blog.
 For style we were given very little to go off.
-Backend and database design seemed to be of less importance then we predicted and benefits of the Drupal backend were going mostly unused. 
+Backend and database design seemed to be of less importance then we predicted and benefits of the Drupal backend were going mostly unused.
 _____
 
 
@@ -90,11 +92,15 @@ _____________
 (https://warp.net/ (blog page))
 
 _____________
-### User Journeys & Wireframes
-##### Musicians & bands
-##### Venues
-##### Businesses
-##### Admin
+### User Journeys
+
+![user Journey](./docs/user_journey.png)
+_This shows the journey of signing up and creating a profile for the directory_
+### Wireframes
+![Directory](./docs/directory_wirframe.png)
+_This shows the mock for the directory as a desktop view. as the screen shrinks to mobile the rows of reduce to 2 then 1_
+![Profile](./docs/musicain profile.png)
+_This mock for the musican profile allows for the basics for presenting a professional artist_
 
 _____________
 ### Getting started
@@ -105,9 +111,29 @@ _____________
 1. `echo "**/.env" >> .git`
 1. [set up preprocessor for sass](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-preprocessor-sass-less-etc)
 
+### ERD
+![ERD](./docs/ERD.png)
+_The ERD was created on DB Design, although it contains a rough design for the whole site this assignments only focuses on the coloured collections._
 ### API
+Our api has a number of routes and authentication
+- POST new user
+- PUT user
+- DELETE user
+- POST new profile
+- PUT profile
+- DELETE profile
+- GET Profile by id
+- GET all profiles
+
+The Design found complications due to the breaking the profile information in to 4 seperate sections of ;
+- contact details
+- socialMedia Links
+- Multimedia Links
+- bio information
 
 ### Layout End-to-end
+Our React front-end contains 38 components, below is a simplified diagram of the layout.
+![Simply react structure](./docs/simple react diagram.png)
 
 ### Homepage
 
@@ -129,11 +155,7 @@ localStorage.clear();//clears profile
 - the JSON data holds line breaks as \n and did not import properly, so we needed to add a .replace(/\n/g, '<br />') method. **correction**( This turned out to not the right approach _instead_ simple css `  white-space: pre-line;` does the same thing to better effect.)
 
 
-### Admin
-
-_____________
-### Tests
-
+____________
 ### Bugs and Fixes
 Cloudninary uploading is done simply without any security.
 
