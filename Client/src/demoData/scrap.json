@@ -1,1 +1,31 @@
-{}
+{
+  _id: 5 a6ff2ec2aa62fb08e645812,
+  user: 5 a6feef2312e1ab02286e207,
+  __v: 0,
+  multimedia: [{
+    _id: 5 a6ff2ec2aa62fb08e645811,
+    youtubeLink: 'https://www.youtube.com/watch?v=m0b-6avQYoM',
+    soundcloudLink: 'https://soundcloud.com/pixelord/boost'
+  }],
+  socialMediaIcons: [{
+    _id: 5 a6ff2ec2aa62fb08e645810,
+    instagram: 'https://instagram.com/=1&_rdr'
+  }],
+  profile: [{
+    _id: 5 a6ff2ec2aa62fb08e64580f,
+    bio: 'Silverchair were an Australian rock band, which formed in 1992 as Innocent Criminals in Merewether, Newcastle with the line-up of Ben Gillies on drums, Daniel Johns on vocals and guitars, and Chris Joannou on bass guitar. The group got their big break in mid-1994 when they won a national demo competition conducted by SBS TV show Nomad and ABC radio station, Triple J. The band were signed by Murmur, and were successful on the Australian and international rock stages.\n\nDuring their career, Silverchair won more ARIA Music Awards than any other artist in history with 21 wins from 49 nominations. The band have also received six APRA Awards with Johns winning three songwriting awards at the 2008 ceremony.',
+    name: 'Yum Yum',
+    imageSrc: 'https://res.cloudinary.com/aeonknight/image/upload/v1517281664/profile/vntbpusjzusku1m0if4l.jpg'
+  }],
+  contactDetails: [{
+    _id: 5 a6ff2ec2aa62fb08e64580e,
+    pointOfContact: 'Burger',
+    phoneNumber: '1234567890',
+    email: 'fat@emai.com'
+  }]
+}
+3. complete {
+  soundcloudLink: 'https://soundcloud.com/pixelord/boost',
+  youtubeLink: 'https://www.youtube.com/watch?v=m0b-6avQYoM',
+  _id: 5 a6ff2ec2aa62fb08e645811
+}

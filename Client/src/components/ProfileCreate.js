@@ -41,7 +41,7 @@ const errors = {
 class ProfileCreate extends React.Component {
   constructor(props) {
     super(props);
-    console.table(this.props);
+    // console.table(this.props);
     //checks for a profile in passed via props
     if (this.props.myProfile != null) {
 console.debug("this.props.myProfile != null");
@@ -139,8 +139,8 @@ console.debug("unfinished new profile");
     const errors = validate(name, value, this.state.errors);
     this.setState({ errors });
     if (errors[name] === 2) {
-      console.log("group",group)
-      console.log(name, errors[name]);
+      // console.log("group",group)
+      // console.log(name, errors[name]);
       profile[group][name] = value;
       this.setState({ profile });
     }
@@ -183,6 +183,7 @@ console.debug("unfinished new profile");
       .then(res => {
         console.log('Done', res);
         setInterval( () => { this.setState( {success:"sucess"} ) }, 1000 )
+
       })
       .catch(err => {
         console.log('error', err);
@@ -218,10 +219,10 @@ console.debug("unfinished new profile");
           handleSocialDelete ={this.handleSocialDelete}
           errors={this.state.errors}
         />
-        {<MusicianProfile
+        <MusicianProfile
           _id="1234"
           data={this.state.profile}
-          type={this.state.profile.type} />}
+          type={this.state.profile.type} />
     </div>
     );
   }
