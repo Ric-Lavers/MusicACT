@@ -100,9 +100,13 @@ _____
 ### Inspiration
 
 (http://www.musicvictoria.com.au/)
+
 (http://www.musicnsw.com/)
+
 (http://theoperatives.com.au/artist/ (for artist profiles))
+
 (https://bandcamp.com/ (search limiting))
+
 (https://warp.net/ (blog page))
 
 _____________
@@ -113,7 +117,9 @@ _This shows the journey of signing up and creating a profile for the directory_
 ### Wireframes
 ![Directory](./docs/directory_wirframe.png)
 _This shows the mock for the directory as a desktop view. as the screen shrinks to mobile the rows of reduce to 2 then 1_
+
 ![Profile](./docs/musicain_profile.png)
+
 _This mock for the musican profile allows for the basics for presenting a professional artist_
 
 
@@ -149,7 +155,9 @@ The Design found complications due to the breaking the profile information in to
 
 ### Layout End-to-end
 Our React front-end contains 38 components, below is a simplified diagram of the layout.
-![Simply react structure](./docs/simple_react_diagram.png)
+
+![Simply react_structure](./docs/simple_react_diagram.png)
+
 
 ### Homepage
 
