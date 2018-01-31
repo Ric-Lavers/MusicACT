@@ -163,6 +163,7 @@ class Directory extends React.Component {
         (null)
       : (
       <div id="ani" className="directory">
+
         <div className="filters">
           <FilterForm
             color="#C8FF5D"
