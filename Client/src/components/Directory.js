@@ -41,25 +41,24 @@ class Directory extends React.Component {
 
 
   componentDidMount() {
-    // let directory = []
-    // auth.findAllUser().then(res => {
-    //   res.map( (profile) => {
-    //     const ob = {}
-    //     ob._id = profile.profile._id
-    //     ob.user =  profile.profile.user
-    //     ob.type =  profile.profile.type
-    //     ob.contactDetails = profile.profile.contactDetails[0]
-    //     ob.multimedia = profile.profile.multimedia[0]
-    //     ob.profile = profile.profile.profile[0]
-    //     ob.socialMediaIcons = profile.profile.socialMediaIcons[0]
-    //
-    //     directory.push(ob)
-    //   });
-    // })
-    // console.log("directory", directory);
-    //
-    //
-    // this.setState({ directory: directory });
+    let directory = []
+    auth.findAllUser()
+    .then(res => {
+      res.User.map( (listing) => {
+        const ob = {}
+        ob._id = listing.profile_id
+        ob.user =  listing.user_id
+        ob.type =  listing.type
+        ob.contactDetails = listing.profile.contactDetails[0]
+        ob.multimedia = listing.profile.multimedia[0]
+        ob.bio = listing.profile.profile[0]
+        ob.socialMediaIcons = listing.profile.socialMediaIcons[0]
+
+        directory.push(ob)
+      });
+      this.setState({ directory: directory })
+    })
+
 
 /*    const node = ReactDOM.findDOMNode(this);
     // const node =document.getElementById("ani")
@@ -105,6 +104,10 @@ class Directory extends React.Component {
   };
 
   render() {
+    let bandNames= [];
+    let venueNames= [];
+    let businessNames= [];
+    let all= [];
     const nav =   ['all','Musicians','Venues', 'Businesses'];
     const musicians =   ['all','Bands','Djs', 'Soloists'];
     const venues =   ['all','Civic','North', 'South'];
@@ -114,21 +117,22 @@ class Directory extends React.Component {
 
     const { navButtonActive } = this.state;
 
-    if ( Array.isArray(this.state.directory) ) {
-      console.log("%c TRUE", "color:green");
-
+    if ( this.state.directory != null ) {
       const findSelectedListDB = (value, array) => {
         let result = []
-        console.log(array,  value);
+        console.log(array.length);
+// console.groupCollapsed("finding values")
         array.map( (listing) => {
+// console.debug(listing);
           if (listing.type === value){
-            console.log("yes",value);
+            console.count("yes",value);
             result.push(listing)
           }
         })
+// console.groupEnd()
         return result
       }
-
+      console.log("this.state.directory",this.state.directory);
       const bandNames = findSelectedListDB("1", this.state.directory)
       const venueNames = findSelectedListDB("2", this.state.directory)
       const businessNames = findSelectedListDB("3", this.state.directory)
@@ -137,7 +141,10 @@ class Directory extends React.Component {
       bandNames.filter( (band) => {
         band.type === musicians[this.state.musicianButtonActive] && selected.push(band);
       })
-    }else{
+      console.log("bandNames",typeof(bandNames),bandNames);
+      console.log("all",typeof(all),all);
+    }
+/*    else{
       console.log("%c FALSE", "color:red");
 
       const findSelectedList = (type) => {
@@ -148,18 +155,17 @@ class Directory extends React.Component {
         return result
       }
 
-      const bandNames = findSelectedList('musicians')
-      const venueNames = findSelectedList('venues')
-      const businessNames = findSelectedList('businesses')
+      const bandNames = findSelectedList('musicians') || []
+      const venueNames = findSelectedList('venues') || []
+      const businessNames = findSelectedList('businesses') || []
       const all = bandNames.concat(venueNames).concat(businessNames)
 
       const selected = []
       bandNames.filter( (band) => {
         band.type === musicians[this.state.musicianButtonActive] && selected.push(band);
       })
-
-    }
-      return (!Array.isArray(this.state.directory) ?
+    // }*/
+      return (  !this.state.directory ?
         (null)
       : (
       <div id="ani" className="directory">
@@ -190,12 +196,12 @@ class Directory extends React.Component {
             <div style={{ height: 58 }} />
           )}
         </div>
-        {/*
-        {navButtonActive === 0 && <DirectoryGrid listing={all} />}
-        {navButtonActive === 1 && <DirectoryGrid listing={bandNames} />}
-        {navButtonActive === 2 && <DirectoryGrid listing={venueNames} />}
-        {navButtonActive === 3 && <DirectoryGrid listing={businessNames} />}
-        */}
+        <DirectoryGrid num="all" listing= {this.state.directory}/>
+    {/*    {navButtonActive === 0 && <DirectoryGrid num="0" listing= {all} />}
+        {navButtonActive === 1 && <DirectoryGrid num="1" listing= {bandNames} />}
+        {navButtonActive === 2 && <DirectoryGrid num="2" listing= {venueNames} />}
+        {navButtonActive === 3 && <DirectoryGrid num="3" listing= {businessNames} />}*/}
+
       </div>
     ))
   }
