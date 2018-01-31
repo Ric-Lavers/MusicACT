@@ -79,16 +79,19 @@ class App extends Component {
                 auth.hasProfileId(id) ? <Redirect to="/" /> : <ProfileCreate />;
               }}
             /> */}
-
             <Route
               path="/directory/create"
               myProfile={this.state.myProfile}
               render={() =>
-                <ProfileCreate  myProfile={this.state.myProfile}
-                />
-            }
+                <ProfileCreate  myProfile={this.state.myProfile}/>
+              }
             />
-            <Route path="/directory/:id" component={Profile} />
+            <Route
+              path="/directory/:id"
+              render={(props) =>
+                <Profile props = {props} findById />
+              }
+            />
             <Route path="/directory" component={Directory} />
             <Route path="/contact" component={Contact} />
             <Route path="/downloads" component={Downloads} />

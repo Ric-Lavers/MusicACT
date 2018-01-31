@@ -10,13 +10,12 @@ const colors = [
   ['#E8CF3B','#4BFF8D']
 ]
 
-const DirectoryGrid = ( {num,listing} ) => {
-  console.groupCollapsed("in the grid")
-  console.log("num, listing, listing[0]",num, listing, listing[0]);
+export const DirectoryGrid = ({listing}) => {
 
+  // let backgroundImage = { backgroundImage:{image} }
   const listings = []
   for (let i = 0; i < listing.length; i++) {
-      console.log(listing[i])
+
       listings.push(
 
           <div
@@ -29,13 +28,13 @@ const DirectoryGrid = ( {num,listing} ) => {
             <h1
               key={"_2"+listing[i]._id}
               style={{color:colors[i%colors.length][1] }}>
-              {`${listing[i].bio.name}`}
+              {`${listing[i].profile.name}`}
             </h1>
 
             <div
               key={"_3"+listing[i]._id}
               className="inside-testing"
-              style={{ backgroundImage: `url(${listing[i].bio.imageSrc? (listing[i].bio.imageSrc):
+              style={{ backgroundImage: `url(${listing[i].profile.imageSrc? (listing[i].profile.imageSrc):
               (image)
               })` }}>
             </div>
@@ -43,7 +42,6 @@ const DirectoryGrid = ( {num,listing} ) => {
 
       )
   }
-  console.groupEnd()
 
   return(
     <div className="container">
@@ -63,7 +61,7 @@ const DirectoryGrid = ( {num,listing} ) => {
   )
 }
 
-export default DirectoryGrid
+export default DirectoryGrid;
 
 // for random select
 // let color = ()=>{
