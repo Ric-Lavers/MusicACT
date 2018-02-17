@@ -21,7 +21,6 @@ require("../style/homehome.css");
 const Home = () => {
   return (
     <div>
-
       {/*<ImageSlide />
       <h1> this is Home Page</h1>
       <SponsorReel />

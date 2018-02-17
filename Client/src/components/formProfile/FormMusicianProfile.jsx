@@ -1,4 +1,6 @@
 import React from 'react'
+
+import React from 'react'
 import {Image,Transformation} from 'cloudinary-react';
 
 import Dropzone from 'react-dropzone';
@@ -28,7 +30,9 @@ const drop = props.open?"on":"off"
             multiple={false}
             accept="image/*"
             onDrop={props.handleImageUpload}>
-            <p className="drop-message"style={{textAlign:"center", padding:"8px"}}>Drop an image or click to select a file to upload... it will take a few seconds to appear!</p>
+            <p className="drop-message"style={{
+                textAlign:"center", padding:"8px"}}
+                >Drop an image or click to select a file to upload... it will take a few seconds to appear!</p>
           </Dropzone>
         </label>
         <br/>

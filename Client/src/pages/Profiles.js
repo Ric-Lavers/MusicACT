@@ -11,14 +11,19 @@ class Profiles extends React.Component {
   componentDidMount() {
     api.fetchProfile(this.props.props.match.params.id)
     .then( (res) => {
-      console.log(res.profile.profile)
+      // console.log(res.profile.profile)
       let _res = res.profile.profile
       let obj = {}
       obj._id = _res._id
+
       obj.contactDetails = _res.contactDetails[0]
+        delete obj.contactDetails._id
       obj.profile = _res.profile[0]
+        delete obj.profile._id
       obj.socialMediaIcons = _res.socialMediaIcons[0]
+        delete obj.socialMediaIcons._id
       obj.multimedia = _res.multimedia[0]
+        delete obj.multimedia._id
 
       this.setState({listing: obj})
     }).catch(err=>
