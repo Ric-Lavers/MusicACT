@@ -109,6 +109,8 @@ body{
     cursor: pointer;
     h1 {
       // display:none;
+      width:100%;
+      overflow-wrap: break-word;
       color: white;
       z-index: 3;
       position: absolute;

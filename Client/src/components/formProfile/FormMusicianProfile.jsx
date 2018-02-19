@@ -1,6 +1,5 @@
 import React from 'react'
 
-import React from 'react'
 import {Image,Transformation} from 'cloudinary-react';
 
 import Dropzone from 'react-dropzone';

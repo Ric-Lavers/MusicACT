@@ -81,6 +81,8 @@ body {
     justify-content: center;
     cursor: pointer; }
     .directory-grid .testing h1 {
+      width: 100%;
+      overflow-wrap: break-word;
       color: white;
       z-index: 3;
       position: absolute;
